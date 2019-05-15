@@ -21,6 +21,7 @@
       <field name="name">medical_insurance window</field>
       <field name="res_model">medical_insurance.medical_insurance</field>
       <field name="view_mode">tree,form</field>
+
     </record>
     -->
 
