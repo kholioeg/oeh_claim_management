@@ -28,6 +28,10 @@
         'views/views.xml',
         'views/templates.xml',
         'views/patient.xml',
+        'views/visit.xml',
+        'views/serviceline.xml',
+        'views/priceplan.xml',
+
     ],
     # only loaded in demonstration mode
     'demo': [
