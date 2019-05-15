@@ -16,13 +16,13 @@
     -->
 
     <!-- actions opening views on models -->
-    <!--
-    <record model="ir.actions.act_window" id="medical_insurance.action_window">
-      <field name="name">medical_insurance window</field>
-      <field name="res_model">medical_insurance.medical_insurance</field>
+
+    <record model="ir.actions.act_window" id="medical_insurance_action_visit">
+      <field name="name">visit window</field>
+      <field name="res_model">medical_insurance.visit</field>
       <field name="view_mode">tree,form</field>
     </record>
-    -->
+
 
     <!-- server action to the one above -->
     <!--
@@ -47,15 +47,12 @@
     <!-- menu categories -->
 
     <menuitem name="Registration" id="medical_insurance_Registration" parent="medical_insurance_menu_root"/>
-    <menuitem name="Reportings" id="medical_insurance_Reportings" parent="medical_insurance_menu_root"/>
-    <menuitem name="Configuration" id="medical_insurance_Configuration" parent="medical_insurance_menu_root"/>
 
     <!-- actions -->
-    <!--
-    <menuitem name="List" id="medical_insurance.menu_1_list" parent="medical_insurance.menu_1"
-              action="medical_insurance.action_window"/>
-    <menuitem name="Server to list" id="medical_insurance" parent="medical_insurance.menu_2"
-              action="medical_insurance.action_server"/>
-    -->
+
+    <menuitem name="Visit" id="medical_insurance_visit" parent="medical_insurance_Registration"
+              action="medical_insurance_action_visit"/>
+
+
   </data>
 </odoo>
