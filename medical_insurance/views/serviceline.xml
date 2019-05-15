@@ -6,7 +6,7 @@
     <field name="priority" eval="16"/>
     <field name="arch" type="xml">
     <tree>
-          <field name="product"/>
+          <field name="name"/>
           <field name="sale_price"/>
           <field name="vendor_price"/>
           <field name="patient_price"/>
