@@ -4,18 +4,18 @@ from odoo import models, fields, api
 class Patient(models.Model):
     _name = 'medical_insurance.patient'
     _inherit = 'res.partner'
-    first_name = fields.Char()
-    last_name = fields.Char()
-    NID = fields.Integer()
-    date_of_birth = fields.Date()
+    # first_name = fields.Char()
+    # last_name = fields.Char()
+    NID = fields.Char()
+    date_of_birth = fields.Date( string='Birthdate',)
     gender = fields.Selection([
         ('male', "Male"),
         ('female', "Female"),
     ])
 
-    mariage_state = fields.Selection([
+    marital_status = fields.Selection([
         ('single', "Single"),
-        ('maried', "Maried"),
+        ('married', "Married"),
     ], default="single")
     blood_group = fields.Char()
     weight = fields.Float()
