@@ -4,7 +4,7 @@ class Visit(models.Model):
 
     _name = 'medical_insurance.visit'
 
-    # patient_id = fields.Many2one('medical_insurance.patient')
+    patient_id = fields.Many2one('medical_insurance.patient')
     # price_plan = fields.Char(related='patient_id.price_plan', readonly=True)
     # patient_status = fields.Char(related='patient_id.status', readonly=True)
     # medical_center_id = fields.Many2one('medical_insurance.medical_center')

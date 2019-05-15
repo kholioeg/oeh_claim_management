@@ -79,11 +79,11 @@
 
         <!-- menu categories -->
 
-        <menuitem name="Registration" id="medical_insurance_registration" parent="medical_insurance_menu_root"/>
+        <!--menuitem name="Registration" id="medical_insurance_registration" parent="medical_insurance_menu_root"/-->
 
         <!-- actions -->
 
-        <menuitem name="Patient" id="medical_insurance_patient" parent="medical_insurance_registration"
+        <menuitem name="Patient" id="medical_insurance_patient" parent="medical_insurance_Registration"
                   action="medical_insurance_action_patient"/>
        <!-- <menuitem name="Server to list" id="medical_insurance" parent="medical_insurance.menu_2"
                   action="medical_insurance.action_server"/>

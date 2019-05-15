@@ -11,7 +11,8 @@ class Patient(models.Model):
     gender = fields.Selection([
         ('male', "Male"),
         ('female', "Female"),
-    ], default="Male")
+    ])
+
     mariage_state = fields.Selection([
         ('single', "Single"),
         ('maried', "Maried"),
