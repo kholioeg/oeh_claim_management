@@ -1,0 +1,45 @@
+<odoo>
+    <data>
+    <record model="ir.ui.view" id="PricePlanList">
+        <field name="name">PricePlan List</field>
+        <field name="model">medical_insurance.price_plan</field>
+        <field name="priority" eval="16"/>
+        <field name="arch" type="xml">
+            <tree>
+                        <field name="name"/>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                        <field name="state"/>
+                     <field name="patient"/>
+                     <field name="medical_center"/>
+<!             <field name="service_line"/>-->
+
+
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="PricePlan_action_window">
+      <field name="name">PricePlan window</field>
+      <field name="res_model">medical_insurance.price_plan</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+     <!-- Top menu item -->
+    <menuitem name="medical_insurance" id="medical_insurance_menu_root"/>
+    <!-- menu categories -->
+    <!--menuitem name="Registration" id="medical_insurance_menu1" parent="medical_insurance_menu_root"/-->
+    <!--menuitem name="Reporting" id="medical_insurance_menu2" parent="medical_insurance_menu_root"/-->
+    <menuitem name="Configuration" id="medical_insurance_menu3" parent="medical_insurance_menu_root"/>
+    <!-- actions -->
+
+    <menuitem name="PricePlan" id="medical_insurance_menu1_list" parent="medical_insurance_menu3"
+              action="PricePlan_action_window"/>
+
+
+
+
+</data>
+</odoo>
