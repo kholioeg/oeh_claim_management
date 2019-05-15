@@ -4,10 +4,6 @@
     <list default="true" id="a51d27f1-838b-4566-ba3a-afa751425433" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ServiceLine.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/ServiceLine.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Visit.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/Visit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/serviceline.xml" beforeDir="false" afterPath="$PROJECT_DIR$/views/serviceline.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
