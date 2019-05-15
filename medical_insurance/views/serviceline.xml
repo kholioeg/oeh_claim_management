@@ -1,0 +1,41 @@
+<odoo>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="ServiceLineList">
+    <field name="name">ServiceLine list</field>
+    <field name="model">medical_insurance.service_line</field>
+    <field name="priority" eval="16"/>
+    <field name="arch" type="xml">
+    <tree>
+          <field name="product"/>
+          <field name="sale_price"/>
+          <field name="vendor_price"/>
+          <field name="patient_price"/>
+          <!--field name="visit"/-->
+
+    </tree>
+    </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="ServiceLine_action_window">
+      <field name="name">ServiceLine window</field>
+      <field name="res_model">medical_insurance.service_line</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+     <!-- Top menu item -->
+    <menuitem name="medical_insurance" id="medical_insurance_menu_root"/>
+    <!-- menu categories -->
+    <!--menuitem name="Registration" id="medical_insurance_menu_1" parent="medical_insurance_menu_root"/-->
+    <!--menuitem name="Reporting" id="medical_insurance_menu_2" parent="medical_insurance_menu_root"/-->
+    <menuitem name="Configuration" id="medical_insurance_menu_3" parent="medical_insurance_menu_root"/>
+    <!-- actions -->
+
+    <menuitem name="ServiceLine" id="medical_insurance_menu_1_list" parent="medical_insurance_menu_3"
+              action="ServiceLine_action_window"/>
+
+
+
+
+
+</odoo>
