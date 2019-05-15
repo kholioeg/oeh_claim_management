@@ -7,7 +7,7 @@ class Visit(models.Model):
     patient_id = fields.Many2one('medical_insurance.patient')
     # price_plan = fields.Char(related='patient_id.price_plan', readonly=True)
     # patient_status = fields.Char(related='patient_id.status', readonly=True)
-    # medical_center_id = fields.Many2one('medical_insurance.medical_center')
+    medical_center_id = fields.Many2one('medical_insurance.medical_center')
     service_line_id = fields.Many2one('medical_insurance.service_line')
     contribution_charge = fields.Float(related='service_line_id.vendor_price', readonly=True)
     patient_charge = fields.Float(related='service_line_id.patient_price', readonly=True)

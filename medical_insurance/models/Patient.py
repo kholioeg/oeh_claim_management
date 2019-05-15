@@ -3,7 +3,7 @@ from odoo import models, fields, api
 
 class Patient(models.Model):
     _name = 'medical_insurance.patient'
-    #_inherit = 'res.partner'
+    _inherit = 'res.partner'
     first_name = fields.Char()
     last_name = fields.Char()
     NID = fields.Integer()
