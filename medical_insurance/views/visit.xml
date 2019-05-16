@@ -7,12 +7,13 @@
       <field name="model">medical_insurance.visit</field>
       <field name="arch" type="xml">
         <tree>
+           <field name="id"/>
           <field name="patient_id"/>
           <field name="date_of_visit"/>
         </tree>
       </field>
     </record>
-    -->
+-->
 
     <!-- explicit graph view definition -->
     <!--
