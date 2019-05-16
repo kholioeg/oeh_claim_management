@@ -10,6 +10,7 @@
           <field name="sale_price"/>
           <field name="vendor_price"/>
           <field name="patient_price"/>
+          <field name="price_plan"/>
           <!--field name="visit"/-->
 
     </tree>
