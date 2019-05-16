@@ -64,7 +64,7 @@
 
     <!-- actions -->
 
-    <menuitem name="Visit" id="medical_insurance_visit" parent="medical_insurance_Registration"
+    <menuitem name="Visit" id="medical_insurance_visit" parent="medical_insurance_menu_registration"
               action="medical_insurance_action_visit"/>
 
 
