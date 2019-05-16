@@ -33,7 +33,7 @@
     <!--menuitem name="Configuration" id="medical_insurance_menu3" parent="medical_insurance_menu_root"/-->
     <!-- actions -->
 
-    <menuitem name="PricePlan" id="medical_insurance_menu_2_list" parent="medical_insurance_menu_3"
+    <menuitem name="PricePlan" id="medical_insurance_menu_2_list" parent="medical_insurance_menu_conf"
               action="PricePlan_action_window"/>
 
 
