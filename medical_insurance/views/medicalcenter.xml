@@ -12,14 +12,9 @@
                   <field name="mobile"/>
                   <field name="country_id"/>
                   <field name="contact_address"/>
-
-                
-
             </tree>
         </field>
     </record>
-
-
 
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="MedicalCenter_action_window">
