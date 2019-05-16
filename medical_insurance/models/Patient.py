@@ -16,7 +16,6 @@ class Patient(models.Model):
     )
     NID = fields.Char(string='NID')
     date_of_birth = fields.Date(string='Birth date')
- 
     gender = fields.Selection([
         ('male', "Male"),
         ('female', "Female"),

@@ -2,15 +2,29 @@
   <data>
     <!-- explicit list view definition -->
     <!--
-    <record model="ir.ui.view" id="medical_insurance.list">
-      <field name="name">medical_insurance list</field>
-      <field name="model">medical_insurance.medical_insurance</field>
+    <record model="ir.ui.view" id="medical_insurance_list_visit">
+      <field name="name">visit list</field>
+      <field name="model">medical_insurance.visit</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
+           <field name="id"/>
+          <field name="patient_id"/>
+          <field name="date_of_visit"/>
         </tree>
+      </field>
+    </record>
+-->
+
+    <!-- explicit graph view definition -->
+    <!--
+    <record model="ir.ui.view" id="medical_insurance_graph_visit">
+      <field name="name">visit graph</field>
+      <field name="model">medical_insurance.visit</field>
+      <field name="arch" type="xml">
+        <graph>
+          <field name="start_datetime"/>
+          <field name="patient" type="col"/>
+        </graph>
       </field>
     </record>
     -->
