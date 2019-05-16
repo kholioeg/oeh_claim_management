@@ -4,6 +4,7 @@ from odoo import models, fields, api
 class Patient(models.Model):
     _name = 'medical_insurance.patient'
     _inherit = 'res.partner'
+
     NID = fields.Char(string='NID')
     date_of_birth = fields.Date(string='Birth date')
     gender = fields.Selection([
