@@ -16,6 +16,7 @@ class Patient(models.Model):
     )
     NID = fields.Char(string='NID')
     date_of_birth = fields.Date(string='Birth date')
+ 
     gender = fields.Selection([
         ('male', "Male"),
         ('female', "Female"),
@@ -23,7 +24,7 @@ class Patient(models.Model):
 
     marital_status = fields.Selection([
         ('single', "Single"),
-        ('maried', "Maried"),
+        ('married', "Married"),
     ], default="single")
     blood_group = fields.Char(string='blood group')
     weight = fields.Float()
