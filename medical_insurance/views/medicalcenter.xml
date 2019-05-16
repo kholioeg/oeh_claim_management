@@ -1,4 +1,25 @@
 <odoo>
+    <record model="ir.ui.view" id="medical_center_form">
+            <field name="name">medical_center_list</field>
+            <field name="model">medical_insurance.medical_center</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet string="Vendor Bill">
+                        <group string="clinic">
+                            <field name="name"/>
+                            <field name="email"/>
+                            <field name="phone"/>
+                            <field name="mobile"/>
+                            <field name="country_id"/>
+                            <field name="contact_address"/>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
     <!-- explicit list view definition -->
     <record model="ir.ui.view" id="medical_center_list">
         <field name="name">MedicalCenter list</field>
