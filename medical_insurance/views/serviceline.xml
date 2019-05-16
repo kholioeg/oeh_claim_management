@@ -15,7 +15,21 @@
     </tree>
     </field>
     </record>
-
+<!-- explicit form view definition-->
+    <record model="ir.ui.view" id="service_line_form">
+        <field name="name">service_line_form</field>
+        <field name="model">medical_insurance.service_line</field>
+        <field name="arch" type="xml">
+            <form>
+                <group string="Service Line">
+                    <field name="name"/>
+                    <field name="sale_price"/>
+                    <field name="vendor_price"/>
+                    <field name="patient_price"/>
+                </group>
+            </form>
+        </field>
+    </record>
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="ServiceLine_action_window">
       <field name="name">ServiceLine window</field>
