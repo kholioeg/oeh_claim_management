@@ -4,9 +4,9 @@
     <list default="true" id="a51d27f1-838b-4566-ba3a-afa751425433" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Patient.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/Patient.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/medicalcenter.xml" beforeDir="false" afterPath="$PROJECT_DIR$/views/medicalcenter.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/priceplan.xml" beforeDir="false" afterPath="$PROJECT_DIR$/views/priceplan.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/patient.xml" beforeDir="false" afterPath="$PROJECT_DIR$/views/patient.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
