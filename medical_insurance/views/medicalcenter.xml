@@ -5,14 +5,13 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet string="Vendor Bill">
-                        <group string="clinic">
+                        <group string="Medical Center">
                             <field name="name"/>
                             <field name="email"/>
                             <field name="phone"/>
                             <field name="mobile"/>
                             <field name="country_id"/>
                             <field name="contact_address"/>
-
                         </group>
                     </sheet>
                 </form>

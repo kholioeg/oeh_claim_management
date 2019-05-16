@@ -10,13 +10,15 @@
               <field name="date_of_birth"/>
               <field name="gender"/>
               <field name="marital_status"/>
+              <field name="mobile"/>
               <field name="phone"/>
               <field name="email"/>
               <field name="blood_group"/>
               <field name="height"/>
               <field name="weight"/>
+              <field name="price_plan"/>
               <field name="status"/>
-
+              
             </tree>
           </field>
         </record>
@@ -44,11 +46,13 @@
                   <field name="blood_group"/>
                   <field name="height"/>
                   <field name="weight"/>
+                  <field name="price_plan"/>
                   <field name="status"/>
                   </group>
                 </page>
                 <page string="Contact Info">
                   <group>
+                  <field name="mobile"/>
                   <field name="phone"/>
                   <field name="email"/>
                   </group>
