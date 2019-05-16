@@ -1,7 +1,7 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-    <!--
+
     <record model="ir.ui.view" id="medical_insurance_list_visit">
       <field name="name">visit list</field>
       <field name="model">medical_insurance.visit</field>
@@ -13,28 +13,27 @@
         </tree>
       </field>
     </record>
--->
+
 
     <!-- explicit graph view definition -->
-    <!--
+
     <record model="ir.ui.view" id="medical_insurance_graph_visit">
       <field name="name">visit graph</field>
       <field name="model">medical_insurance.visit</field>
       <field name="arch" type="xml">
         <graph>
-          <field name="start_datetime"/>
-          <field name="patient" type="col"/>
+          <field name="date_of_visit"/>
+          <field name="patient_id" type="col"/>
         </graph>
       </field>
     </record>
-    -->
 
     <!-- actions opening views on models -->
 
     <record model="ir.actions.act_window" id="medical_insurance_action_visit">
       <field name="name">visit window</field>
       <field name="res_model">medical_insurance.visit</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">tree,form,graph</field>
     </record>
 
 
