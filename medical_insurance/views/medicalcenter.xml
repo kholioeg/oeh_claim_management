@@ -31,7 +31,7 @@
     <menuitem name="Configuration" id="medical_insurance_menu_3" parent="medical_insurance_menu_root"/>
     <!-- actions -->
 
-    <menuitem name="MedicalCenter" id="medical_insurance_menu_2_list" parent="medical_insurance_menu_3"
+    <menuitem name="MedicalCenter" id="medical_insurance_menu_3_list" parent="medical_insurance_menu_3"
               action="MedicalCenter_action_window"/>
 
 
