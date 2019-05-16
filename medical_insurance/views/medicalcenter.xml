@@ -13,6 +13,8 @@
                   <field name="country_id"/>
                   <field name="contact_address"/>
 
+                
+
             </tree>
         </field>
     </record>
