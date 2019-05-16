@@ -6,7 +6,7 @@ class ServiceLine(models.Model):
     _name = 'medical_insurance.service_line'
     #_inherit = "product.product"
     #_inherit = "product.template"
-    product = fields.Char()
+    name = fields.Char(string="Product")
     sale_price = fields.Float()
     vendor_price = fields.Float()
     patient_price = fields.Float()
