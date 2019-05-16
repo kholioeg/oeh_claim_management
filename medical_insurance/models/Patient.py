@@ -29,5 +29,5 @@ class Patient(models.Model):
     weight = fields.Float()
     height = fields.Float()
     status = fields.Boolean()
-    visit = fields.One2many('medical_insurance.visit', inverse_name="patient_id",ondelete="set null", string="visit",required=True)
+    visit = fields.One2many('medical_insurance.visit', inverse_name="patient_id", ondelete="set null", string="visit", required=True)
     price_plan = fields.Many2one('medical_insurance.price_plan', ondelete="set null", string="Price plan")
