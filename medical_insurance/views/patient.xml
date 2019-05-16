@@ -1,11 +1,5 @@
 <odoo>
-<<<<<<< HEAD
-
-
-    <record model="ir.ui.view" id="medical_insurance_patient_list">
-=======
      <record model="ir.ui.view" id="medical_insurance_patient_list">
->>>>>>> 683dccea97d1f0ee18cde24b48aa543d919ffb9b
            <field name="name">medical_insurance list</field>
           <field name="model">medical_insurance.patient</field>
           <field name="arch" type="xml">
@@ -16,69 +10,6 @@
               <field name="date_of_birth"/>
               <field name="gender"/>
               <field name="marital_status"/>
-<<<<<<< HEAD
-              <field name="blood_group"/>
-              <field name="weight"/>
-              <field name="height"/>
-
-              <field name="status"/>
-              <field name="phone"/>
-              <field name="email"/>
-            </tree>
-          </field>
-
-        </record>
-
-     <record model="ir.ui.view" id="patient_form">
-          <field name="name">patient form</field>
-          <field name="model">medical_insurance.patient</field>
-          <field name="arch" type="xml">
-            <form>
-              <!--sheet-->
-              <notebook position="inside">
-                <page string="Personal Info">
-                  <group>
-                    <field name="name"/>
-                    <field name="NID"/>
-                    <field name="date_of_birth"/>
-                    <field name="gender"/>
-                    <field name="marital_status"/>
-                  </group>
-                </page>
-                <page string="Medical Info">
-                  <group>
-                  <field name="blood_group"/>
-                  <field name="height"/>
-                  <field name="weight"/>
-                  <field name="status"/>
-                  </group>
-                </page>
-                <page string="Contact Info">
-                  <group>
-                  <field name="phone"/>
-                  <field name="email"/>
-                  </group>
-                </page>
-              </notebook>
-            </form>
-          </field>
-
-        </record>
-
-
-
-
-
-
-
-
-             <record model="ir.actions.act_window" id="medical_insurance_action_patient">
-              <field name="name">patient window</field>
-              <field name="res_model">medical_insurance.patient</field>
-              <field name="view_mode">tree,form</field>
-             </record>
-
-=======
               <field name="phone"/>
               <field name="email"/>
               <field name="blood_group"/>
@@ -134,7 +65,6 @@
           <field name="view_mode">tree,form</field>
         </record>
 
->>>>>>> 683dccea97d1f0ee18cde24b48aa543d919ffb9b
 
 
         <!-- Top menu item -->
