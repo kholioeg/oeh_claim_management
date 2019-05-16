@@ -3,14 +3,15 @@ from odoo import models, fields, api
 
 class Visit(models.Model):
     _name = 'medical_insurance.visit'
-
     _rec_name = 'patient_id'
-    # name = fields.Char(compute='comp_name', store=True)
+
     patient_id = fields.Many2one('medical_insurance.patient', string='Patient Name', required=True)
-    patient_status = fields.Boolean(string='Patient Status', related='patient_id.status', readonly=True)
-    medical_center_id = fields.Many2one('medical_insurance.medical_center')
     price_plan = fields.Char(string='Price Plane', related='patient_id.price_plan.name', readonly=True)
+    patient_status = fields.Boolean(string='Patient Status', related='patient_id.status', readonly=True)
+    medical_center_id = fields.Many2one('medical_insurance.medical_center', required=True)
     service_line_id = fields.Many2one('medical_insurance.service_line', string='Service', required=True)
+    contribution_charge = fields.Float(string='Contribution Charge', related='service_line_id.vendor_price', readonly=True)
+    patient_charge = fields.Float(string='Patient Charge', related='service_line_id.patient_price', readonly=True)
     
     # plan_status = fields.Selection(selection=[
     #     ('valid', 'Valid'),
@@ -23,8 +24,7 @@ class Visit(models.Model):
     ], default='valid', readonly=True)
 
     visit_type = fields.Char(required=True)
-    contribution_charge = fields.Float(string='Contribution Charge', related='service_line_id.vendor_price', readonly=True)
-    patient_charge = fields.Float(string='Patient Charge', related='service_line_id.patient_price', readonly=True)
+
 
     visit_state = fields.Selection([
         ('new', 'New'),

@@ -10,7 +10,33 @@
            <field name="id"/>
           <field name="patient_id"/>
           <field name="date_of_visit"/>
+          <field name="visit_state"/>
         </tree>
+      </field>
+    </record>
+
+
+    <!-- explicit form view definition -->
+
+    <record model="ir.ui.view" id="medical_insurance_form_visit">
+      <field name="name">visit form</field>
+      <field name="model">medical_insurance.visit</field>
+      <field name="arch" type="xml">
+        <form>
+            <group string="Visit">
+              <field name="patient_id"/>
+              <field name="medical_center_id"/>
+              <field name="service_line_id"/>
+              <field name="visit_type"/>
+              <field name="patient_status"/>
+              <field name="price_plan"/>
+              <field name="plan_status"/>
+              <field name="contribution_charge"/>
+              <field name="patient_charge"/>
+              <field name="visit_state"/>
+              <field name="date_of_visit"/>
+            </group>
+        </form>
       </field>
     </record>
 
@@ -27,6 +53,7 @@
         </graph>
       </field>
     </record>
+
 
     <!-- actions opening views on models -->
 
