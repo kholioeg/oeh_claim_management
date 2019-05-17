@@ -13,4 +13,5 @@ vendor_price : Float
 patient_price : Float
 price_plan : Many2one(PricePlan)
 }
+
 @enduml
