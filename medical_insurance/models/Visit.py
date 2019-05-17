@@ -19,7 +19,7 @@ class Visit(models.Model):
     visit_state = fields.Selection([
         ('new', 'New'),
         ('confirmed', 'Confirmed'),
-        ('inprogress', 'Inprogress'),
+        ('progress', 'In progress'),
         ('done', 'Done'),
         ('cancelled', 'Cancelled'),
     ], default='new', readonly=True)

@@ -1,5 +1,6 @@
 <odoo>
   <data>
+
     <!-- explicit list view definition -->
 
     <record model="ir.ui.view" id="medical_insurance_list_visit">
@@ -24,6 +25,10 @@
       <field name="model">medical_insurance.visit</field>
       <field name="arch" type="xml">
         <form>
+            <header>
+                <field name="visit_state" widget="statusbar" statusbar_visible="new,confirmed,progress,done,cancelled"/>
+            </header>
+            <sheet>
             <group string="Visit">
               <field name="patient_id"/>
               <field name="medical_center_id"/>
@@ -34,9 +39,9 @@
               <field name="plan_status"/>
               <field name="contribution_charge"/>
               <field name="patient_charge"/>
-              <field name="visit_state"/>
               <field name="date_of_visit"/>
             </group>
+            </sheet>
         </form>
       </field>
     </record>
