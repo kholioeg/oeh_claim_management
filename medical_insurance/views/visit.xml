@@ -1,5 +1,6 @@
 <odoo>
   <data>
+
     <!-- explicit list view definition -->
 
     <record model="ir.ui.view" id="medical_insurance_list_visit">
@@ -7,10 +8,11 @@
       <field name="model">medical.insurance.visit</field>
       <field name="arch" type="xml">
         <tree>
-           <field name="id"/>
+          <field name="date_of_visit"/>
           <field name="patient_id"/>
-          <!--field name="date_of_visit"/-->
+          <field name="medical_center_id"/>
           <field name="visit_state"/>
+          <field name="visit_type"/>
         </tree>
       </field>
     </record>
@@ -23,7 +25,10 @@
       <field name="model">medical.insurance.visit</field>
       <field name="arch" type="xml">
         <form>
-          <sheet>
+            <header>
+                <field name="visit_state" widget="statusbar" statusbar_visible="new,confirmed,progress,done,cancelled"/>
+            </header>
+            <sheet>
             <group string="Visit">
               <field name="patient_id"/>
               <field name="medical_center_id"/>
@@ -34,10 +39,9 @@
               <field name="plan_status"/>
               <field name="contribution_charge"/>
               <field name="patient_charge"/>
-              <field name="visit_state"/>
-              <!--field name="date_of_visit"/-->
+              <field name="date_of_visit"/>
             </group>
-          </sheet>
+            </sheet>
         </form>
       </field>
     </record>
@@ -55,6 +59,31 @@
         </graph>
       </field>
     </record-->
+
+
+        <!-- explicit report view definition -->
+
+    <report
+      id="account_invoices"
+      model="medical_insurance.visit"
+      string="visit"
+      report_type="qweb-pdf"
+      name="medical_insurance.report_visit"
+      file="medical_insurance.report_visit"
+    />
+
+    <template id="report_visit">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+<!--            <t t-call="web.external_layout">-->
+                <div class="page">
+                    <h2>Visit</h2>
+                    <p>This object's name is <span t-field="o.name"/></p>
+                </div>
+<!--            </t>-->
+        </t>
+    </t>
+    </template>
 
 
     <!-- actions opening views on models -->
