@@ -3,24 +3,26 @@
 <!-- explicit form view definition-->
     <record model="ir.ui.view" id="medical_center_form">
         <field name="name">medical_center_list</field>
-        <field name="model">medical_insurance.medical_center</field>
+        <field name="model">medical.insurance.medical.center</field>
         <field name="arch" type="xml">
             <form>
-                <group string="Medical Center">
-                    <field name="name"/>
-                    <field name="email"/>
-                    <field name="phone"/>
-                    <field name="mobile"/>
-                    <field name="country_id"/>
-                    <field name="contact_address"/>
-                </group>
+                <sheet>
+                    <group string="Medical Center">
+                        <field name="name"/>
+                        <field name="email"/>
+                        <field name="phone"/>
+                        <field name="mobile"/>
+                        <field name="country_id"/>
+                        <field name="contact_address"/>
+                    </group>
+                </sheet>
             </form>
         </field>
     </record>
 <!-- explicit list view definition -->
     <record model="ir.ui.view" id="medical_center_list">
         <field name="name">MedicalCenter list</field>
-        <field name="model">medical_insurance.medical_center</field>
+        <field name="model">medical.insurance.medical.center</field>
         <field name="priority" eval="16"/>
         <field name="arch" type="xml">
             <tree>
@@ -36,11 +38,11 @@
 <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="MedicalCenter_action_window">
       <field name="name">MedicalCenter window</field>
-      <field name="res_model">medical_insurance.medical_center</field>
+      <field name="res_model">medical.insurance.medical.center</field>
       <field name="view_mode">tree,form</field>
     </record>
 
 <!-- actions  -->
-    <menuitem name="MedicalCenter" id="medical_insurance_menu_medicalcenter" parent="medical_insurance_menu_conf"
+    <menuitem name="MedicalCenter" id="medical_insurance_menu_medical_center" parent="medical_insurance_menu_conf"
               action="MedicalCenter_action_window"/>
 </odoo>

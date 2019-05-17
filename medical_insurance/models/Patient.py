@@ -2,8 +2,9 @@ from odoo import models, fields, api
 
 
 class Patient(models.Model):
-    _name = 'medical_insurance.patient'
+    _name = 'medical.insurance.patient'
     _inherit = 'res.partner'
+
     NID = fields.Char(string='NID')
     date_of_birth = fields.Date(string='Birth date')
     gender = fields.Selection([
@@ -19,5 +20,6 @@ class Patient(models.Model):
     weight = fields.Float()
     height = fields.Float()
     status = fields.Boolean()
-    visit = fields.One2many('medical_insurance.visit', inverse_name="patient_id", ondelete="set null", string="visit", required=True)
-    price_plan = fields.Many2one('medical_insurance.price_plan', ondelete="set null", string="Price plan")
+    visit = fields.One2many('medical.insurance.visit', inverse_name="patient_id", ondelete="set null", string="visit",
+                            required=True)
+    price_plan = fields.Many2one('medical.insurance.price.plan', ondelete="set null", string="Price plan")

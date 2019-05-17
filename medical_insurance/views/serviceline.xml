@@ -2,7 +2,7 @@
     <!-- explicit list view definition -->
     <record model="ir.ui.view" id="ServiceLineList">
     <field name="name">ServiceLine list</field>
-    <field name="model">medical_insurance.service_line</field>
+    <field name="model">medical.insurance.service.line</field>
     <field name="priority" eval="16"/>
     <field name="arch" type="xml">
     <tree>
@@ -19,22 +19,24 @@
 <!-- explicit form view definition-->
     <record model="ir.ui.view" id="service_line_form">
         <field name="name">service_line_form</field>
-        <field name="model">medical_insurance.service_line</field>
+        <field name="model">medical.insurance.service.line</field>
         <field name="arch" type="xml">
             <form>
-                <group string="Service Line">
-                    <field name="name"/>
-                    <field name="sale_price"/>
-                    <field name="vendor_price"/>
-                    <field name="patient_price"/>
-                </group>
+                <sheet>
+                    <group string="Service Line">
+                        <field name="name"/>
+                        <field name="sale_price"/>
+                        <field name="vendor_price"/>
+                        <field name="patient_price"/>
+                    </group>
+                </sheet>
             </form>
         </field>
     </record>
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="ServiceLine_action_window">
       <field name="name">ServiceLine window</field>
-      <field name="res_model">medical_insurance.service_line</field>
+      <field name="res_model">medical.insurance.service.line</field>
       <field name="view_mode">tree,form</field>
     </record>
 

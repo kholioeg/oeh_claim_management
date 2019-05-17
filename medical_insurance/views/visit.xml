@@ -4,12 +4,12 @@
 
     <record model="ir.ui.view" id="medical_insurance_list_visit">
       <field name="name">visit list</field>
-      <field name="model">medical_insurance.visit</field>
+      <field name="model">medical.insurance.visit</field>
       <field name="arch" type="xml">
         <tree>
            <field name="id"/>
           <field name="patient_id"/>
-          <field name="date_of_visit"/>
+          <!--field name="date_of_visit"/-->
           <field name="visit_state"/>
         </tree>
       </field>
@@ -20,9 +20,10 @@
 
     <record model="ir.ui.view" id="medical_insurance_form_visit">
       <field name="name">visit form</field>
-      <field name="model">medical_insurance.visit</field>
+      <field name="model">medical.insurance.visit</field>
       <field name="arch" type="xml">
         <form>
+          <sheet>
             <group string="Visit">
               <field name="patient_id"/>
               <field name="medical_center_id"/>
@@ -34,8 +35,9 @@
               <field name="contribution_charge"/>
               <field name="patient_charge"/>
               <field name="visit_state"/>
-              <field name="date_of_visit"/>
+              <!--field name="date_of_visit"/-->
             </group>
+          </sheet>
         </form>
       </field>
     </record>
@@ -43,24 +45,25 @@
 
     <!-- explicit graph view definition -->
 
-    <record model="ir.ui.view" id="medical_insurance_graph_visit">
+    <!--record model="ir.ui.view" id="medical_insurance_graph_visit">
       <field name="name">visit graph</field>
-      <field name="model">medical_insurance.visit</field>
+      <field name="model">medical.insurance.visit</field>
       <field name="arch" type="xml">
         <graph>
           <field name="date_of_visit"/>
           <field name="patient_id" type="col"/>
         </graph>
       </field>
-    </record>
+    </record-->
 
 
     <!-- actions opening views on models -->
 
     <record model="ir.actions.act_window" id="medical_insurance_action_visit">
       <field name="name">visit window</field>
-      <field name="res_model">medical_insurance.visit</field>
-      <field name="view_mode">tree,form,graph</field>
+      <field name="res_model">medical.insurance.visit</field>
+      <!--field name="view_mode">tree,form,graph</field-->
+      <field name="view_mode">tree,form</field>
     </record>
 
 
@@ -82,11 +85,11 @@
 
     <!-- Top menu item -->
 
-    <menuitem name="medical_insurance" id="medical_insurance_menu_root"/>
+    <!--menuitem name="medical_insurance" id="medical_insurance_menu_root"/-->
 
     <!-- menu categories -->
 
-    <menuitem name="Registration" id="medical_insurance_Registration" parent="medical_insurance_menu_root"/>
+    <!--menuitem name="Registration" id="medical_insurance_Registration" parent="medical_insurance_menu_root"/-->
 
     <!-- actions -->
 
