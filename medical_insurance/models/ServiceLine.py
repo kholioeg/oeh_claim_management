@@ -4,7 +4,7 @@ from odoo import models, fields, api
 class ServiceLine(models.Model):
 
     _name = 'medical.insurance.service.line'
-    name = fields.Many2one('product.template',ondelete='set null', string="Product")
+    name = fields.Many2one('product.template', ondelete='set null', string="Product")
     sale_price = fields.Float()
     vendor_price = fields.Float()
     patient_price = fields.Float()
