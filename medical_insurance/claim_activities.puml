@@ -1,26 +1,25 @@
 @startuml
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
+(*) --> "Patient Register"
+--> "Verfiy"
+if "Verified" then
+--> [true]"Confirm"
+--> "Registration Done"
+--> (*)
+else
+--> [false]"Reject"
+--> (*)
+endif
 
-List <|-- AbstractList
-Collection <|-- AbstractCollection
-
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
-}
-
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
-}
+(*) --> "Patient Claim"
+--> "Draft"
+if "Confirmed" then
+--> [true]"Send to Medical Center"
+--> "Claim Done"
+--> (*)
+else
+--> [false]"Refused"
+--> (*)
+endif
 
 @enduml
