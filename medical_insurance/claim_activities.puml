@@ -1,7 +1,7 @@
 @startuml
 
 (*) --> "Patient Register"
---> "Verfiy"
+--> "Verify"
 if "Verified" then
 --> [true]"Confirm"
 --> "Registration Done"
