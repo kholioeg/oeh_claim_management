@@ -47,8 +47,8 @@
 
     <!-- menu categories -->
 
-    <menuitem name="Registration" id="medical_insurance_menu_registration" parent="medical_insurance_menu_root"/>
-    <menuitem name="Reportings" id="medical_insurance_menu_reportings" parent="medical_insurance_menu_root"/>
+    <menuitem name="Registration" id="medical_insurance_menu_registration" parent="medical_insurance_menu_root" sequence="1"/>
+    <menuitem name="Reports" id="medical_insurance_menu_reports" parent="medical_insurance_menu_root"/>
     <menuitem name="Configuration" id="medical_insurance_menu_conf" parent="medical_insurance_menu_root"/>
 
     <!-- actions -->

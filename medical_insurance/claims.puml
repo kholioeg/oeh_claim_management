@@ -1,0 +1,78 @@
+@startuml
+
+Visit <- Patient : patient_id
+Visit <- MedicalCenter : medical_center_id
+Visit <- ServiceLine : service_line_id
+
+ServiceLine <- PricePlan : price_plan
+ServiceLine <- Product.template : name
+
+
+PricePlan <- MedicalCenter : medical_center_id
+
+Patient <- PricePlan : price_plan
+
+MedicalCenter --> Partner
+Patient --> Partner
+
+Class Partner{
+    name : Char
+    mobile : Char
+    phone : Char
+    email : Char
+}
+
+Class MedicalCenter{
+    price_plan : One2many(PricePlan)
+    visit : One2many(Visit)
+}
+Class ServiceLine
+{
+    name : Many2one(product.template)
+    sale_price : Float
+    vendor_price : Float
+    patient_price : Float
+    price_plan : Many2one(PricePlan)
+}
+
+
+Class Visit{
+
+    price_plan : Char
+    patient_status : Boolean
+    contribution_charge : Float
+    patient_charge : Float
+    date_of_visit :  Datetime
+    visit_type :  Char
+    plan_status : Char
+    visit_state : Selection
+    patient_id : Many2one(Patient)
+    medical_center_id : Many2one(MedicalCenter)
+    service_line_id : Many2one(ServiceLine)
+}
+Class PricePlan{
+    name : Char
+    state : Selection
+    start_date : Date
+    end_date :  Date
+    patient : One2many(Patient)
+    medical_center_id : Many2one(MedicalCenter)
+    service_line : One2many(ServiceLine)
+}
+
+Class Patient{
+    NID : Char
+    date_of_birth : Date
+    gender : Selection
+    marital_status : Selection
+    blood_group : Char
+    weight : Float
+    height : Float
+    status : Boolean
+    price_plan : Many2one(PricePlan)
+    visit : One2many(Visit)
+}
+
+
+
+@enduml
