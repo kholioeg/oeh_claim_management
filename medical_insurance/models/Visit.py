@@ -2,7 +2,7 @@ from odoo import models, fields, api
 
 class Visit(models.Model):
     _name = 'medical_insurance.visit'
-    #_inherit = 'mail.activity.mixin'
+    inherit = 'mail.activity.mixin'
 
     name = fields.Char(string="Claim No", readonly=True, required=True, copy=False, default='New')
     patient_id = fields.Many2one('medical_insurance.patient', string='Patient Name', required=True)

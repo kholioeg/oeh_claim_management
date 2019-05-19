@@ -111,6 +111,8 @@
     </template>
 
 
+
+
     <!-- actions opening views on models -->
 
     <record model="ir.actions.act_window" id="medical_insurance_action_visit">
