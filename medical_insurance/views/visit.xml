@@ -1,6 +1,7 @@
 <odoo>
   <data>
 
+
     <!-- explicit list view definition -->
 
     <record model="ir.ui.view" id="medical_insurance_list_visit">
@@ -18,6 +19,16 @@
     </record>
 
 
+          <!-- explicit sequence view definition -->
+
+    <record model="ir.sequence" id="seq_visit_id">
+        <field name="name">Visit Number</field>
+        <field name="code">medical_insurance.visit</field>
+        <field name="prefix">Claim#C</field>
+        <field name="padding">5</field>
+    </record>
+
+
     <!-- explicit form view definition -->
 
     <record model="ir.ui.view" id="medical_insurance_form_visit">
@@ -26,7 +37,8 @@
       <field name="arch" type="xml">
         <form>
             <header>
-                <field name="visit_state" widget="statusbar" statusbar_visible="new,confirmed,progress,done,cancelled"/>
+                <field name="name"/>
+                <field name="visit_state" widget="statusbar"/>
             </header>
             <sheet>
             <group string="Visit">
@@ -53,9 +65,22 @@
       <field name="name">visit graph</field>
       <field name="model">medical.insurance.visit</field>
       <field name="arch" type="xml">
-        <graph>
-          <field name="date_of_visit"/>
-          <field name="patient_id" type="col"/>
+        <graph type="bar">
+          <field name="medical_center_id" type="row"/>
+          <field name="service_line_id" type="row"/>
+          <field name="date_of_visit" type="measure"/>
+        </graph>
+      </field>
+    </record>
+
+      <record model="ir.ui.view" id="medical_insurance_graph_pivot_visit">
+      <field name="name">visit graph</field>
+      <field name="model">medical_insurance.visit</field>
+      <field name="arch" type="xml">
+        <graph type="pivot">
+          <field name="medical_center_id" type="row"/>
+          <field name="service_line_id" type="row"/>
+          <field name="date_of_visit" type="measure"/>
         </graph>
       </field>
     </record-->
@@ -78,7 +103,7 @@
 <!--            <t t-call="web.external_layout">-->
                 <div class="page">
                     <h2>Visit</h2>
-                    <p>This object's name is <span t-field="o.name"/></p>
+                    <p>This object's name is <span t-field="o.medical_center_id"/></p>
                 </div>
 <!--            </t>-->
         </t>
