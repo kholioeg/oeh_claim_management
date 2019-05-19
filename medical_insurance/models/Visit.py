@@ -6,7 +6,7 @@ class Visit(models.Model):
     _rec_name = 'patient_id'
 
     patient_id = fields.Many2one('medical.insurance.patient', string='Patient Name', required=True)
-    price_plan = fields.Char(string='Price Plane', related='patient_id.price_plan.name', readonly=True)
+    price_plan = fields.Many2one(string='Price Plane', readonly=True)
     patient_status = fields.Boolean(string='Patient Status', related='patient_id.status', readonly=True)
     medical_center_id = fields.Many2one('medical.insurance.medical.center', required=True)
     service_line_id = fields.Many2one('medical.insurance.service.line', string='Service', required=True)

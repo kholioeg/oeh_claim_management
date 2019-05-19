@@ -11,7 +11,6 @@
                 <field name="state"/>
                 <field name="start_date"/>
                 <field name="end_date"/>
-                <field name="patient"/>
                 <!--field name="medical_center"/-->
                 <field name="service_line"/>
             </tree>
@@ -34,14 +33,9 @@
                   <field name="end_date"/>
                 </group>
               </page>
-              <page string="Patient Info">
+                <page string="Medical Center  Info">
                 <group>
-                  <field name="patient"/>
-                </group>
-              </page>
-                <page string="Medical Center Info">
-                <group>
-                  <field name="medical_center_id"/>
+                   <field name="medical_center_id"/>
                 </group>
               </page>
               <page string="Service Line  Info">
