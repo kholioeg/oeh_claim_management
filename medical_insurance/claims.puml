@@ -37,21 +37,6 @@ Class ServiceLine
 }
 
 
-Class Visit{
-
-    name : Char
-    price_plan : Char
-    patient_status : Boolean
-    contribution_charge : Float
-    patient_charge : Float
-    date_of_visit :  Datetime
-    visit_type :  Char
-    plan_status : Char
-    visit_state : Selection
-    patient_id : Many2one(Patient)
-    medical_center_id : Many2one(MedicalCenter)
-    service_line_id : Many2one(ServiceLine)
-}
 Class PricePlan{
     name : Char
     state : Selection
@@ -59,6 +44,7 @@ Class PricePlan{
     end_date :  Date
     medical_center_id : Many2many(MedicalCenter)
     service_line : One2many(ServiceLine)
+    cost : Float
 }
 
 Class Patient{
@@ -76,7 +62,7 @@ Class Patient{
 
 Class PatientLine{
     price_plan : Many2one(PricePlan)
-    patient : Many2one(patient)
+    patient : Many2one(Patient)
     paid_cost : Float
     remain_cost : Float
     compute_remain_cost()
@@ -84,5 +70,20 @@ Class PatientLine{
 }
 
 
+Class Visit{
+
+    name : Char
+    price_plan : Char
+    patient_status : Boolean
+    contribution_charge : Float
+    patient_charge : Float
+    date_of_visit :  Datetime
+    visit_type :  Char
+    plan_status : Char
+    visit_state : Selection
+    patient_id : Many2one(Patient)
+    medical_center_id : Many2one(MedicalCenter)
+    service_line_id : Many2one(ServiceLine)
+}
 
 @enduml
