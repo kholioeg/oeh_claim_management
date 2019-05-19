@@ -75,11 +75,9 @@
       <field name="name">visit graph</field>
       <field name="model">medical.insurance.visit</field>
       <field name="arch" type="xml">
-        <graph type="pivot">
-          <field name="medical_center_id" type="row"/>
-          <field name="service_line_id" type="row"/>
-          <field name="date_of_visit" type="measure"/>
-        </graph>
+        <pivot>
+          <field name="date_of_visit" type="row"/>
+        </pivot>
       </field>
     </record>
 
@@ -135,7 +133,7 @@
     <record model="ir.actions.act_window" id="medical_insurance_action_visit">
       <field name="name">visit window</field>
       <field name="res_model">medical.insurance.visit</field>
-      <field name="view_mode">tree,form,graph,search</field>
+      <field name="view_mode">tree,form,pivot,graph,search</field>
         <field name="context">{}</field>
     </record>
 
