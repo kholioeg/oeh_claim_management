@@ -66,9 +66,7 @@
       <field name="model">medical.insurance.visit</field>
       <field name="arch" type="xml">
         <graph type="bar">
-          <field name="medical_center_id" type="row"/>
-          <field name="service_line_id" type="row"/>
-          <field name="date_of_visit" type="measure"/>
+          <field name="date_of_visit" type="row"/>
         </graph>
       </field>
     </record>
@@ -111,9 +109,9 @@
     </template>
 
 
+        <!-- explicit search view definition -->
 
-
-    <record id="search_all_customers" model="ir.ui.view">
+    <record id="search_all_claims" model="ir.ui.view">
         <field name="model">medical.insurance.visit</field>
         <field name="arch" type="xml">
         <search>
