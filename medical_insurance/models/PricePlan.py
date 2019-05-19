@@ -4,6 +4,7 @@ from odoo import models, fields, api
 class PricePlan(models.Model):
     _name = 'medical.insurance.price.plan'
     name = fields.Char(string="Name", required=True)
+    price = fields.Float()
     state = fields.Selection([
         ('active', 'Active'),
         ('inactive', 'Inactive'),

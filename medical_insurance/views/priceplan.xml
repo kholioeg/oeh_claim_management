@@ -7,6 +7,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
+                <field name="price"/>
                 <field name="state"/>
                 <field name="start_date"/>
                 <field name="end_date"/>
@@ -16,7 +17,43 @@
             </tree>
         </field>
     </record>
-
+    <!-- explicit form view definition -->
+        <record model="ir.ui.view" id="price_plan_form">
+        <field name="name">price_plan_form</field>
+        <field name="model">medical.insurance.price.plan</field>
+        <field name="arch" type="xml">
+          <form>
+            <sheet>
+            <notebook position="inside">
+              <page string="Price Plan Info">
+                <group>
+                  <field name="name"/>
+                  <field name="price"/>
+                  <field name="state"/>
+                  <field name="start_date"/>
+                  <field name="end_date"/>
+                </group>
+              </page>
+              <page string="Patient Info">
+                <group>
+                  <field name="patient"/>
+                </group>
+              </page>
+                <page string="Medical Center Info">
+                <group>
+                  <field name="medical_center_id"/>
+                </group>
+              </page>
+              <page string="Service Line  Info">
+                <group>
+                   <field name="service_line"/>
+                </group>
+              </page>
+            </notebook>
+            </sheet>
+          </form>
+      </field>
+    </record>
 
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="PricePlan_action_window">
