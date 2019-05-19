@@ -23,9 +23,10 @@ Class Partner{
 }
 
 Class MedicalCenter{
-    price_plan : One2many(PricePlan)
+    price_plan : Many2many(PricePlan)
     visit : One2many(Visit)
 }
+
 Class ServiceLine
 {
     name : Many2one(product.template)
@@ -38,6 +39,7 @@ Class ServiceLine
 
 Class Visit{
 
+    name : Char
     price_plan : Char
     patient_status : Boolean
     contribution_charge : Float
@@ -55,8 +57,7 @@ Class PricePlan{
     state : Selection
     start_date : Date
     end_date :  Date
-    patient : One2many(Patient)
-    medical_center_id : Many2one(MedicalCenter)
+    medical_center_id : Many2many(MedicalCenter)
     service_line : One2many(ServiceLine)
 }
 
@@ -69,8 +70,17 @@ Class Patient{
     weight : Float
     height : Float
     status : Boolean
-    price_plan : Many2one(PricePlan)
     visit : One2many(Visit)
+
+}
+
+Class PatientLine{
+    price_plan : Many2one(PricePlan)
+    patient : Many2one(patient)
+    paid_cost : Float
+    remain_cost : Float
+    compute_remain_cost()
+    status : Boolean
 }
 
 
