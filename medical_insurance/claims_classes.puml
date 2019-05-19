@@ -1,50 +1,60 @@
 @startuml
 
-Visit <- Patient : patient_id
-Visit <- MedicalCenter : medical_center_id
-Visit <- ServiceLine : service_line_id
+Visit o..* Patient : patient_id
+Visit o..* MedicalCenter : medical_center_id
+Visit *..o ServiceLine : service_line_id
 
-ServiceLine <- PricePlan : price_plan
-ServiceLine <- Product.template : name
+ServiceLine *..o PricePlan : price_plan
+ServiceLine o..* Product : product_id
 
 
-PricePlan <- MedicalCenter : medical_center_id
+PricePlan o..* MedicalCenter : medical_center_id
 
-Patient <- PricePlan : price_plan
+Patient o..* PricePlan : price_plan
 
 MedicalCenter --> Partner
 Patient --> Partner
 
-Class Partner{
-    name : Char
-    mobile : Char
-    phone : Char
-    email : Char
-}
+Class Partner
 
 Class MedicalCenter{
-    price_plan : Many2many(PricePlan)
-    visit : One2many(Visit)
+    price_plan :O2M
+    visit : O2M
 }
 
 Class ServiceLine
 {
-    name : Many2one(product.template)
+    name : M2O
     sale_price : Float
     vendor_price : Float
     patient_price : Float
-    price_plan : Many2one(PricePlan)
+    price_plan : M2O
 }
 
+
+Class Visit{
+
+    name : Char
+    price_plan : Char
+    patient_status : Boolean
+    contribution_charge : Float
+    patient_charge : Float
+    date_of_visit :  Datetime
+    visit_type :  Char
+    plan_status : Char
+    visit_state : Selection
+    patient_id : M2O
+    medical_center_id : M2O
+    service_line_id : M2O
+}
 
 Class PricePlan{
     name : Char
     state : Selection
     start_date : Date
     end_date :  Date
-    medical_center_id : Many2many(MedicalCenter)
-    service_line : One2many(ServiceLine)
-    cost : Float
+    medical_center_id : M2O
+    service_line : O2M
 }
 
 Class Patient{
@@ -56,17 +66,17 @@ Class Patient{
     weight : Float
     height : Float
     status : Boolean
-    visit : One2many(Visit)
+    visit : O2M
 
 }
 
 Class PatientLine{
-    price_plan : Many2one(PricePlan)
-    patient : Many2one(Patient)
+    price_plan : M2O
+    patient : M2O
     paid_cost : Float
     remain_cost : Float
-    compute_remain_cost()
     status : Boolean
+    compute_remain_cost()
 }
 
 
