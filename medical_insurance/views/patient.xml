@@ -53,6 +53,11 @@
                   <field name="email"/>
                 </group>
               </page>
+              <page string="EHR">
+                <group>
+                  <field name="EHR"/>
+                </group>
+              </page>
             </notebook>
             </sheet>
           </form>
