@@ -1,0 +1,44 @@
+<odoo>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="PatientLineList">
+    <field name="name">PatientLine list</field>
+    <field name="model">medical.insurance.patient.line</field>
+    <field name="priority" eval="16"/>
+    <field name="arch" type="xml">
+    <tree>
+          <field name="price_plan"/>
+          <field name="patient"/>
+          <field name="paid_cost"/>
+          <field name="remain_cost"/>
+
+    </tree>
+    </field>
+    </record>
+<!-- explicit form view definition-->
+    <record model="ir.ui.view" id="patient_line_form">
+        <field name="name">patient_line_form</field>
+        <field name="model">medical.insurance.patient.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group string="Patient Line">
+                        <field name="price_plan"/>
+                        <field name="patient"/>
+                        <field name="paid_cost"/>
+                        <field name="remain_cost"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="PatientLine_action_window">
+      <field name="name">PatientLine window</field>
+      <field name="res_model">medical.insurance.patient.line</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- actions -->
+    <menuitem name="PatientLine" id="medical_insurance_menu_patient" parent="medical_insurance_menu_conf"
+              action="PatientLine_action_window"/>
+</odoo>

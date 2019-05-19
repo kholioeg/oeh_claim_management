@@ -18,7 +18,7 @@ Patient --> Partner
 Class Partner
 
 Class MedicalCenter{
-    price_plan : M2O
+    price_plan :O2M
     visit : O2M
 }
 

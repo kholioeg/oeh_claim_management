@@ -1,7 +1,7 @@
 <odoo>
 <!-- explicit list view definition -->
   <record model="ir.ui.view" id="medical_insurance_patient_list">
-      <field name="name">medical_insurance list</field>
+      <field name="name">Patient list</field>
       <field name="model">medical.insurance.patient</field>
       <field name="arch" type="xml">
         <tree>
@@ -16,7 +16,6 @@
           <field name="blood_group"/>
           <field name="height"/>
           <field name="weight"/>
-          <field name="price_plan"/>
           <field name="status"/>  
         </tree>
       </field>
@@ -44,7 +43,6 @@
                   <field name="blood_group"/>
                   <field name="height"/>
                   <field name="weight"/>
-                  <field name="price_plan"/>
                   <field name="status"/>
                 </group>
               </page>
