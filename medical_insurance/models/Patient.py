@@ -4,7 +4,6 @@ from odoo import models, fields, api
 class Patient(models.Model):
     _name = 'medical.insurance.patient'
     _inherit = 'res.partner'
-
     NID = fields.Char(string='NID')
     date_of_birth = fields.Date(string='Birth date')
     gender = fields.Selection([
@@ -22,4 +21,4 @@ class Patient(models.Model):
     status = fields.Boolean()
     visit = fields.One2many('medical.insurance.visit', inverse_name="patient_id", ondelete="set null", string="visit",
                             required=True)
-    price_plan = fields.Many2one('medical.insurance.price.plan', ondelete="set null", string="Price plan")
+

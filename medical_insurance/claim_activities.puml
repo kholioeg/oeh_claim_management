@@ -1,0 +1,25 @@
+@startuml
+
+(*) --> "Patient Register"
+--> "Verify"
+if "Verified" then
+--> [true]"Confirm"
+--> "Registration Done"
+--> (*)
+else
+--> [false]"Reject"
+--> (*)
+endif
+
+(*) --> "Patient Claim"
+--> "Draft"
+if "Confirmed" then
+--> [true]"Send to Medical Center"
+--> "Claim Done"
+--> (*)
+else
+--> [false]"Refused"
+--> (*)
+endif
+
+@enduml

@@ -14,6 +14,7 @@
                         <field name="mobile"/>
                         <field name="country_id"/>
                         <field name="contact_address"/>
+                         <field name="price_plan"/>
                     </group>
                 </sheet>
             </form>
@@ -32,6 +33,7 @@
                 <field name="mobile"/>
                 <field name="country_id"/>
                 <field name="contact_address"/>
+                <field name="visit"/>
             </tree>
         </field>
     </record>
