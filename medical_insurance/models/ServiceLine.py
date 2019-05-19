@@ -9,6 +9,6 @@ class ServiceLine(models.Model):
     vendor_price = fields.Float()
     patient_price = fields.Float()
     price_plan = fields.Many2one('medical.insurance.price.plan', ondelete='set null', string="Price Plan")
-    visit = fields.One2many('medical.insurance.visit', inverse_name='service_line_id', ondelete='set null',
-                            string="Visit")
-
+    # visit = fields.One2many('medical.insurance.visit', inverse_name='service_line_id', ondelete='set null',
+    #                         string="Visit")
+    #
