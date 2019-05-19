@@ -1,15 +1,14 @@
 from odoo import models, fields, api
 
 class Visit(models.Model):
-    _name = 'medical_insurance.visit'
-    inherit = 'mail.activity.mixin'
+    _name = 'medical.insurance.visit'
 
     name = fields.Char(string="Claim No", readonly=True, required=True, copy=False, default='New')
-    patient_id = fields.Many2one('medical_insurance.patient', string='Patient Name', required=True)
+    patient_id = fields.Many2one('medical.insurance.patient', string='Patient Name', required=True)
     price_plan = fields.Char(string='Price Plane', related='patient_id.price_plan.name', readonly=True)
     patient_status = fields.Boolean(string='Patient Status', related='patient_id.status', readonly=True)
-    medical_center_id = fields.Many2one('medical_insurance.medical_center', required=True)
-    service_line_id = fields.Many2one('medical_insurance.service_line', string='Service', required=True)
+    medical_center_id = fields.Many2one('medical.insurance.medical.center', required=True)
+    service_line_id = fields.Many2one('medical.insurance.service.line', string='Service', required=True)
     contribution_charge = fields.Float(string='Contribution Charge', related='service_line_id.vendor_price', readonly=True)
     patient_charge = fields.Float(string='Patient Charge', related='service_line_id.patient_price', readonly=True)
     date_of_visit = fields.Datetime(default=lambda self: fields.datetime.now())
@@ -32,7 +31,7 @@ class Visit(models.Model):
 
     @api.model
     def create(self, vals):
-        seq = self.env['ir.sequence'].next_by_code('medical_insurance.visit') or '/'
+        seq = self.env['ir.sequence'].next_by_code('medical.insurance.visit') or '/'
         vals['name'] = seq
         return super(Visit, self).create(vals)
 

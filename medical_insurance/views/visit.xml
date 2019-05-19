@@ -6,7 +6,7 @@
 
     <record model="ir.ui.view" id="medical_insurance_list_visit">
       <field name="name">visit list</field>
-      <field name="model">medical_insurance.visit</field>
+      <field name="model">medical.insurance.visit</field>
       <field name="arch" type="xml">
         <tree>
           <field name="date_of_visit"/>
@@ -23,8 +23,8 @@
 
     <record model="ir.sequence" id="seq_visit_id">
         <field name="name">Visit Number</field>
-        <field name="code">medical_insurance.visit</field>
-        <field name="prefix">Claim#C</field>
+        <field name="code">medical.insurance.visit</field>
+        <field name="prefix">CL</field>
         <field name="padding">5</field>
     </record>
 
@@ -33,7 +33,7 @@
 
     <record model="ir.ui.view" id="medical_insurance_form_visit">
       <field name="name">visit form</field>
-      <field name="model">medical_insurance.visit</field>
+      <field name="model">medical.insurance.visit</field>
       <field name="arch" type="xml">
         <form>
             <header>
@@ -63,7 +63,7 @@
 
     <record model="ir.ui.view" id="medical_insurance_graph_visit">
       <field name="name">visit graph</field>
-      <field name="model">medical_insurance.visit</field>
+      <field name="model">medical.insurance.visit</field>
       <field name="arch" type="xml">
         <graph type="bar">
           <field name="medical_center_id" type="row"/>
@@ -75,7 +75,7 @@
 
       <record model="ir.ui.view" id="medical_insurance_graph_pivot_visit">
       <field name="name">visit graph</field>
-      <field name="model">medical_insurance.visit</field>
+      <field name="model">medical.insurance.visit</field>
       <field name="arch" type="xml">
         <graph type="pivot">
           <field name="medical_center_id" type="row"/>
@@ -90,7 +90,7 @@
 
     <report
       id="account_invoices"
-      model="medical_insurance.visit"
+      model="medical.insurance.visit"
       string="visit"
       report_type="qweb-pdf"
       name="medical_insurance.report_visit"
@@ -100,12 +100,12 @@
     <template id="report_visit">
     <t t-call="web.html_container">
         <t t-foreach="docs" t-as="o">
-<!--            <t t-call="web.external_layout">-->
+            <t t-call="web.external_layout">
                 <div class="page">
                     <h2>Visit</h2>
-                    <p>This object's name is <span t-field="o.medical_center_id"/></p>
+                    <p>This object's name is <span t-field="o.name"/></p>
                 </div>
-<!--            </t>-->
+            </t>
         </t>
     </t>
     </template>
@@ -113,12 +113,32 @@
 
 
 
+    <record id="search_all_customers" model="ir.ui.view">
+        <field name="model">medical.insurance.visit</field>
+        <field name="arch" type="xml">
+        <search>
+            <field name="name" />
+            <field name="medical_center_id"/>
+            <field name="service_line_id" widget="many2one" />
+            <group expand="0" string="Group By">
+                <filter name="groupby_medical_center" string="Medical Center" domain="[]" context="{'group_by':'medical_center_id'}"/>
+                <filter name="groupby_service_line" string="Service" domain="[]" context="{'group_by':'service_line_id'}"/>
+                <filter name="groupby_price_plan" string="Price Plan" domain="[]" context="{'group_by':'price_plan'}"/>
+			</group>
+            <filter name="date_of_visit" string="Date Of Visit" date="date_of_visit"/>
+        </search>
+        </field>
+    </record>
+
+
+
     <!-- actions opening views on models -->
 
     <record model="ir.actions.act_window" id="medical_insurance_action_visit">
       <field name="name">visit window</field>
-      <field name="res_model">medical_insurance.visit</field>
-      <field name="view_mode">tree,form,graph</field>
+      <field name="res_model">medical.insurance.visit</field>
+      <field name="view_mode">tree,form,graph,search</field>
+        <field name="context">{}</field>
     </record>
 
 
@@ -140,11 +160,11 @@
 
     <!-- Top menu item -->
 
-    <menuitem name="medical_insurance" id="medical_insurance_menu_root"/>
+    <!--menuitem name="medical_insurance" id="medical_insurance_menu_root"/-->
 
     <!-- menu categories -->
 
-    <menuitem name="Registration" id="medical_insurance_Registration" parent="medical_insurance_menu_root"/>
+    <!--menuitem name="Registration" id="medical_insurance_Registration" parent="medical_insurance_menu_root"/-->
 
     <!-- actions -->
 

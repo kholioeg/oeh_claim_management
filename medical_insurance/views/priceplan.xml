@@ -2,7 +2,7 @@
     <data>
     <record model="ir.ui.view" id="PricePlanList">
         <field name="name">PricePlan List</field>
-        <field name="model">medical_insurance.price_plan</field>
+        <field name="model">medical.insurance.price.plan</field>
         <field name="priority" eval="16"/>
         <field name="arch" type="xml">
             <tree>
@@ -21,7 +21,7 @@
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="PricePlan_action_window">
       <field name="name">PricePlan window</field>
-      <field name="res_model">medical_insurance.price_plan</field>
+      <field name="res_model">medical.insurance.price.plan</field>
       <field name="view_mode">tree,form</field>
     </record>
 
