@@ -10,6 +10,7 @@
           <field name="patient"/>
           <field name="paid_cost"/>
           <field name="remain_cost"/>
+          <field name="plan_status"/>
 
     </tree>
     </field>
@@ -26,6 +27,7 @@
                         <field name="patient"/>
                         <field name="paid_cost"/>
                         <field name="remain_cost"/>
+                        <field name="plan_status"/>
                     </group>
                 </sheet>
             </form>
