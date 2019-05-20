@@ -56,7 +56,7 @@
               <page string="EHR">
                   <group>
                     <field name="EHR"/>
-                </group>
+                  </group>
               </page>
                </notebook>
             </sheet>
