@@ -80,5 +80,20 @@ Class PatientLine{
 }
 
 
+Class Visit{
+
+    name : Char
+    price_plan : Char
+    patient_status : Boolean
+    contribution_charge : Float
+    patient_charge : Float
+    date_of_visit :  Datetime
+    visit_type :  Char
+    plan_status : Char
+    visit_state : Selection
+    patient_id : Many2one(Patient)
+    medical_center_id : Many2one(MedicalCenter)
+    service_line_id : Many2one(ServiceLine)
+}
 
 @enduml

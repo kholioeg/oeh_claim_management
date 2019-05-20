@@ -24,10 +24,20 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes>
+      
+      <connection connection-id="08020087-85f7-40d5-b9ad-7c4cc0eda95e">
+        <schema name="information_schema" object-types="sequence, table, view, function" />
+        <schema name="pg_temp_1" object-types="sequence, table, view, function" />
+        <schema name="pg_toast" object-types="sequence, table, view, function" />
+        <schema name="pg_toast_temp_1" object-types="sequence, table, view, function" />
+      </connection>
       <connection connection-id="8a210a5d-60c3-4488-875b-b2b243110a90">
-        <schema name="pg_catalog" object-types="view, sequence, table, function" />
-        <schema name="pg_temp_1" object-types="view, sequence, table, function" />
-        <schema name="pg_toast" object-types="view, sequence, table, function" />
+        <schema name="information_schema" object-types="sequence, table, view, function" />
+        <schema name="pg_catalog" object-types="sequence, table, view, function" />
+        <schema name="pg_temp_1" object-types="sequence, table, view, function" />
+        <schema name="pg_toast" object-types="sequence, table, view, function" />
+        <schema name="pg_toast_temp_1" object-types="sequence, table, view, function" />
+        <schema name="public" object-types="sequence, table, view, function" />
       </connection>
     </loaded-nodes>
   </component>

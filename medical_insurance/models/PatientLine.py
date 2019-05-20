@@ -14,7 +14,7 @@ class PatientLine(models.Model):
 
     @api.one
     def _compute_remain_cost(self):
-        self.remain_cost =  self.price_plan.price - self.paid_cost
+        self.remain_cost = self.price_plan.price - self.paid_cost
 
     @api.one
     def _compute_plan_status(self):
