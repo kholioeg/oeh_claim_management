@@ -1,5 +1,5 @@
 from odoo import models, fields, api
-
+import datetime
 class PatientLine(models.Model):
     _name = 'medical.insurance.patient.line'
 
@@ -9,9 +9,24 @@ class PatientLine(models.Model):
                                  string="Patient")
     paid_cost = fields.Float()
     remain_cost = fields.Float(compute='_compute_remain_cost')
-    # patient_status = fields.Boolean(string='Patient Status', related='patient_id.status', readonly=True)
+    plan_status = fields.Char(compute='_compute_plan_status', readonly=True)
+
 
     @api.one
     def _compute_remain_cost(self):
         self.remain_cost = self.price_plan.price - self.paid_cost
+
+    @api.one
+    def _compute_plan_status(self):
+        for rec in self.price_plan:
+            today = datetime.datetime.now().date()
+            start = self.price_plan.start_date
+            end = self.price_plan.end_date
+            if today <= start or today >= end:
+                self.plan_status = 'Inactive'
+            else :
+                self.plan_status = 'Active'
+
+
+
 
