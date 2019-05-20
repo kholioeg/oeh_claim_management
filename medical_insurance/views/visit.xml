@@ -41,7 +41,7 @@
                 <field name="visit_state" widget="statusbar"/>
             </header>
             <sheet>
-            <group string="Visit">
+            <group string="Visit"  col="4">
               <field name="patient_id"/>
               <field name="medical_center_id"/>
               <field name="service_line_id"/>

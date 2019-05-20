@@ -30,7 +30,7 @@
             <sheet>
             <notebook position="inside">
               <page string="Personal Info">
-                <group>
+                <group col="4">
                   <field name="name"/>
                   <field name="NID"/>
                   <field name="date_of_birth"/>
@@ -39,7 +39,7 @@
                 </group>
               </page>
               <page string="Medical Info">
-                <group>
+                <group col="4">
                   <field name="blood_group"/>
                   <field name="height"/>
                   <field name="weight"/>
@@ -47,7 +47,7 @@
                 </group>
               </page>
               <page string="Contact Info">
-                <group>
+                <group col="4">
                   <field name="mobile"/>
                   <field name="phone"/>
                   <field name="email"/>

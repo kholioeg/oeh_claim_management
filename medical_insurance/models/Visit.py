@@ -1,8 +1,8 @@
 from odoo import models, fields, api
 
 class Visit(models.Model):
-    _name = 'medical.insurance.visit'
 
+    _name = 'medical.insurance.visit'
     name = fields.Char(string="Claim No", readonly=True, required=True, copy=False, default='New')
     patient_id = fields.Many2one('medical.insurance.patient', string='Patient Name', required=True)
     price_plan = fields.Many2one(string='Price Plane', readonly=True)
@@ -38,6 +38,7 @@ class Visit(models.Model):
     @api.one
     def compute_plan_status(self):
         if self.patient_status:
+            print(self.patient_id)
             for p in self.patient_id.price_plan.patient:
                 if p.name==self.patient_id.name:
                     for med in self.medical_center_id.price_plan.medical_center_id:
