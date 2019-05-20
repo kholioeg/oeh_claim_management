@@ -32,6 +32,8 @@
         'views/serviceline.xml',
         'views/priceplan.xml',
         'views/medicalcenter.xml',
+        'views/patientline.xml',
+        'views/ehr.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -54,11 +54,11 @@
                 </group>
               </page>
               <page string="EHR">
-                <group>
-                  <field name="EHR"/>
+                  <group>
+                    <field name="EHR"/>
                 </group>
               </page>
-            </notebook>
+               </notebook>
             </sheet>
           </form>
       </field>
