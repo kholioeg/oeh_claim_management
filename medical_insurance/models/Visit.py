@@ -38,6 +38,7 @@ class Visit(models.Model):
     @api.one
     def compute_plan_status(self):
         if self.patient_status:
+            print(self.patient_id)
             for p in self.patient_id.price_plan.patient:
                 if p.name==self.patient_id.name:
                     for med in self.medical_center_id.price_plan.medical_center_id:
