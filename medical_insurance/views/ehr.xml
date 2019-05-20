@@ -1,0 +1,69 @@
+<odoo>
+<!--    <record model="ir.ui.view" id="ehr_list">-->
+<!--        <field name="name">EHR list</field>-->
+<!--        <field name="model">medical.insurance.ehr</field>-->
+<!--        <field name="priority" eval="16"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <tree>-->
+<!--                <field name="name"/>-->
+<!--                <field name="email"/>-->
+<!--                <field name="phone"/>-->
+<!--                <field name="mobile"/>-->
+<!--                <field name="country_id"/>-->
+<!--                <field name="contact_address"/>-->
+<!--                <field name="visit"/>-->
+<!--            </tree>-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!-- explicit form view definition-->
+    <record model="ir.ui.view" id="ehr_form">
+        <field name="name">ehr_list</field>
+        <field name="model">medical.insurance.ehr</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <notebook>
+                   <page string="Disease">
+                    <group>
+                        <field name="disease"/>
+                        <field name="severity"/>
+                        <field name="status"/>
+                        <field name="infectious"/>
+                        <field name="diagnosed"/>
+                        <field name="remarks"/>
+                    </group>
+                   </page>
+
+                   <page string="Medication">
+                    <group>
+                         <field name="medicament"/>
+                         <field name="indication"/>
+                         <field name="start"/>
+                         <field name="end"/>
+                    </group>
+                   </page>
+
+                   <page string="vaccination">
+                    <group>
+                        <field name="vaccine"/>
+                        <field name="dose"/>
+                        <field name="Date"/>
+                        <field name="observation"/>
+                    </group>
+                   </page>
+               </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+<!-- explicit list view definition -->
+
+<!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="EHR_action_window">
+      <field name="name">EHR window</field>
+      <field name="res_model">medical.insurance.ehr</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

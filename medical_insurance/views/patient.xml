@@ -16,7 +16,11 @@
           <field name="blood_group"/>
           <field name="height"/>
           <field name="weight"/>
+<<<<<<< HEAD
           <field name="status"/>  
+=======
+          <field name="status"/>
+>>>>>>> 8f05fbeb9c7078e690fa8a9071f052b6c7bc62c3
         </tree>
       </field>
     </record>
@@ -54,11 +58,11 @@
                 </group>
               </page>
               <page string="EHR">
-                <group>
-                  <field name="EHR"/>
+                  <group>
+                    <field name="EHR"/>
                 </group>
               </page>
-            </notebook>
+               </notebook>
             </sheet>
           </form>
       </field>

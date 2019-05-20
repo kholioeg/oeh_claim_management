@@ -1,0 +1,62 @@
+@startuml
+ EHR o..*  Disease : patient_id
+ EHR o..*  Medication : patient_id
+ EHR o..*  Vaccination : patient_id
+ EHR o..*  ServiceLine : patient_id
+
+ Patient o..* EHR : patient_id
+
+
+Class EHR{
+    disease : O2M
+    medication : O2M
+    vaccination : O2M
+    ServiceLine : O2M
+}
+
+Class Patient{
+    NID : Char
+    date_of_birth : Date
+    gender : Selection
+    marital_status : Selection
+    blood_group : Char
+    weight : Float
+    height : Float
+    status : Boolean
+    visit : O2M
+    EHR : O2M
+}
+
+Class Disease{
+    disease = Char
+    severity = Selection
+    status = Selection
+    infectious = Boolean
+    diagnosed = Date
+    remarks = Text
+}
+
+Class Medication{
+    medicament = Char
+    indication = Char
+    start = Date
+    end = Date
+}
+
+Class Vaccination{
+    vaccine = Char
+    dose = Char
+    Date = Date
+    observation = Selection
+}
+
+Class ServiceLine
+{
+    name : M2O
+    sale_price : Float
+    vendor_price : Float
+    patient_price : Float
+    price_plan : M2O
+}
+
+@enduml
