@@ -1,8 +1,8 @@
 from odoo import models, fields, api
 
 class Visit(models.Model):
-    _name = 'medical.insurance.visit'
 
+    _name = 'medical.insurance.visit'
     name = fields.Char(string="Claim No", readonly=True, required=True, copy=False, default='New')
     patient_id = fields.Many2one('medical.insurance.patient', string='Patient Name', required=True)
     price_plan = fields.Many2one(string='Price Plane', readonly=True)
