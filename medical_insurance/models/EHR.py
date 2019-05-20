@@ -35,5 +35,4 @@ class EHR(models.Model):
         ('good', 'Good'),
         ('v.good', 'V.good'),
         ('excelent', 'Excellent')
-    ])
-
+])
