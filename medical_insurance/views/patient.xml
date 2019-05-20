@@ -5,6 +5,7 @@
       <field name="model">medical.insurance.patient</field>
       <field name="arch" type="xml">
         <tree>
+          <field name="image" widget='image' class="oe_avatar"/>
           <field name="name"/>
           <field name="NID"/>
           <field name="date_of_birth"/>
@@ -30,7 +31,12 @@
             <sheet>
             <notebook position="inside">
               <page string="Personal Info">
+<<<<<<< HEAD
                 <group col="4">
+=======
+                <group>
+                  <field name="image" widget="image" class="oe_avatar"/>
+>>>>>>> 920e749bcf662320d0be6df7d3dac53776affb05
                   <field name="name"/>
                   <field name="NID"/>
                   <field name="date_of_birth"/>
