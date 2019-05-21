@@ -12,7 +12,6 @@ class PatientLine(models.Model):
     paid_cost = fields.Float()
     remain_cost = fields.Float(compute='_compute_remain_cost')
     plan_status = fields.Char(compute='_compute_plan_status', readonly=True)
-    #status = fields.Boolean()
 
     visit = fields.One2many('medical.insurance.claim', inverse_name="patient_id", ondelete="set null", string="visit",
                             required=True)
@@ -29,7 +28,7 @@ class PatientLine(models.Model):
             end = self.price_plan.end_date
             if today <= start or today >= end:
                 self.plan_status = 'Inactive'
-            else :
+            else:
                 self.plan_status = 'Active'
 
 

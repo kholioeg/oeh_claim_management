@@ -46,7 +46,7 @@
               <field name="medical_center_id"/>
               <field name="service_line_id"/>
               <field name="visit_type"/>
-              <field name="patient_status"/>
+              <field name="price_plan_status"/>
               <field name="price_plan"/>
               <field name="claim_status"/>
               <field name="contribution_charge"/>

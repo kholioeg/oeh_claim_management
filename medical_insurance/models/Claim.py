@@ -7,7 +7,7 @@ class Visit(models.Model):
     name = fields.Char(string="Claim No", readonly=True, required=True, copy=False, default='New', store='True')
     patient_id = fields.Many2one('medical.insurance.patient.line', string='Patient Name', required=True, store='True')
     price_plan = fields.Char(string='Price Plane', related='patient_id.price_plan.name', readonly=True, store=True)
-    patient_status = fields.Char(string='Patient Status', related='patient_id.plan_status', readonly=True, store='True')
+    price_plan_status = fields.Char(string='Patient Status', related='patient_id.plan_status', readonly=True, store='True')
     medical_center_id = fields.Many2one('medical.insurance.medical.center', required=True, store='True')
     service_line_id = fields.Many2one('medical.insurance.service.line', string='Service', required=True, store='True')
     contribution_charge = fields.Float(string='Contribution Charge', related='service_line_id.vendor_price', readonly=True, store='True')
@@ -38,17 +38,17 @@ class Visit(models.Model):
 
     @api.one
     def compute_claim_status(self):
-        if self.patient_status:
+        if self.price_plan_status == 'Active':
             for med in self.patient_id.price_plan.medical_center_id:
                 if med.name == self.medical_center_id.name:
                     for s in self.patient_id.price_plan.service_line:
                         if s.name == self.service_line_id.name:
-                            self.plan_status = 'Valid'
+                            self.claim_status = 'Valid'
                             break
                         else:
-                            self.plan_status = 'Not Valid'
+                            self.claim_status = 'Not Valid'
                     break
                 else:
-                    self.plan_status = 'Not Valid'
+                    self.claim_status = 'Not Valid'
         else:
-            self.plan_status = 'Not Valid'
+            self.claim_status = 'Not Valid'
