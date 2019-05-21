@@ -5,7 +5,7 @@ class PatientLine(models.Model):
 
     price_plan = fields.Many2one('medical.insurance.price.plan',
                                  string="PricePlan")
-    patient = fields.Many2one('medical.insurance.patient', ondelete="set null",
+    patient_id = fields.Many2one('medical.insurance.patient', ondelete="set null",
                                  string="Patient")
     paid_cost = fields.Float()
     remain_cost = fields.Float(compute='_compute_remain_cost')

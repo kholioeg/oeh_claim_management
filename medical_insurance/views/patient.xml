@@ -53,6 +53,11 @@
                   <field name="email"/>
                 </group>
               </page>
+              <page string="Patient Line  Info">
+                <group>
+                  <field name="patient_line"/>
+                </group>
+              </page>
               <page string="EHR">
                   <group>
                     <field name="EHR"/>
