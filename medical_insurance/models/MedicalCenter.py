@@ -7,4 +7,4 @@ class MedicalCenter(models.Model):
 
     price_plan = fields.One2many('medical.insurance.price.plan', inverse_name="medical_center_id", ondelete="set null",
                                  string="PricePlan")
-    visit = fields.One2many('medical.insurance.visit', inverse_name="medical_center_id", string="visit")
+    visit = fields.One2many('medical.insurance.claim', inverse_name="medical_center_id", string="visit")

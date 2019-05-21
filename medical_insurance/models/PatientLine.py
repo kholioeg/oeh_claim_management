@@ -13,7 +13,7 @@ class PatientLine(models.Model):
     plan_status = fields.Char(compute='_compute_plan_status', readonly=True)
     status = fields.Boolean()
 
-    visit = fields.One2many('medical.insurance.visit', inverse_name="patient_id", ondelete="set null", string="visit",
+    visit = fields.One2many('medical.insurance.claim', inverse_name="patient_id", ondelete="set null", string="visit",
                             required=True)
 
     @api.one

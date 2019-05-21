@@ -2,7 +2,7 @@ from odoo import models, fields, api
 
 
 class Visit(models.Model):
-    _name = 'medical.insurance.visit'
+    _name = 'medical.insurance.claim'
 
     name = fields.Char(string="Claim No", readonly=True, required=True, copy=False, default='New', store='True')
     patient_id = fields.Many2one('medical.insurance.patient.line', string='Patient Name', required=True, store='True')
@@ -32,7 +32,7 @@ class Visit(models.Model):
 
     @api.model
     def create(self, vals):
-        seq = self.env['ir.sequence'].next_by_code('medical.insurance.visit') or '/'
+        seq = self.env['ir.sequence'].next_by_code('medical.insurance.claim') or '/'
         vals['name'] = seq
         return super(Visit, self).create(vals)
 
