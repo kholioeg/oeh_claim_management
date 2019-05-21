@@ -34,8 +34,10 @@
                 </group>
               </page>
                 <page string="Medical Center  Info">
-                <group>
+                <group  col="2">
+                    <group>
                    <field name="medical_center_id"/>
+                    </group>
                 </group>
               </page>
               <page string="Service Line  Info">
