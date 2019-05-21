@@ -7,9 +7,8 @@
     <field name="arch" type="xml">
     <tree colors="red">
           <field name="price_plan" />
-          <field name="name"/>
           <field name="plan_status"/>
-          <field name="patient"/>
+          <field name="name"/>
 
           <field name="paid_cost" type="char" />
           <field name="remain_cost" type="char" />
@@ -27,7 +26,7 @@
                 <sheet>
                     <group string="Patient Line" colspan="4" col="4">
                         <group >
-                           <field name="patient"/>
+                           <field name="name"/>
                          </group>
                         <group >
                             <field name="price_plan" />
