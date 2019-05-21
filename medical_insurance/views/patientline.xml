@@ -7,6 +7,7 @@
     <field name="arch" type="xml">
     <tree colors="red">
           <field name="price_plan" />
+          <field name="name"/>
           <field name="plan_status"/>
           <field name="patient"/>
 

@@ -28,7 +28,7 @@
         'views/views.xml',
         'views/templates.xml',
         'views/patient.xml',
-        'views/visit.xml',
+        'views/claim.xml',
         'views/serviceline.xml',
         'views/priceplan.xml',
         'views/medicalcenter.xml',
