@@ -25,18 +25,18 @@
                 <sheet>
                     <notebook>
                    <page string="Disease">
-                    <group>
+                    <group col="4">
                         <field name="disease"/>
                         <field name="severity"/>
-                        <field name="status"/>
+                        <field name="state"/>
                         <field name="infectious"/>
-                        <field name="diagnosed"/>
+                        <field name="diagnosed_on"/>
                         <field name="remarks"/>
                     </group>
                    </page>
 
                    <page string="Medication">
-                    <group>
+                    <group col="4">
                          <field name="medicament"/>
                          <field name="indication"/>
                          <field name="start"/>
@@ -45,7 +45,7 @@
                    </page>
 
                    <page string="vaccination">
-                    <group>
+                    <group col="4">
                         <field name="vaccine"/>
                         <field name="dose"/>
                         <field name="Date"/>

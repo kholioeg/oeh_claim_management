@@ -11,7 +11,7 @@ class PricePlan(models.Model):
     ], default='active')
     start_date = fields.Date(string="Start At", required=True)
     end_date = fields.Date(string="End At", required=True)
-    medical_center_id = fields.Many2one('medical.insurance.medical.center', ondelete='set null', string='MedicalCentre',
+    medical_center_id = fields.Many2one('medical.insurance.medical.center', ondelete='set null', string='MedicalCenter',
                                         required='True')
     service_line = fields.One2many('medical.insurance.service.line', inverse_name='price_plan', ondelete='set null',
                                    string='ServiceLine', required='True')

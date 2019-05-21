@@ -24,8 +24,7 @@ class Patient(models.Model):
     weight = fields.Float()
     height = fields.Float()
     status = fields.Boolean()
-    visit = fields.One2many('medical.insurance.visit', inverse_name="patient_id", ondelete="set null", string="visit",
-                            required=True)
+
     EHR = fields.One2many('medical.insurance.ehr', inverse_name="patient_id", string="EHR", required=True)
 
     # @api.multi

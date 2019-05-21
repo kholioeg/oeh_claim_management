@@ -5,12 +5,14 @@
     <field name="model">medical.insurance.patient.line</field>
     <field name="priority" eval="16"/>
     <field name="arch" type="xml">
-    <tree>
-          <field name="price_plan"/>
-          <field name="patient"/>
-          <field name="paid_cost"/>
-          <field name="remain_cost"/>
+    <tree colors="red">
+          <field name="price_plan" />
           <field name="plan_status"/>
+          <field name="name"/>
+
+          <field name="paid_cost" type="char" />
+          <field name="remain_cost" type="char" />
+
 
     </tree>
     </field>
@@ -22,12 +24,19 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
-                    <group string="Patient Line">
-                        <field name="price_plan"/>
-                        <field name="patient"/>
-                        <field name="paid_cost"/>
-                        <field name="remain_cost"/>
-                        <field name="plan_status"/>
+                    <group string="Patient Line" colspan="4" col="4">
+                        <group >
+                           <field name="name"/>
+                         </group>
+                        <group >
+                            <field name="price_plan" />
+                            <field name="plan_status"/>
+                        </group>
+
+                        <group >
+                            <field name="paid_cost" />
+                            <field name="remain_cost" />
+                        </group>
                     </group>
                 </sheet>
             </form>

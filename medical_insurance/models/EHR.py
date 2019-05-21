@@ -14,13 +14,13 @@ class EHR(models.Model):
         ('moderate', "Moderate"),
         ('severe', "Severe")
     ])
-    status = fields.Selection([
+    state = fields.Selection([
         ('worse', 'Worse'),
         ('improving', 'Improving'),
         ('recovered', 'Recovered')
     ])
     infectious = fields.Boolean()
-    diagnosed = fields.Date()
+    diagnosed_on = fields.Date()
     remarks = fields.Text()
 
     medicament = fields.Char()
@@ -35,5 +35,4 @@ class EHR(models.Model):
         ('good', 'Good'),
         ('v.good', 'V.good'),
         ('excelent', 'Excellent')
-    ])
-
+])
