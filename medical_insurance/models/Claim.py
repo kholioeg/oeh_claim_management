@@ -38,7 +38,7 @@ class Visit(models.Model):
 
     @api.one
     def compute_claim_status(self):
-        if self.price_plan_status == 'Active':
+        if self.price_plan_status == 'Active' and self.patient_id.price_plan.medical_center_id and self.patient_id.price_plan.service_line:
             for med in self.patient_id.price_plan.medical_center_id:
                 if med.name == self.medical_center_id.name:
                     for s in self.patient_id.price_plan.service_line:
