@@ -40,6 +40,13 @@
                     </group>
                 </group>
               </page>
+                 <page string="Patient  Info">
+                <group  col="2">
+                    <group>
+                   <field name="patient"/>
+                    </group>
+                </group>
+              </page>
               <page string="Service Line  Info">
                 <group>
                    <field name="service_line"/>

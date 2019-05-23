@@ -71,7 +71,7 @@
               </page>
                <page string="Price Plan Info">
                 <group >
-                  <field name="patient_line"/>
+                  <field name="price_plan"/>
                 </group>
               </page>
               <page string="EHR">
