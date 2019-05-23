@@ -69,9 +69,11 @@
                   <field name="email"/>
                 </group>
               </page>
-               <page string="Price Plan Info">
-                <group >
-                  <field name="patient_line"/>
+               <page string="Patient Line Info">
+                <group  col="2">
+                    <group>
+                   <field name="price_plan"/>
+                    </group>
                 </group>
               </page>
               <page string="EHR">
