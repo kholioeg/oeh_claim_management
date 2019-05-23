@@ -24,6 +24,7 @@ from odoo import http
 from odoo.http import request
 
 
+
 class PatientData(http.Controller):
 
     @http.route('/patient_validate', type='json', auth='public')
