@@ -33,7 +33,8 @@
         'views/priceplan.xml',
         'views/medicalcenter.xml',
         'views/patientline.xml',
-        'views/ehr.xml'
+        'views/ehr.xml',
+        'views/patient_report.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
