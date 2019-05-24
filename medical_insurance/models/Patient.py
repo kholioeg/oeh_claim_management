@@ -24,8 +24,8 @@ class Patient(models.Model):
     weight = fields.Float()
     height = fields.Float()
     status = fields.Boolean()
-    patient_line = fields.One2many('medical.insurance.patient.line', inverse_name="name", string="patient line", required=True)
-    EHR = fields.One2many('medical.insurance.ehr', inverse_name="patient_id", string="EHR", required=True)
+    price_plan = fields.Many2one('medical.insurance.price.plan', ondelete="set null", string="price plan")
+    EHR = fields.One2many('medical.insurance.ehr', inverse_name="patient_id", string="EHR")
 
     # @api.multi
     # @api.depends('image')

@@ -14,7 +14,11 @@
                         <field name="mobile"/>
                         <field name="country_id"/>
                         <field name="contact_address"/>
+                    </group>
+                    <group>
                         <field name="price_plan"/>
+                    </group>
+                    <group>
                         <field name="visit"/>
                     </group>
                 </sheet>

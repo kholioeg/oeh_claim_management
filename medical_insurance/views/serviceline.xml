@@ -34,6 +34,33 @@
             </form>
         </field>
     </record>
+
+
+    <!--report view -->
+    <report
+        id="service_report"
+        model="medical.insurance.service.line"
+        string="ServiceLine Report"
+        name="medical_insurance.service_report_view"
+        report_type="qweb-pdf" />
+    <template id="service_report_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 t-field="doc.name"/>
+                        <h3>Vendor Contribution: </h3>
+                        <h5 t-field="doc.vendor_price"/>
+                        <h3>Patient Price:</h3>
+                        <h5 t-field="doc.patient_price"/>
+                        <h3>Total Price: </h3>
+                        <h5 t-field="doc.sale_price"/>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="ServiceLine_action_window">
       <field name="name">ServiceLine window</field>
@@ -44,4 +71,9 @@
     <!-- actions -->
     <menuitem name="ServiceLine" id="medical_insurance_menu_service" parent="medical_insurance_menu_conf"
               action="ServiceLine_action_window"/>
+
+
+
+
+
 </odoo>

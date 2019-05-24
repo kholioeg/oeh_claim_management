@@ -7,12 +7,12 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
-                <field name="state"/>
+                <field name="status"/>
                 <field name="start_date"/>
                 <field name="end_date"/>
+                  <field name="patient"/>
                 <!--field name="medical_center"/-->
                 <field name="service_line"/>
-                <field name="price"/>
             </tree>
         </field>
     </record>
@@ -26,11 +26,10 @@
             <notebook position="inside">
               <page string="Price Plan Info">
                 <group col="4">
-                  <field name="name"/>
-                  <field name="state"/>
-                  <field name="start_date"/>
-                  <field name="end_date"/>
-                  <field name="price"/>
+                    <field name="name"/>
+                    <field name="status"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
                 </group>
               </page>
                 <page string="Medical Center  Info">
@@ -39,6 +38,16 @@
                    <field name="medical_center_id"/>
                     </group>
                 </group>
+              </page>
+                <page string="Patient Price Plan Info">
+                <group col="4">
+                    <field name="plan_cost"/>
+                    <field name="paid_cost"/>
+                    <field name="remain_cost" />
+                </group>
+                 <group>
+                     <field name="patient"/>
+                 </group>
               </page>
               <page string="Service Line  Info">
                 <group>
