@@ -27,12 +27,7 @@ class Patient(models.Model):
     patient_line = fields.One2many('medical.insurance.patient.line', inverse_name="name", string="patient line", required=True)
     EHR = fields.One2many('medical.insurance.ehr', inverse_name="patient_id", string="EHR", required=True)
 
-    # @api.multi
-    # @api.depends('image')
-    # def _get_image(self):
-    #     for rec in self:
-    #         rec.image = tools.image_resize_image_medium(
-    #             rec.image, size=(100, 100))
+
 
     @api.model
     def create(self, vals):
