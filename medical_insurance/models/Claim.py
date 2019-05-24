@@ -3,6 +3,7 @@ from odoo import models, fields, api
 
 class Visit(models.Model):
     _name = 'medical.insurance.claim'
+    _rec_name = 'patient_id'
 
     name = fields.Char(string="Claim No", readonly=True, required=True, copy=False, default='New', store='True')
     # patient_id = fields.Many2one('medical.insurance.patient.line', string='Patient Name', required=True, store='True')

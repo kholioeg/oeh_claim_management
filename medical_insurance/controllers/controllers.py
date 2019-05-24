@@ -18,3 +18,16 @@ from odoo import http
 #         return http.request.render('medical_insurance.object', {
 #             'object': obj
 #         })
+
+
+from odoo import http
+from odoo.http import request
+
+
+class PatientData(http.Controller):
+
+    @http.route('/patient_validate', type='http', auth='none', methods=['GET'])
+    def patient_details(self, **kwargs):
+        #pa_details = request.env['medical.insurance.patient'].sudo().search([])
+        #if(pa_details):
+        return request.render('', None)
