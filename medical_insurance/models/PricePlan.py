@@ -1,23 +1,38 @@
 from odoo import models, fields, api
+import datetime
 
 
 class PricePlan(models.Model):
     _name = 'medical.insurance.price.plan'
-    _inherit = 'product.template'
 
-    name = fields.Char(string="Name", required=True)
-    price = fields.Float()
-    state = fields.Selection([
-        ('active', 'Active'),
-        ('inactive', 'Inactive'),
-    ], default='active')
-    start_date = fields.Date(string="Start At", required=True)
-    end_date = fields.Date(string="End At", required=True)
-    medical_center_id = fields.Many2one('medical.insurance.medical.center', ondelete='set null', string='MedicalCenter',
-                                        required='True')
+    name = fields.Many2one('product.template', string="Price Plan")
+    plan_cost = fields.Float(related="name.list_price")
+    paid_cost = fields.Float()
+    remain_cost = fields.Float(compute='_compute_remain_cost')
+    status = fields.Char(compute='_compute_plan_status', readonly=True)
+    start_date = fields.Date(string="Start At")
+    end_date = fields.Date(string="End At")
+    # price = fields.Float()
+    medical_center_id = fields.Many2one('medical.insurance.medical.center', ondelete='set null', string='MedicalCenter')
     patient = fields.One2many('medical.insurance.patient', inverse_name='price_plan', ondelete='set null',
-                              string='Patient', required='True')
+                              string='Patient')
     service_line = fields.One2many('medical.insurance.service.line', inverse_name='price_plan', ondelete='set null',
-                                   string='ServiceLine', required='True')
+                                   string='ServiceLine')
+    @api.one
+    def _compute_plan_status(self):
+        for rec in self :
+            today = datetime.datetime.now().date()
+            start = self.start_date
+            end = self.end_date
+            if today <= start or today >= end:
+                self.status = 'Inactive'
+            else:
+                self.status = 'Active'
 
+    @api.one
+    def _compute_remain_cost(self):
+        self.remain_cost = self.plan_cost - self.paid_cost
 
+    @api.onchange('name.list_price')
+    def onchange_field(self):
+        self.plan_price = self.name.list_price
