@@ -4,9 +4,11 @@ import datetime
 
 class PricePlan(models.Model):
     _name = 'medical.insurance.price.plan'
+    _inherits = {'product.template':'product_id'}
 
-    name = fields.Many2one('product.template', string="Price Plan")
-    plan_cost = fields.Float(related="name.list_price")
+    product_id = fields.Many2one('product.template', ondelete='cascade')
+    name = fields.Char(related="product_id.name")
+    plan_cost = fields.Float(related="product_id.list_price")
     paid_cost = fields.Float()
     remain_cost = fields.Float(compute='_compute_remain_cost')
     status = fields.Char(compute='_compute_plan_status', readonly=True)
@@ -33,6 +35,6 @@ class PricePlan(models.Model):
     def _compute_remain_cost(self):
         self.remain_cost = self.plan_cost - self.paid_cost
 
-    @api.onchange('name.list_price')
+    @api.onchange('product_id.list_price')
     def onchange_field(self):
-        self.plan_price = self.name.list_price
+        self.plan_price = self.product_id.list_price
