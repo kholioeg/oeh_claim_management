@@ -18,7 +18,7 @@
           <field name="blood_group"/>
           <field name="height"/>
           <field name="weight"/>
-          <field name="status"/>
+          <field name="patient_status"/>
         </tree>
       </field>
     </record>
@@ -64,7 +64,7 @@
                   <field name="blood_group"/>
                   <field name="height"/>
                   <field name="weight"/>
-                  <field name="status"/>
+                  <field name="patient_status"/>
                 </group>
               </page>
               <page string="Contact Info">
