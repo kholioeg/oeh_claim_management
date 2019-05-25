@@ -22,7 +22,7 @@
                 <t t-call="web.external_layout">
                     <div class="page">
 
-                        <h3>price plan  </h3>
+                        <h3>price plan:</h3>
                         <h5 t-field="doc.product_id"/>
                         <h3>status: </h3>
                         <h5 t-field="doc.status"/>

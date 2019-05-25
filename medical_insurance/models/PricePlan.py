@@ -7,6 +7,7 @@ class PricePlan(models.Model):
     _inherits = {'product.template':'product_id'}
 
     product_id = fields.Many2one('product.template', ondelete='cascade')
+    name = fields.Char(related="product_id.name")
     plan_cost = fields.Float(related="product_id.list_price")
     paid_cost = fields.Float()
     remain_cost = fields.Float(compute='_compute_remain_cost')
@@ -16,7 +17,7 @@ class PricePlan(models.Model):
     # price = fields.Float()
     medical_center_id = fields.Many2one('medical.insurance.medical.center', ondelete='set null', string='MedicalCenter')
     patient = fields.One2many('medical.insurance.patient', inverse_name='price_plan', ondelete='set null',
-                              string='Patien t')
+                              string='Patient')
     service_line = fields.One2many('medical.insurance.service.line', inverse_name='price_plan', ondelete='set null',
                                    string='ServiceLine')
     @api.one
@@ -34,6 +35,6 @@ class PricePlan(models.Model):
     def _compute_remain_cost(self):
         self.remain_cost = self.plan_cost - self.paid_cost
 
-    @api.onchange('name.list_price')
+    @api.onchange('product_id.list_price')
     def onchange_field(self):
         self.plan_price = self.product_id.list_price
