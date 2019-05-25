@@ -5,7 +5,7 @@ class Patient(models.Model):
     _name = 'medical.insurance.patient'
     _inherit = 'res.partner'
 
-    name = fields.Char(string="patient no", readonly=True)
+    name = fields.Char(string="MRN", readonly=True)
     first_name = fields.Char(string="First name")
     last_name = fields.Char(string="Last name")
     image = fields.Binary()
