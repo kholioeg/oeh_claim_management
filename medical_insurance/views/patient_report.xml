@@ -3,14 +3,13 @@
 <data>
 
     <report
-
-         id="patient_report"
+            id="patient_report"
         model="medical.insurance.patient"
         string="Patient Report"
 
         report_type="qweb-pdf"
         name="medical_insurance.patient_report_view"
-        file="account.report_invoice"
+        file="medical_insurance.patient_report_view"
         />
 
 

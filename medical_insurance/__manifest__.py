@@ -34,7 +34,7 @@
         'views/medicalcenter.xml',
         'views/ehr.xml',
         'views/patient_report.xml'
-
+        'views/priceplan_report.xml'
 
     ],
     # only loaded in demonstration mode
