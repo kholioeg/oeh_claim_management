@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'portal'],
+    'depends': ['base', 'portal', 'product'],
 
     # always loaded
     'data': [
@@ -32,9 +32,10 @@
         'views/serviceline.xml',
         'views/priceplan.xml',
         'views/medicalcenter.xml',
-        'views/patientline.xml',
         'views/ehr.xml',
         'views/patient_report.xml'
+
+
     ],
     # only loaded in demonstration mode
     'demo': [
