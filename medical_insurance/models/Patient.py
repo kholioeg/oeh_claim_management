@@ -25,6 +25,7 @@ class Patient(models.Model):
     height = fields.Float()
     status = fields.Boolean()
     price_plan = fields.Many2one('medical.insurance.price.plan', ondelete="set null", string="price plan")
+    plan_status = fields.Char(string='Patient Status', related='price_plan.status', readonly=True, store='True')
     EHR = fields.One2many('medical.insurance.ehr', inverse_name="patient_id", string="EHR")
 
     # @api.multi
