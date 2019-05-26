@@ -1,37 +1,41 @@
-<!--<?xml version="1.0"?>-->
-<!--<odoo>-->
+<?xml version="1.0"?>
+<odoo>
+<report
 
-<!--    <report-->
-<!--            id="patient_report"-->
-<!--        model="medical.insurance.patient"-->
-<!--        string="Patient Report"-->
+         id="patient_report"
+        model="medical.insurance.patient"
+        string="Patient Report"
 
-<!--        report_type="qweb-pdf"-->
-<!--        name="medical_insurance.patient_report_view"-->
-<!--        file="medical_insurance.patient_report_view"-->
-<!--        />-->
-
-
+        report_type="qweb-pdf"
+        name="medical_insurance.patient_report_view"
+        file="medical_insurance.patient_report_view"
+        />
 
 
-<!--    <template id="patient_report_view">-->
-<!--        <t t-call="web.html_container">-->
-<!--            <t t-foreach="docs" t-as="doc">-->
-<!--                <t t-call="web.external_layout">-->
-<!--                    <div class="page">-->
 
-<!--                        <h3>first_name: </h3>-->
-<!--                        <h5 t-field="doc.first_name"/>-->
-<!--                        <h3>last_name: </h3>-->
-<!--                        <h5 t-field="doc.last_name"/>-->
-<!--                        <h3>mobile:</h3>-->
-<!--                        <h5 t-field="doc.mobile"/>-->
-<!--                        <h3>Total phone: </h3>-->
-<!--                        <h5 t-field="doc.phone"/>-->
-<!--                    </div>-->
-<!--                </t>-->
-<!--            </t>-->
-<!--        </t>-->
-<!--    </template>-->
-<!-- <menuitem name="Patient" id="medical_insurance_patient" parent="medical_insurance_menu_registration" action="medical_insurance_action_patient"/>-->
-<!--</odoo>-->
+
+    <template id="patient_report_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>patient info</h2>
+                        <h3>first_name: </h3>
+                        <h5 t-field="doc.first_name"/>
+                        <h3>last_name: </h3>
+                        <h5 t-field="doc.last_name"/>
+                        <h3>mobile:</h3>
+                        <h5 t-field="doc.mobile"/>
+                        <h3>phone: </h3>
+                        <h5 t-field="doc.phone"/>
+                        <h3>blood group</h3>
+                        <h5 t-field="doc.blood_group"/>
+                        <h3>price plan</h3>
+                        <h5 t-field="doc.price_plan"/>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
