@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<odoo>
+     <report
+
+         id="medical_center_report"
+        model="medical.insurance.medical.center"
+        string="Medical center Report"
+
+        report_type="qweb-pdf"
+        name="medical_insurance.medical_center_report_view"
+        file="medical_insurance.medical_center_report_view"
+        />
+
+
+
+
+    <template id="medical_center_report_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+
+                        <h3>name: </h3>
+                        <h5 t-field="doc.name"/>
+                        <h3>email: </h3>
+                        <h5 t-field="doc.email"/>
+                        <h3>mobile:</h3>
+                        <h5 t-field="doc.mobile"/>
+                        <h3>price_plan: </h3>
+                        <h5 t-field="doc.price_plan"/>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
