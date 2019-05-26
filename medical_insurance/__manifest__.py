@@ -33,9 +33,9 @@
         'views/priceplan.xml',
         'views/medicalcenter.xml',
         'views/ehr.xml',
-        'views/priceplan_report.xml'
-        'views/patient_report.xml'
-
+        'views/price_plan_report.xml'
+        # 'views/patient_report.xml'
+        # 'reports/medicalcenterreport.xml'
 
     ],
     # only loaded in demonstration mode
