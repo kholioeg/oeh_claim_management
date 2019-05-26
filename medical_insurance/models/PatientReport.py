@@ -12,3 +12,4 @@
 #             'docs': self,
 #         }
 #         return report_obj.render('medical_insurance.patient_report_view', docargs)
+
