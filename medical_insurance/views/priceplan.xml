@@ -62,29 +62,42 @@
 
 
     <!--report view -->
-<!--    <report-->
-<!--        id="price_plan_report"-->
-<!--        model="medical.insurance.price.plan"-->
-<!--        string="PricePlan Report"-->
-<!--        name="medical_insurance.price_plan_report_view"-->
-<!--        report_type="qweb-pdf" />-->
-<!--    <template id="price_plan_report_view">-->
-<!--        <t t-call="web.html_container">-->
-<!--            <t t-foreach="docs" t-as="doc">-->
-<!--                <t t-call="web.external_layout">-->
-<!--                    <div class="page">-->
-<!--                        <h2 t-field="doc.name"/>-->
-<!--                        <h3>V Contribution: </h3>-->
-<!--                        <h5 t-field="doc.vendor_price"/>-->
-<!--                        <h3>Patient Price:</h3>-->
-<!--                        <h5 t-field="doc.patient_price"/>-->
-<!--                        <h3>Total Price: </h3>-->
-<!--                        <h5 t-field="doc.sale_price"/>-->
-<!--                    </div>-->
-<!--                </t>-->
-<!--            </t>-->
-<!--        </t>-->
-<!--</template>-->
+
+    <report
+
+         id="price_plan_report"
+        model="medical.insurance.price.plan"
+        string="Price Plan Report"
+
+        report_type="qweb-pdf"
+        name="medical_insurance.price_plan_report_view"
+        file="medical_insurance.price_plan_report_view"
+
+
+        />
+
+
+
+
+    <template id="price_plan_report_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+
+                        <h3>price plan:</h3>
+                        <h5 t-field="doc.product_id"/>
+                        <h3>status: </h3>
+                        <h5 t-field="doc.status"/>
+                        <h3>start_date:</h3>
+                        <h5 t-field="doc.start_date"/>
+                        <h3>end_date: </h3>
+                        <h5 t-field="doc.end_date"/>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
 
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="PricePlan_action_window">
