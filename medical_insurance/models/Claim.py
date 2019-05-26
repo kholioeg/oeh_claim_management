@@ -8,7 +8,7 @@ class Visit(models.Model):
     name = fields.Char(string="Claim No", readonly=True, required=True, copy=False, default='New', store='True')
     patient_id = fields.Many2one('medical.insurance.patient', string='Patient Name', required=True, store='True')
     price_plan = fields.Char(string='Price Plane', related='patient_id.price_plan.name', readonly=True, store=True)
-    price_plan_status = fields.Char(string='Patient Status', related='patient_id.plan_status', readonly=True, store='True')
+    price_plan_status = fields.Char(string='Patient Status', related='patient_id.patient_status', readonly=True, store='True')
     medical_center_id = fields.Many2one('medical.insurance.medical.center', required=True, store='True')
     service_line_id = fields.Many2one('medical.insurance.service.line', string='Service', required=True, store='True')
     contribution_charge = fields.Float(string='Contribution Charge', related='service_line_id.vendor_price', readonly=True, store='True')
