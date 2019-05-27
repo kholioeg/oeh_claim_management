@@ -55,6 +55,7 @@
               <field name="date_of_visit"/>
             </group>
             <group string="Service based info">
+            <group>
                 <field name="history"  attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
                 <field name="care_plan"  attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
                 <field name="diagnosis"  attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
@@ -69,6 +70,23 @@
             </group>
 
 
+<!--                <field name="routine" attrs="{'invisible': [('pink','=',True),('yellow','=',True)]}"/>-->
+                <group col="6">
+                    <field name="routine" attrs="{'invisible': [('service_line_name','!=', 'Laboratory Multipurpose')]}"/>
+                    <field name="Urgent" attrs="{'invisible': [('service_line_name','!=', 'Laboratory Multipurpose')]}"/>
+                    <field name="pre_operative" attrs="{'invisible': [('service_line_name','!=', 'Laboratory Multipurpose')]}"/>
+                </group>
+                <group col="2">
+                <field name="Requested_by"  attrs="{'invisible': [('service_line_name','!=', 'Laboratory Multipurpose')]}"/>
+                <field name="stamp_and_signature" attrs="{'invisible': [('service_line_name','!=', 'Laboratory Multipurpose')]}"/>
+                <field name="lab_date" attrs="{'invisible': [('service_line_name','!=', 'Laboratory Multipurpose')]}"/>
+                <field name="requested_test" attrs="{'invisible': [('service_line_name','!=', 'Laboratory Multipurpose')]}"/>
+                <field name="results" attrs="{'invisible': [('service_line_name','!=', 'Laboratory Multipurpose')]}"/>
+                <field name="Pathologist" attrs="{'invisible': [('service_line_name','!=', 'Laboratory Multipurpose')]}"/>
+                <field name="Examiner_Name" attrs="{'invisible': [('service_line_name','!=', 'Laboratory Multipurpose')]}"/>
+                <field name="clinical_comments"  attrs="{'invisible': [('service_line_name','!=', 'Laboratory Multipurpose')]}"/>
+                  </group>
+            </group>
 
             </sheet>
             <div class="oe_chatter">
