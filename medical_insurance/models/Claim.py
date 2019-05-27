@@ -36,6 +36,18 @@ class Visit(models.Model):
     diagnosis = fields.Text(string="DIAGNOSIS:")
     instructions = fields.Text(string="INSTRUCTIONS:")
 
+    clinical_comments =fields.Text(string="clinical comments:")
+    Requested_by = fields.Text(string="Requested by")
+    stamp_and_signature = fields.Text(string="Stamp & signature")
+    lab_date = fields.Date(string="Date")
+    requested_test = fields.Text(string="Requested test:")
+    results = fields.Text(string="Results:")
+    Pathologist =fields.Char(string="Pathologist:")
+    Examiner_Name = fields.Char(string="Examiner Name:")
+    routine = fields.Boolean('routine')
+    Urgent = fields.Boolean('Urgent')
+    pre_operative = fields.Boolean('pre_operative')
+    # routine = fields.Boolean('routine')
 
     @api.model
     def create(self, vals):
