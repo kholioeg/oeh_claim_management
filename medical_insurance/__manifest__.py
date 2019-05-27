@@ -36,7 +36,6 @@
         'views/price_plan_report.xml',
         'views/patient_report.xml',
         'views/medical_center_report.xml'
-
     ],
     # only loaded in demonstration mode
     'demo': [
