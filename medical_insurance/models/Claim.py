@@ -29,7 +29,24 @@ class Visit(models.Model):
         ('done', 'Done'),
         ('cancelled', 'Cancelled'),
     ], default='new', readonly=True, store='True')
+    service_line_name = fields.Char(string="Service", related='service_line_id.name.name', readonly=True)
+    #Blood_Group = fields.Char()
+    history = fields.Text(string="History And Clinical Examination:")
+    care_plan = fields.Text(string="Plan Of Care:")
+    diagnosis = fields.Text(string="DIAGNOSIS:")
+    instructions = fields.Text(string="INSTRUCTIONS:")
+   ######################################## IV ACCESS REQUEST FORM ###################################
+    referring_physician = fields.Char()
+    resident = fields.Boolean('Resident')
+    specialist = fields.Boolean('Specialist')
+    consultant = fields.Boolean('Consultant')
+    degree_of_urgency = fields.Char()
 
+
+
+
+
+    ###################################################################################################
 
     @api.model
     def create(self, vals):
