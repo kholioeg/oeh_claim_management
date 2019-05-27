@@ -3,7 +3,7 @@ from odoo import models, fields, api
 
 class Visit(models.Model):
     _name = 'medical.insurance.claim'
-    _rec_name = 'patient_id'
+    _inherit = ['portal.mixin', 'mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string="Claim No", readonly=True, required=True, copy=False, default='New', store='True')
     patient_id = fields.Many2one('medical.insurance.patient', string='Patient Name', required=True, store='True')
@@ -35,18 +35,33 @@ class Visit(models.Model):
     care_plan = fields.Text(string="Plan Of Care:")
     diagnosis = fields.Text(string="DIAGNOSIS:")
     instructions = fields.Text(string="INSTRUCTIONS:")
-   ######################################## IV ACCESS REQUEST FORM ###################################
+    temperature = fields.Boolean(string="Temperature")
+    pulse_rate = fields.Boolean(string="Pulse Rate")
+    respiratory_rate = fields.Boolean(string="Respiratory Rate")
+    blood_pressure = fields.Boolean(string="Blood Pressure")
+    o2_saturation = fields.Boolean(string="O2 Saturation")
+    pain_score = fields.Boolean(string="Pain Score")
+
+
+    clinical_comments =fields.Text(string="clinical comments:")
+    Requested_by = fields.Text(string="Requested by")
+    stamp_and_signature = fields.Text(string="Stamp & signature")
+    lab_date = fields.Date(string="Date")
+    requested_test = fields.Text(string="Requested test:")
+    results = fields.Text(string="Results:")
+    Pathologist =fields.Char(string="Pathologist:")
+    Examiner_Name = fields.Char(string="Examiner Name:")
+    routine = fields.Boolean('routine')
+    Urgent = fields.Boolean('Urgent')
+    pre_operative = fields.Boolean('pre_operative')
+    # routine = fields.Boolean('routine')
+
     referring_physician = fields.Char()
     resident = fields.Boolean('Resident')
     specialist = fields.Boolean('Specialist')
     consultant = fields.Boolean('Consultant')
     degree_of_urgency = fields.Char()
 
-
-
-
-
-    ###################################################################################################
 
     @api.model
     def create(self, vals):
