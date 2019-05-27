@@ -1,6 +1,5 @@
 from odoo import models, fields, api,tools
 
-
 class Patient(models.Model):
     _name = 'medical.insurance.patient'
     _inherit = 'res.partner'

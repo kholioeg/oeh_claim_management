@@ -71,6 +71,11 @@
 
 
             </sheet>
+            <div class="oe_chatter">
+                <field name="message_follower_ids" widget="mail_followers"/>
+                <field name="activity_ids" widget="mail_activity"/>
+                <field name="message_ids" widget="mail_thread"/>
+            </div>
         </form>
       </field>
     </record>
@@ -150,7 +155,7 @@
     <record model="ir.actions.act_window" id="medical_insurance_action_visit">
       <field name="name">claim window</field>
       <field name="res_model">medical.insurance.claim</field>
-      <field name="view_mode">tree,form,pivot,graph,search</field>
+      <field name="view_mode">tree,form,pivot,graph,search,activity,kanban</field>
         <field name="context">{}</field>
     </record>
 
