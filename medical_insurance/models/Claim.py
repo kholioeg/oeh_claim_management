@@ -35,6 +35,13 @@ class Visit(models.Model):
     care_plan = fields.Text(string="Plan Of Care:")
     diagnosis = fields.Text(string="DIAGNOSIS:")
     instructions = fields.Text(string="INSTRUCTIONS:")
+    temperature = fields.Boolean(string="Temperature")
+    pulse_rate = fields.Boolean(string="Pulse Rate")
+    respiratory_rate = fields.Boolean(string="Respiratory Rate")
+    blood_pressure = fields.Boolean(string="Blood Pressure")
+    o2_saturation = fields.Boolean(string="O2 Saturation")
+    pain_score = fields.Boolean(string="Pain Score")
+
 
 
     @api.model

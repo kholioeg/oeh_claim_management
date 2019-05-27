@@ -59,8 +59,17 @@
                 <field name="care_plan"  attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
                 <field name="diagnosis"  attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
                 <field name="instructions"  attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
+                <field name="temperature" attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
+                <field name="pulse_rate" attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
+                <field name="respiratory_rate" attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
+                <field name="blood_pressure" attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
+                <field name="o2_saturation" attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
+                <field name="pain_score" attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
 
             </group>
+
+
+
             </sheet>
         </form>
       </field>
