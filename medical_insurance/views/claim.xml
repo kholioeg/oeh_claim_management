@@ -45,6 +45,7 @@
               <field name="patient_id"/>
               <field name="medical_center_id"/>
               <field name="service_line_id"/>
+              <field name="service_line_name"/>
               <field name="visit_type"/>
               <field name="price_plan_status"/>
               <field name="price_plan"/>
@@ -52,6 +53,13 @@
               <field name="contribution_charge"/>
               <field name="patient_charge"/>
               <field name="date_of_visit"/>
+            </group>
+            <group string="Service based info">
+                <field name="history"  attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
+                <field name="care_plan"  attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
+                <field name="diagnosis"  attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
+                <field name="instructions"  attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
+
             </group>
             </sheet>
         </form>
