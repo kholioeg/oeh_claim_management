@@ -60,28 +60,79 @@
                 <field name="care_plan"  attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
                 <field name="diagnosis"  attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
                 <field name="instructions"  attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
-                <field name="temperature" attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
-                <field name="pulse_rate" attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
-                <field name="respiratory_rate" attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
-                <field name="blood_pressure" attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
-                <field name="o2_saturation" attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
-                <field name="pain_score" attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
+            </group>
+                <group col="8" string="Vital Signs" attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}">
+                    <field name="temperature" attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
+                    <field name="pulse_rate" attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
+                    <field name="respiratory_rate" attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
+                    <field name="blood_pressure" attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
+                    <field name="o2_saturation" attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
+                    <field name="pain_score" attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
+                </group>
 
             </group>
 
-                    <group col="6">
+                <h3 attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}">Referring physician :</h3>
+
+                <group col="6">
                      <field name="resident"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
                      <field name="specialist"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
                      <field name="consultant"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
                  </group>
 
-                 <group col="2">
-                     <field name="referring_physician"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
-                 </group>
+<!--                 <group col="2">-->
+<!--                     <field name="referring_physician"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>-->
+<!--                 </group>-->
+
+                <h3 attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}">Degree of urgency :</h3>
+                <group col="4">
+                    <field name="routine"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                     <field name="semi_urgent"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                     <field name="urgent"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                     <field name="life_saving"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                </group>
+
+                <h3 attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}">Types of access :</h3>
+                <group col="4">
+                    <field name="peripheral_line"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                     <field name="cutdown"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                     <field name="port_a_cath"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                     <field name="central_line"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                </group>
+
+                 <h3 attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}">Estimation duration of time :</h3>
+                <group col="4">
+                    <field name="days"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                     <field name="more_than_2_weeks"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                </group>
+
+                <h3 attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}">Indication :</h3>
+                <group col="4">
+                    <field name="blood_exchange"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                     <field name="tpn"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                     <field name="chemotherapy"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                     <field name="coagulopathy"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                </group>
+
+                <h3 attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}">Any previous insertion of central line :</h3>
+                <group col="4">
+                    <field name="yes"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                     <field name="no"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                </group>
 
 
                 <group col="2">
-                 <field name="degree_of_urgency"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                    <field name="removal_reason"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                    <field name="surgical_note"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                    <field name="anesthetist_note"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                    <field name="procedure"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+
+                </group>
+
+                <group col="2">
+                    <field name="physician_name"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                    <field name="stamp_signature"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+
                 </group>
 
 
@@ -92,19 +143,15 @@
                     <field name="pre_operative" attrs="{'invisible': [('service_line_name','!=', 'Laboratory Multipurpose')]}"/>
                 </group>
                 <group col="2">
-                <field name="Requested_by"  attrs="{'invisible': [('service_line_name','!=', 'Laboratory Multipurpose')]}"/>
-                <field name="stamp_and_signature" attrs="{'invisible': [('service_line_name','!=', 'Laboratory Multipurpose')]}"/>
-                <field name="lab_date" attrs="{'invisible': [('service_line_name','!=', 'Laboratory Multipurpose')]}"/>
-                <field name="requested_test" attrs="{'invisible': [('service_line_name','!=', 'Laboratory Multipurpose')]}"/>
-                <field name="results" attrs="{'invisible': [('service_line_name','!=', 'Laboratory Multipurpose')]}"/>
-                <field name="Pathologist" attrs="{'invisible': [('service_line_name','!=', 'Laboratory Multipurpose')]}"/>
-                <field name="Examiner_Name" attrs="{'invisible': [('service_line_name','!=', 'Laboratory Multipurpose')]}"/>
-                <field name="clinical_comments"  attrs="{'invisible': [('service_line_name','!=', 'Laboratory Multipurpose')]}"/>
-                  </group>
-
-
-
-            </group>
+                    <field name="Requested_by"  attrs="{'invisible': [('service_line_name','!=', 'Laboratory Multipurpose')]}"/>
+                    <field name="stamp_and_signature" attrs="{'invisible': [('service_line_name','!=', 'Laboratory Multipurpose')]}"/>
+                    <field name="lab_date" attrs="{'invisible': [('service_line_name','!=', 'Laboratory Multipurpose')]}"/>
+                    <field name="requested_test" attrs="{'invisible': [('service_line_name','!=', 'Laboratory Multipurpose')]}"/>
+                    <field name="results" attrs="{'invisible': [('service_line_name','!=', 'Laboratory Multipurpose')]}"/>
+                    <field name="Pathologist" attrs="{'invisible': [('service_line_name','!=', 'Laboratory Multipurpose')]}"/>
+                    <field name="Examiner_Name" attrs="{'invisible': [('service_line_name','!=', 'Laboratory Multipurpose')]}"/>
+                    <field name="clinical_comments"  attrs="{'invisible': [('service_line_name','!=', 'Laboratory Multipurpose')]}"/>
+                </group>
 
             </sheet>
             <div class="oe_chatter">
