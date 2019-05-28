@@ -6,7 +6,7 @@ class PricePlan(models.Model):
     _name = 'medical.insurance.price.plan'
     _inherits = {'product.template':'product_id'}
 
-    product_id = fields.Many2one('product.template', string='Price Plan', ondelete='cascade')
+    product_id = fields.Many2one('product.template', string='Price Plan Service', ondelete='cascade')
     name = fields.Char(related="product_id.name")
     plan_cost = fields.Float(related="product_id.list_price")
     paid_cost = fields.Float()
