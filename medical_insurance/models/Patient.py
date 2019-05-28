@@ -25,8 +25,8 @@ class Patient(models.Model):
     # status = fields.Boolean()
     price_plan = fields.Many2one('medical.insurance.price.plan', ondelete="set null", string="price plan")
     patient_status = fields.Char(string='Patient Status', related='price_plan.status', readonly=True, store='True')
-    EHR = fields.One2many('medical.insurance.ehr', inverse_name="patient_id", string="EHR")
-
+    # EHR = fields.One2many('medical.insurance.ehr', inverse_name="patient_id", string="EHR")
+    disease = fields.One2many('medical.insurance.disease', inverse_name="patient_id", string="Disease")
 
 
     @api.model

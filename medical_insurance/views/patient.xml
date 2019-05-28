@@ -84,9 +84,9 @@
                     </group>
                 </group>
               </page>
-              <page string="EHR">
+              <page string="Disease">
                   <group>
-                    <field name="EHR"/>
+                    <field name="disease"/>
                   </group>
               </page>
                </notebook>
