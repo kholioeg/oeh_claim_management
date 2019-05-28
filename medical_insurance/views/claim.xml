@@ -55,7 +55,7 @@
               <field name="date_of_visit"/>
             </group>
             <group string="Service based info">
-            <group col="2">
+            <group>
                 <field name="history"  attrs="{'invisible': [('service_line_type','!=', 'Re-Assessment')]}"/>
                 <field name="care_plan"  attrs="{'invisible': [('service_line_type','!=', 'Re-Assessment')]}"/>
                 <field name="diagnosis"  attrs="{'invisible': [('service_line_type','!=', 'Re-Assessment')]}"/>
