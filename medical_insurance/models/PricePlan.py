@@ -15,14 +15,15 @@ class PricePlan(models.Model):
     start_date = fields.Date(string="Start At")
     end_date = fields.Date(string="End At")
     # price = fields.Float()
-    medical_center_id = fields.Many2one('medical.insurance.medical.center', ondelete='set null', string='MedicalCenter')
+    medical_center_id = fields.Many2many('medical.insurance.medical.center','rel_medical_center', string='MedicalCenter')
+
     patient = fields.One2many('medical.insurance.patient', inverse_name='price_plan', ondelete='set null',
                               string='Patient')
     service_line = fields.One2many('medical.insurance.service.line', inverse_name='price_plan', ondelete='set null',
                                    string='ServiceLine')
     @api.one
     def _compute_plan_status(self):
-        for rec in self :
+        for rec in self:
             today = datetime.datetime.now().date()
             start = self.start_date
             end = self.end_date
