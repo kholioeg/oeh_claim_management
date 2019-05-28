@@ -29,7 +29,7 @@ class Visit(models.Model):
         ('done', 'Done'),
         ('cancelled', 'Cancelled'),
     ], default='new', readonly=True, store='True')
-    service_line_name = fields.Char(string="Service", related='service_line_id.name.name', readonly=True)
+    service_line_type = fields.Char(string="Service Type", related='service_line_id.service_type', readonly=True)
     #Blood_Group = fields.Char()
     history = fields.Text(string="History And Clinical Examination:")
     care_plan = fields.Text(string="Plan Of Care:")
