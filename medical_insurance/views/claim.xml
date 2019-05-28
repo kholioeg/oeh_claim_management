@@ -110,7 +110,7 @@
                     <field name="yes"/>
                      <field name="no"/>
                 </group>
-                
+
                 <separator/>
                 <separator string="If for removal reason"/>
                     <field name="removal_reason"/>
@@ -132,21 +132,20 @@
 
                 <group string="Service based info" attrs="{'invisible': [('service_line_type','!=', 'Laboratory Multipurpose')]}">
 
-<!--                <field name="routine" attrs="{'invisible': [('pink','=',True),('yellow','=',True)]}"/>-->
                 <group col="6">
-                    <field name="routine" attrs="{'invisible': [('service_line_type','!=', 'Laboratory Multipurpose')]}"/>
-                    <field name="Urgent" attrs="{'invisible': [('service_line_type','!=', 'Laboratory Multipurpose')]}"/>
-                    <field name="pre_operative" attrs="{'invisible': [('service_line_type','!=', 'Laboratory Multipurpose')]}"/>
+                    <field name="routine"/>
+                    <field name="Urgent"/>
+                    <field name="pre_operative"/>
                 </group>
                 <group col="2">
-                    <field name="Requested_by"  attrs="{'invisible': [('service_line_type','!=', 'Laboratory Multipurpose')]}"/>
-                    <field name="stamp_and_signature" attrs="{'invisible': [('service_line_type','!=', 'Laboratory Multipurpose')]}"/>
-                    <field name="lab_date" attrs="{'invisible': [('service_line_type','!=', 'Laboratory Multipurpose')]}"/>
-                    <field name="requested_test" attrs="{'invisible': [('service_line_type','!=', 'Laboratory Multipurpose')]}"/>
-                    <field name="results" attrs="{'invisible': [('service_line_type','!=', 'Laboratory Multipurpose')]}"/>
-                    <field name="Pathologist" attrs="{'invisible': [('service_line_type','!=', 'Laboratory Multipurpose')]}"/>
-                    <field name="Examiner_Name" attrs="{'invisible': [('service_line_type','!=', 'Laboratory Multipurpose')]}"/>
-                    <field name="clinical_comments"  attrs="{'invisible': [('service_line_type','!=', 'Laboratory Multipurpose')]}"/>
+                    <field name="Requested_by"/>
+                    <field name="stamp_and_signature"/>
+                    <field name="lab_date"/>
+                    <field name="requested_test"/>
+                    <field name="results"/>
+                    <field name="Pathologist"/>
+                    <field name="Examiner_Name"/>
+                    <field name="clinical_comments"/>
                 </group>
                 </group>
             </sheet>
