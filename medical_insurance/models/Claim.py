@@ -60,7 +60,36 @@ class Visit(models.Model):
     resident = fields.Boolean('Resident')
     specialist = fields.Boolean('Specialist')
     consultant = fields.Boolean('Consultant')
-    degree_of_urgency = fields.Char()
+    # degree_of_urgency = fields.Char()
+    routine = fields.Boolean('Routine')
+    semi_urgent = fields.Boolean('Semi urgent')
+    urgent = fields.Boolean('Urgent')
+    life_saving = fields.Boolean('Life saving')
+
+    peripheral_line = fields.Boolean('Peripheral line')
+    cutdown = fields.Boolean('Cutdown')
+    port_a_cath = fields.Boolean('Port A cath')
+    central_line = fields.Boolean('Central line')
+
+    days = fields.Boolean('Days')
+    more_than_2_weeks = fields.Boolean('More than 2 weeks')
+
+    blood_exchange = fields.Boolean('Blood exchange ')
+    tpn = fields.Boolean('TPN')
+    chemotherapy = fields.Boolean('Chemotherapy')
+    coagulopathy = fields.Boolean('Coagulopathy')
+
+    yes = fields.Boolean('Yes')
+    no = fields.Boolean('No')
+
+    removal_reason = fields.Text(string="for removal reason :")
+    surgical_note = fields.Text(string="Surgical note :")
+    anesthetist_note = fields.Text(string="Anesthetist note :")
+    procedure = fields.Text(string="Procedure :")
+
+    physician_name = fields.Text(string="Physician Name :")
+    stamp_signature = fields.Text(string="Stamp & Signature :")
+    date = fields.Date(string="Date")
 
 
     @api.model

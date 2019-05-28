@@ -72,19 +72,67 @@
 
             </group>
 
+                <h3 attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}">Referring physician :</h3>
+
                 <group col="6">
                      <field name="resident"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
                      <field name="specialist"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
                      <field name="consultant"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
                  </group>
 
-                 <group col="2">
-                     <field name="referring_physician"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
-                 </group>
+<!--                 <group col="2">-->
+<!--                     <field name="referring_physician"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>-->
+<!--                 </group>-->
+
+                <h3 attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}">Degree of urgency :</h3>
+                <group col="4">
+                    <field name="routine"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                     <field name="semi_urgent"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                     <field name="urgent"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                     <field name="life_saving"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                </group>
+
+                <h3 attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}">Types of access :</h3>
+                <group col="4">
+                    <field name="peripheral_line"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                     <field name="cutdown"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                     <field name="port_a_cath"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                     <field name="central_line"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                </group>
+
+                 <h3 attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}">Estimation duration of time :</h3>
+                <group col="4">
+                    <field name="days"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                     <field name="more_than_2_weeks"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                </group>
+
+                <h3 attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}">Indication :</h3>
+                <group col="4">
+                    <field name="blood_exchange"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                     <field name="tpn"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                     <field name="chemotherapy"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                     <field name="coagulopathy"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                </group>
+
+                <h3 attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}">Any previous insertion of central line :</h3>
+                <group col="4">
+                    <field name="yes"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                     <field name="no"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                </group>
 
 
                 <group col="2">
-                 <field name="degree_of_urgency"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                    <field name="removal_reason"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                    <field name="surgical_note"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                    <field name="anesthetist_note"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                    <field name="procedure"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+
+                </group>
+
+                <group col="2">
+                    <field name="physician_name"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+                    <field name="stamp_signature"  attrs="{'invisible': [('service_line_name','!=', 'Iv Request')]}"/>
+
                 </group>
 
 
