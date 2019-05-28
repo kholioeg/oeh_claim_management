@@ -36,7 +36,8 @@
         'views/price_plan_report.xml',
         'views/patient_report.xml',
         'views/medical_center_report.xml',
-        'views/disease.xml'
+        'views/disease.xml',
+        'views/vitalsignshistory.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

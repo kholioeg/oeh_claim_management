@@ -89,6 +89,11 @@
                     <field name="disease"/>
                   </group>
               </page>
+               <page string="Vital Signs History">
+                  <group>
+                    <field name="vital_signs_history"/>
+                  </group>
+              </page>
                </notebook>
             </sheet>
           </form>
