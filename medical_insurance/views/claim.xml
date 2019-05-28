@@ -61,7 +61,7 @@
                 <field name="diagnosis"  attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
                 <field name="instructions"  attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
             </group>
-                <group col="8" string="Vital Signs" attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}">
+                <group col="6" string="Vital Signs" attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}">
                     <field name="temperature" attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
                     <field name="pulse_rate" attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
                     <field name="respiratory_rate" attrs="{'invisible': [('service_line_name','!=', 'Re-Assessment')]}"/>
