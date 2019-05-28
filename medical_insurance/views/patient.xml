@@ -63,12 +63,26 @@
                 </group>
               </page>
               <page string="Medical Info">
+
                 <group col="4">
                   <field name="blood_group"/>
                   <field name="height"/>
                   <field name="weight"/>
                   <field name="patient_status"/>
                 </group>
+                   <notebook position="inside">
+                              <page string="Disease">
+                          <group>
+                            <field name="disease"/>
+                          </group>
+                      </page>
+                       <page string="Vital Signs History">
+                          <group>
+                            <field name="vital_signs_history"/>
+                          </group>
+                      </page>
+                  </notebook>
+
               </page>
               <page string="Contact Info">
                 <group col="4">
@@ -84,16 +98,7 @@
                     </group>
                 </group>
               </page>
-              <page string="Disease">
-                  <group>
-                    <field name="disease"/>
-                  </group>
-              </page>
-               <page string="Vital Signs History">
-                  <group>
-                    <field name="vital_signs_history"/>
-                  </group>
-              </page>
+
                </notebook>
             </sheet>
           </form>
