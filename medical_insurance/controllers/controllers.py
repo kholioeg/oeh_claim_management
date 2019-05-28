@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import http
+# from odoo import http
 
 # class MedicalInsurance(http.Controller):
 #     @http.route('/medical_insurance/medical_insurance/', auth='public')
