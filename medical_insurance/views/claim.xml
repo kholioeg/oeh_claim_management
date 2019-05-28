@@ -176,7 +176,10 @@
       </field>
     </record>
 
-      <record model="ir.ui.view" id="medical_insurance_graph_pivot_visit">
+
+          <!-- explicit pivot view definition -->
+
+      <record model="ir.ui.view" id="medical_insurance_pivot_visit">
       <field name="name">visit graph</field>
       <field name="model">medical.insurance.claim</field>
       <field name="arch" type="xml">
@@ -187,29 +190,17 @@
     </record>
 
 
-        <!-- explicit report view definition -->
+    <!-- explicit calendar view definition -->
 
-    <report
-      id="account_invoices"
-      model="medical.insurance.claim"
-      string="claim"
-      report_type="qweb-pdf"
-      name="medical_insurance.report_visit"
-      file="medical_insurance.report_visit"
-    />
-
-    <template id="report_visit">
-    <t t-call="web.html_container">
-        <t t-foreach="docs" t-as="o">
-            <t t-call="web.external_layout">
-                <div class="page">
-                    <h2>Claim</h2>
-                    <p>This object's name is <span t-field="o.name"/></p>
-                </div>
-            </t>
-        </t>
-    </t>
-    </template>
+        <record id="medical_insurance_calendar_visit" model="ir.ui.view">
+            <field name="name">claim calendar</field>
+            <field name="model">medical.insurance.claim</field>
+            <field name="arch" type="xml">
+                <calendar string="Claims" date_start="date_of_visit">
+                    <field name="name"/>
+                </calendar>
+            </field>
+        </record>
 
 
         <!-- explicit search view definition -->
@@ -232,13 +223,37 @@
     </record>
 
 
+              <!-- explicit report view definition -->
+
+     <report
+      id="medical_insurance_claim_report"
+      model="medical.insurance.claim"
+      string="Claim Report"
+      report_type="qweb-pdf"
+      name="medical_insurance.medical_insurance_claim_report_view"
+      file="medical_insurance.medical_insurance_claim_report_view"
+    />
+
+    <template id="medical_insurance_claim_report_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Claim</h2>
+                        <p>This object's name is <span t-field="doc.name"/></p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+      
 
     <!-- actions opening views on models -->
 
     <record model="ir.actions.act_window" id="medical_insurance_action_visit">
       <field name="name">claim window</field>
       <field name="res_model">medical.insurance.claim</field>
-      <field name="view_mode">tree,form,pivot,graph,search,activity,kanban</field>
+      <field name="view_mode">tree,form,pivot,graph,search,activity,kanban,calendar</field>
         <field name="context">{}</field>
     </record>
 
