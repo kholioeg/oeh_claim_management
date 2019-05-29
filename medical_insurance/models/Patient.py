@@ -1,3 +1,8 @@
+from dateutil.relativedelta import relativedelta
+from datetime import date, datetime
+from dateutil.relativedelta import relativedelta
+
+
 from odoo import models, fields, api,tools
 
 class Patient(models.Model):
@@ -9,7 +14,9 @@ class Patient(models.Model):
     last_name = fields.Char(string="Last name")
     image = fields.Binary()
     NID = fields.Char(string='NID')
-    date_of_birth = fields.Date(string='Birth date')
+    # date_of_birth = fields.Date(string='Birth date')
+    birthday = fields.Date(string="DOB")
+    age = fields.Integer(string="Age")
     gender = fields.Selection([
         ('male', "Male"),
         ('female', "Female"),
@@ -31,8 +38,21 @@ class Patient(models.Model):
     operation_reservation = fields.One2many('medical.insurance.operationreservation', inverse_name="patient_id", string="Operation Reservation")
     medicine = fields.One2many('medical.insurance.medicine', inverse_name="patient_id", string="Medicine")
     antenatal_care = fields.One2many('medical.insurance.antenatalcareline', inverse_name="patient_id", string="Antenatal Care Line")
+
     @api.model
     def create(self, vals):
         seq = self.env['ir.sequence'].next_by_code('medical.insurance.patient') or '/'
         vals['name'] = seq
         return super(Patient, self).create(vals)
+
+
+    @api.multi
+    @api.onchange('birthday')
+    def _compute_age(self):
+        for record in self:
+            if record.birthday and record.birthday <= fields.Date.today():
+                record.age = relativedelta(
+                    fields.Date.from_string(fields.Date.today()),
+                    fields.Date.from_string(record.birthday)).years
+            else:
+                record.age = 0
