@@ -86,6 +86,11 @@
                             <field name="operation_reservation"/>
                           </group>
                       </page>
+                      <page string="Medicine">
+                          <group>
+                            <field name="medicine"/>
+                          </group>
+                      </page>
                   </notebook>
 
               </page>
