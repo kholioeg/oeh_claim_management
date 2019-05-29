@@ -8,3 +8,7 @@ from . import PricePlan
 from . import MedicalCenter
 from . import EHR
 from . import Disease
+from . import VitalSignsHistory
+from . import OperationReservation
+from . import Doctors
+from . import Room

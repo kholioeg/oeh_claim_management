@@ -36,7 +36,11 @@
         'views/price_plan_report.xml',
         'views/patient_report.xml',
         'views/medical_center_report.xml',
-        'views/disease.xml'
+        'views/disease.xml',
+        'views/vital_signs_history.xml',
+        'views/operation_reservation.xml',
+        'views/doctors.xml',
+        'views/room.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
