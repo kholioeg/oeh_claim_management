@@ -37,7 +37,9 @@
         'views/patient_report.xml',
         'views/medical_center_report.xml',
         'views/disease.xml',
-        'views/vitalsignshistory.xml'
+        'views/vital_signs_history.xml',
+        'views/operation_reservation.xml',
+        'views/doctors.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

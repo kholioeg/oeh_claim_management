@@ -71,14 +71,19 @@
                   <field name="patient_status"/>
                 </group>
                    <notebook position="inside">
-                              <page string="Disease">
+                       <page string="Disease">
                           <group>
                             <field name="disease"/>
                           </group>
                       </page>
-                       <page string="Vital Signs History">
+                      <page string="Vital Signs History">
                           <group>
                             <field name="vital_signs_history"/>
+                          </group>
+                      </page>
+                      <page string="Operation Reservation">
+                          <group>
+                            <field name="operation_reservation"/>
                           </group>
                       </page>
                   </notebook>

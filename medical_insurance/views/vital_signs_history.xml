@@ -5,7 +5,7 @@
         <field name="priority" eval="16"/>
         <field name="arch" type="xml">
             <tree>
-                <field name="VB"/>
+                        <field name="VB"/>
                         <field name="F1_O2"/>
                         <field name="RR_SPO2"/>
                         <field name="sao2"/>
