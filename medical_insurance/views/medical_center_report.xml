@@ -27,7 +27,7 @@
                         <h3>mobile:</h3>
                         <h5 t-field="doc.mobile"/>
                         <h3>price_plan: </h3>
-                        <h5 t-field="doc.price_plan"/>
+                        <h5 t-field="doc.price_plan_id"/>
 
                     </div>
                 </t>
