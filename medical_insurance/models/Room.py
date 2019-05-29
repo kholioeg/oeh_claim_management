@@ -1,8 +1,8 @@
 from odoo import models, fields, api
 
 
-class Doctors(models.Model):
+class Room(models.Model):
 
-    _name = 'medical.insurance.doctors'
+    _name = 'medical.insurance.room'
     _inherit = 'res.partner'
 

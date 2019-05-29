@@ -12,6 +12,7 @@ class OperationReservation(models.Model):
     To = fields.Datetime()
     Notes = fields.Text()
     doctor_name = fields.Many2one('medical.insurance.doctors', string="doctor")
+    room_number = fields.Many2one('medical.insurance.room', string="room_number")
     # doctor_id = fields.Char(related="doctor_name ")
 
     @api.model
