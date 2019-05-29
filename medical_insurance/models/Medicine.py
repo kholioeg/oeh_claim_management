@@ -4,9 +4,9 @@ from odoo import models, fields, api
 class Medicine(models.Model):
     _name = 'medical.insurance.medicine'
 
-    patient_id = fields.Many2one('medical.insurance.patient', string='Medicine', required=True)
+    patient_id = fields.Many2one('medical.insurance.patient', string='patient', required=True)
 
-    medicine = fields.Char()
+    medicine = fields.Many2one('medical.insurance.medicine_info',string="Name")
     indication = fields.Char(string="Indication")
     Start = fields.Date()
     End = fields.Date()
