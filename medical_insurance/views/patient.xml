@@ -91,8 +91,12 @@
                             <field name="medicine"/>
                           </group>
                       </page>
+                       <page string="Antenatal Care Line">
+                            <group>
+                             <field name="antenatal_care"/>
+                            </group>
+                       </page>
                   </notebook>
-
               </page>
               <page string="Contact Info">
                 <group col="4">
@@ -108,8 +112,7 @@
                     </group>
                 </group>
               </page>
-
-               </notebook>
+            </notebook>
             </sheet>
           </form>
       </field>

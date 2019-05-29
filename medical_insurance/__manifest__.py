@@ -41,7 +41,8 @@
         'views/operation_reservation.xml',
         'views/doctors.xml',
         'views/room.xml',
-        'views/medicine.xml'
+        'views/medicine.xml',
+        'views/antenatal_care_line.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

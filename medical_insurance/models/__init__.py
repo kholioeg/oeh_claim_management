@@ -13,3 +13,5 @@ from . import OperationReservation
 from . import Doctors
 from . import Room
 from . import Medicine
+from . import AntenatalCareLine
+

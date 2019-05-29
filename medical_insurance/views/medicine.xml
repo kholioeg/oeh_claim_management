@@ -23,7 +23,7 @@
 
 <!-- explicit form view definition-->
     <record model="ir.ui.view" id="medicine_form">
-        <field name="name">ehr_list</field>
+        <field name="name">medicine_list</field>
         <field name="model">medical.insurance.medicine</field>
         <field name="arch" type="xml">
             <form>

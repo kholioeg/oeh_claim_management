@@ -30,6 +30,7 @@ class Patient(models.Model):
     vital_signs_history = fields.One2many('medical.insurance.vitalsignshistory', inverse_name="patient_id", string="Vital Signs")
     operation_reservation = fields.One2many('medical.insurance.operationreservation', inverse_name="patient_id", string="Operation Reservation")
     medicine = fields.One2many('medical.insurance.medicine', inverse_name="patient_id", string="Medicine")
+    antenatal_care = fields.One2many('medical.insurance.antenatalcareline', inverse_name="patient_id", string="Antenatal Care Line")
     @api.model
     def create(self, vals):
         seq = self.env['ir.sequence'].next_by_code('medical.insurance.patient') or '/'
