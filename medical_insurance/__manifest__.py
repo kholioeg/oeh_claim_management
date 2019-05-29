@@ -42,7 +42,8 @@
         'views/doctors.xml',
         'views/room.xml',
         'views/medicine.xml',
-        'views/antenatal_care_line.xml'
+        'views/antenatal_care_line.xml',
+        'views/disease_info.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

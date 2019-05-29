@@ -14,4 +14,5 @@ from . import Doctors
 from . import Room
 from . import Medicine
 from . import AntenatalCareLine
+from . import DiseaseInfo
 
