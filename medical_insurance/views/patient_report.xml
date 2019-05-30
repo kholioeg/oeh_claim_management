@@ -116,7 +116,7 @@
                                     <strong>Price Plan:</strong>
                                     <p t-field="doc.price_plan"/>
                                 </div>
-                                  <div  class="mr32">
+                                <div  class="mr40">
                                     <strong>Patient Status:</strong>
                                     <p t-field="doc.patient_status"/>
                                 </div>
