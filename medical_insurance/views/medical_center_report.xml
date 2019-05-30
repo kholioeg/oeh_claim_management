@@ -1,37 +1,136 @@
 <?xml version="1.0"?>
 <odoo>
-     <report
+    <report
 
-         id="medical_center_report"
-        model="medical.insurance.medical.center"
-        string="Medical center Report"
+            id="medical_center_report"
+            model="medical.insurance.medical.center"
+            string="Medical center Report"
 
-        report_type="qweb-pdf"
-        name="medical_insurance.medical_center_report_view"
-        file="medical_insurance.medical_center_report_view"
-        />
-
-
-
+            report_type="qweb-pdf"
+            name="medical_insurance.medical_center_report_view"
+            file="medical_insurance.medical_center_report_view"
+    />
 
     <template id="medical_center_report_view">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="doc">
                 <t t-call="web.external_layout">
                     <div class="page">
+                        <h2>Medical Center</h2>
+                        <div class="oe_structure"/>
+                        <div class="row col mt32 mb32" id="informations">
+                            <div  class="mr32">
+                                <strong>Name:</strong>
+                                <p t-field="doc.name"/>
+                            </div>
+                            <div  class="mr32">
+                                <strong>E-mail:</strong>
+                                <p t-field="doc.email"/>
+                            </div>
+                            <div  class="mr32">
+                                <strong>Mobile:</strong>
+                                <p t-field="doc.mobile"/>
+                            </div>
+                            <div  class="mr32">
+                                <strong>Phone:</strong>
+                                <p t-field="doc.phone"/>
+                            </div>
+                            <div  class="mr32">
+                                <strong>Country:</strong>
+                                <p t-field="doc.country_id"/>
+                            </div>
+                            <div  class="mr32">
+                                <strong>Complete Adddress:</strong>
+                                <p t-field="doc.contact_address"/>
+                            </div>
 
-                        <h3>name: </h3>
-                        <h5 t-field="doc.name"/>
-                        <h3>email: </h3>
-                        <h5 t-field="doc.email"/>
-                        <h3>mobile:</h3>
-                        <h5 t-field="doc.mobile"/>
-                        <h3>price_plan: </h3>
-                        <h5 t-field="doc.price_plan_id"/>
-
+                        </div>
                     </div>
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <t t-set="colspan" t-value="5"/>
+                                <th class="text-left">Price Plan Service</th>
+                                <th class="text-right">Status</th>
+                                <th class="text-right">Start At</th>
+                                <th class="text-right">End At</th>
+<!--                                <th class="text-right">Patient</th>-->
+<!--                                <th class="text-right">ServiceLine</th>-->
+
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+
+                            <tr t-foreach="docs.price_plan_id" t-as="t">
+                                <td class="text-left">
+                                    <span t-field="t.product_id"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="t.status"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="t.start_date"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="t.end_date"/>
+                                </td>
+<!--                                <td class="text-right">-->
+<!--                                    <span t-field="t.patient"/>-->
+<!--                                </td>-->
+<!--                                <td class="text-right">-->
+<!--                                    <span t-field="t.service_line"/>-->
+<!--                                </td>-->
+
+                            </tr>
+                        </tbody>
+                    </table>
+                       <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <t t-set="colspan" t-value="5"/>
+                                <th class="text-left">Date Of visit</th>
+                                <th class="text-right">Patient Name</th>
+                                <th class="text-right">Medical Center</th>
+                                <th class="text-right">Visit State</th>
+                                <th class="text-right">Visit Type</th>
+<!--                                <th class="text-right">ServiceLine</th>-->
+
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+
+                            <tr t-foreach="docs.visit" t-as="t">
+                                <td class="text-left">
+                                    <span t-field="t.date_of_visit"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="t.patient_id"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="t.medical_center_id"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="t.claim_status"/>
+                                </td>
+                                 <td class="text-right">
+                                    <span t-field="t.visit_type"/>
+                                </td>
+<!--                                <td class="text-right">-->
+<!--                                    <span t-field="t.patient"/>-->
+<!--                                </td>-->
+<!--                                <td class="text-right">-->
+<!--                                    <span t-field="t.service_line"/>-->
+<!--                                </td>-->
+
+                            </tr>
+                        </tbody>
+                    </table>
                 </t>
             </t>
         </t>
+
+
+
+
     </template>
 </odoo>
