@@ -167,6 +167,7 @@
       <field name="arch" type="xml">
         <graph type="bar">
           <field name="date_of_visit" type="row"/>
+          <field name="contribution_charge" type="measure"/>
         </graph>
       </field>
     </record>

@@ -16,11 +16,9 @@ class Visit(models.Model):
     date_of_visit = fields.Datetime(default=lambda self: fields.datetime.now(), store='True')
     claim_status = fields.Char(compute='compute_claim_status', readonly=True)
     visit_type = fields.Selection([
-        ('office', 'Office Visit'),
-        ('physical', 'Physical'),
-        ('school', 'School/Sports Physical'),
-        ('exam', 'Medicare Initial Preventative Physical Exam'),
-        ('labs', 'Screening and Diagnostic labs'),
+        ('outpatient', 'Outpatient'),
+        ('ambulatory', 'Ambulatory'),
+        ('opd/er', 'OPD/ER'),
     ], required=True, store='True')
     visit_state = fields.Selection([
         ('new', 'New'),
