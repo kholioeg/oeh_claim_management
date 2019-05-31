@@ -6,7 +6,7 @@ class Disease(models.Model):
 
     patient_id = fields.Many2one('medical.insurance.patient', string='Disease', required=True)
 
-    disease = fields.Char()
+    disease = fields.Many2one('medical.insurance.disease_info',string="Disease Name")
     severity = fields.Selection([
         ('low', "Low"),
         ('moderate', "Moderate"),

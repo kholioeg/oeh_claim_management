@@ -40,7 +40,11 @@
         'views/vital_signs_history.xml',
         'views/operation_reservation.xml',
         'views/doctors.xml',
-        'views/room.xml'
+        'views/room.xml',
+        'views/medicine.xml',
+        'views/antenatal_care_line.xml',
+        'views/disease_info.xml',
+        'views/medicine_info.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

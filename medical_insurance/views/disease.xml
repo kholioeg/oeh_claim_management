@@ -32,26 +32,6 @@
                         <field name="diagnosed_on"/>
                         <field name="remarks"/>
                     </group>
-                   
-
-<!--                   <page string="Medication">-->
-<!--                    <group col="4">-->
-<!--                         <field name="medicament"/>-->
-<!--                         <field name="indication"/>-->
-<!--                         <field name="start"/>-->
-<!--                         <field name="end"/>-->
-<!--                    </group>-->
-<!--                   </page>-->
-
-<!--                   <page string="vaccination">-->
-<!--                    <group col="4">-->
-<!--                        <field name="vaccine"/>-->
-<!--                        <field name="dose"/>-->
-<!--                        <field name="Date"/>-->
-<!--                        <field name="observation"/>-->
-<!--                    </group>-->
-<!--                   </page>-->
-
                 </sheet>
             </form>
         </field>

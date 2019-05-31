@@ -12,3 +12,8 @@ from . import VitalSignsHistory
 from . import OperationReservation
 from . import Doctors
 from . import Room
+from . import Medicine
+from . import AntenatalCareLine
+from . import DiseaseInfo
+from . import MedicineInfo
+
