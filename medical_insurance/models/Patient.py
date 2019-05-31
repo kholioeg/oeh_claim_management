@@ -77,15 +77,14 @@ class Patient(models.Model):
 #     names = [self.first_name, self.name]
 #     self.display_name = ' / '.join(filter(None, names))
 
-@api.multi
 def name_get(self, cr, uid, ids, context=None):
     if not ids:
         return []
-    reads = self.read(cr, uid, ids, ['first_name', 'name'], context=context)
+    reads = self.read(cr, uid, ids, ['name', 'first_name'], context=context)
     res = []
     for record in reads:
-        name = record['first_name']
-        if record['name']:
-            name = record['name'][1] + ' / ' + name
+        name = record['name']
+        if record['first_name']:
+            name = record['first_name'][1] + ' / ' + name
         res.append((record['id'], name))
     return res
