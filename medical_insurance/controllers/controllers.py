@@ -40,3 +40,6 @@ class MedicalInsurance(http.Controller):
     @http.route('/medical_insurance/patient_validate/', auth='public')
     def index(self, **kw):
         return json.dumps({'result': 'Test result'})
+
+
+
