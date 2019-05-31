@@ -1,192 +1,191 @@
 <odoo>
-  <data>
+    <data>
 
 
-    <!-- explicit list view definition -->
+        <!-- explicit list view definition -->
 
-    <record model="ir.ui.view" id="medical_insurance_list_visit">
-      <field name="name">claim list</field>
-      <field name="model">medical.insurance.claim</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="date_of_visit"/>
-          <field name="patient_id"/>
-          <field name="medical_center_id"/>
-          <field name="visit_state"/>
-          <field name="visit_type"/>
-        </tree>
-      </field>
-    </record>
-
-
-          <!-- explicit sequence view definition -->
-
-    <record model="ir.sequence" id="seq_visit_id">
-        <field name="name">Visit Number</field>
-        <field name="code">medical.insurance.claim</field>
-        <field name="prefix">CL</field>
-        <field name="padding">5</field>
-    </record>
+        <record model="ir.ui.view" id="medical_insurance_list_visit">
+            <field name="name">claim list</field>
+            <field name="model">medical.insurance.claim</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="date_of_visit"/>
+                    <field name="patient_id"/>
+                    <field name="medical_center_id"/>
+                    <field name="visit_state"/>
+                    <field name="visit_type"/>
+                </tree>
+            </field>
+        </record>
 
 
-    <!-- explicit form view definition -->
+        <!-- explicit sequence view definition -->
 
-    <record model="ir.ui.view" id="medical_insurance_form_visit">
-      <field name="name">claim form</field>
-      <field name="model">medical.insurance.claim</field>
-      <field name="arch" type="xml">
-        <form>
-            <header>
-                <field name="name"/>
-                <field name="visit_state" widget="statusbar"/>
-            </header>
-            <sheet>
-                <group string="Claim"  col="4">
-                  <field name="patient_id"/>
-                  <field name="medical_center_id"/>
-                  <field name="service_line_id"/>
-                  <field name="service_line_type"/>
-                  <field name="visit_type"/>
-                  <field name="price_plan_status"/>
-                  <field name="price_plan"/>
-                  <field name="claim_status"/>
-                  <field name="contribution_charge"/>
-                  <field name="patient_charge"/>
-                  <field name="date_of_visit"/>
-                </group>
-
-                <group string="Service based info" attrs="{'invisible': [('service_line_type','!=', 'Re-Assessment')]}">
-                    <group col="2">
-                        <field name="history"/>
-                        <field name="care_plan"/>
-                        <field name="diagnosis"/>
-                        <field name="instructions"/>
-                    </group>
-                    <group col="6" string="Vital Signs">
-                        <field name="temperature"/>
-                        <field name="pulse_rate"/>
-                        <field name="respiratory_rate"/>
-                        <field name="blood_pressure"/>
-                        <field name="o2_saturation"/>
-                        <field name="pain_score"/>
-                    </group>
-                </group>
-
-            <group string="Service based info" attrs="{'invisible': [('service_line_type','!=', 'Iv Request')]}">
-
-                <group col="6" string="Referring physician">
-                     <field name="resident"/>
-                     <field name="specialist"/>
-                     <field name="consultant"/>
-                </group>
-
-                <group col="8" string="Degree of urgency">
-                    <field name="routine"/>
-                     <field name="semi_urgent"/>
-                     <field name="urgent"/>
-                     <field name="life_saving"/>
-                </group>
-
-                <group col="8" string="Types of access">
-                    <field name="peripheral_line"/>
-                     <field name="cutdown"/>
-                     <field name="port_a_cath"/>
-                     <field name="central_line"/>
-                </group>
-
-                <group col="4" string="Estimation duration of time">
-                    <field name="days"/>
-                     <field name="more_than_2_weeks"/>
-                </group>
-
-                <group col="8" string="Indication">
-                    <field name="blood_exchange"/>
-                     <field name="tpn"/>
-                     <field name="chemotherapy"/>
-                     <field name="coagulopathy"/>
-                </group>
-
-                <group col="4" string="Any previous insertion of central line">
-                    <field name="yes"/>
-                     <field name="no"/>
-                </group>
-
-                <separator/>
-                <separator string="If for removal reason"/>
-                    <field name="removal_reason"/>
-                <separator string="Surgical note"/>
-                    <field name="surgical_note"/>
-                <separator string="Anesthetist note"/>
-                    <field name="anesthetist_note"/>
-                <separator string="Procedure"/>
-                    <field name="procedure"/>
-
-                <separator/><separator/>
-
-                <group>
-                    <field name="physician_name"/>
-                    <field name="stamp_signature"/>
-                </group>
-
-            </group>
-
-                <group string="Service based info" attrs="{'invisible': [('service_line_type','!=', 'Laboratory Multipurpose')]}">
-
-                <group col="6">
-                    <field name="routine"/>
-                    <field name="Urgent"/>
-                    <field name="pre_operative"/>
-                </group>
-                <group col="2">
-                    <field name="Requested_by"/>
-                    <field name="stamp_and_signature"/>
-                    <field name="lab_date"/>
-                    <field name="requested_test"/>
-                    <field name="results"/>
-                    <field name="Pathologist"/>
-                    <field name="Examiner_Name"/>
-                    <field name="clinical_comments"/>
-                </group>
-                </group>
-            </sheet>
-            <div class="oe_chatter">
-                <field name="message_follower_ids" widget="mail_followers"/>
-                <field name="activity_ids" widget="mail_activity"/>
-                <field name="message_ids" widget="mail_thread"/>
-            </div>
-        </form>
-      </field>
-    </record>
+        <record model="ir.sequence" id="seq_visit_id">
+            <field name="name">Visit Number</field>
+            <field name="code">medical.insurance.claim</field>
+            <field name="prefix">CL</field>
+            <field name="padding">5</field>
+        </record>
 
 
-    <!-- explicit graph view definition -->
+        <!-- explicit form view definition -->
 
-    <record model="ir.ui.view" id="medical_insurance_graph_visit">
-      <field name="name">visit graph</field>
-      <field name="model">medical.insurance.claim</field>
-      <field name="arch" type="xml">
-        <graph type="bar">
-          <field name="date_of_visit" type="row"/>
-          <field name="contribution_charge" type="measure"/>
-        </graph>
-      </field>
-    </record>
+        <record model="ir.ui.view" id="medical_insurance_form_visit">
+            <field name="name">claim form</field>
+            <field name="model">medical.insurance.claim</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="name"/>
+                        <field name="visit_state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group string="Claim"  col="4">
+                            <field name="patient_id"/>
+                            <field name="medical_center_id"/>
+                            <field name="service_line_id"/>
+                            <field name="service_line_type"/>
+                            <field name="visit_type"/>
+                            <field name="price_plan_status"/>
+                            <field name="price_plan"/>
+                            <field name="claim_status"/>
+                            <field name="contribution_charge"/>
+                            <field name="patient_charge"/>
+                            <field name="date_of_visit"/>
+                        </group>
+
+                        <group string="Service based info" attrs="{'invisible': [('service_line_type','!=', 'Re-Assessment')]}">
+                            <group col="2">
+                                <field name="history"/>
+                                <field name="care_plan"/>
+                                <field name="diagnosis"/>
+                                <field name="instructions"/>
+                            </group>
+                            <group col="6" string="Vital Signs">
+                                <field name="temperature"/>
+                                <field name="pulse_rate"/>
+                                <field name="respiratory_rate"/>
+                                <field name="blood_pressure"/>
+                                <field name="o2_saturation"/>
+                                <field name="pain_score"/>
+                            </group>
+                        </group>
+
+                        <group string="Service based info" attrs="{'invisible': [('service_line_type','!=', 'Iv Request')]}">
+
+                            <group col="6" string="Referring physician">
+                                <field name="resident"/>
+                                <field name="specialist"/>
+                                <field name="consultant"/>
+                            </group>
+
+                            <group col="8" string="Degree of urgency">
+                                <field name="routine"/>
+                                <field name="semi_urgent"/>
+                                <field name="urgent"/>
+                                <field name="life_saving"/>
+                            </group>
+
+                            <group col="8" string="Types of access">
+                                <field name="peripheral_line"/>
+                                <field name="cutdown"/>
+                                <field name="port_a_cath"/>
+                                <field name="central_line"/>
+                            </group>
+
+                            <group col="4" string="Estimation duration of time">
+                                <field name="days"/>
+                                <field name="more_than_2_weeks"/>
+                            </group>
+
+                            <group col="8" string="Indication">
+                                <field name="blood_exchange"/>
+                                <field name="tpn"/>
+                                <field name="chemotherapy"/>
+                                <field name="coagulopathy"/>
+                            </group>
+
+                            <group col="4" string="Any previous insertion of central line">
+                                <field name="yes"/>
+                                <field name="no"/>
+                            </group>
+
+                            <separator/>
+                            <separator string="If for removal reason"/>
+                            <field name="removal_reason"/>
+                            <separator string="Surgical note"/>
+                            <field name="surgical_note"/>
+                            <separator string="Anesthetist note"/>
+                            <field name="anesthetist_note"/>
+                            <separator string="Procedure"/>
+                            <field name="procedure"/>
+
+                            <separator/><separator/>
+
+                            <group>
+                                <field name="physician_name"/>
+                                <field name="stamp_signature"/>
+                            </group>
+
+                        </group>
+
+                        <group string="Service based info" attrs="{'invisible': [('service_line_type','!=', 'Laboratory Multipurpose')]}">
+
+                            <group col="6">
+                                <field name="routine"/>
+                                <field name="Urgent"/>
+                                <field name="pre_operative"/>
+                            </group>
+                            <group col="2">
+                                <field name="Requested_by"/>
+                                <field name="stamp_and_signature"/>
+                                <field name="lab_date"/>
+                                <field name="requested_test"/>
+                                <field name="results"/>
+                                <field name="Pathologist"/>
+                                <field name="Examiner_Name"/>
+                                <field name="clinical_comments"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
 
 
-          <!-- explicit pivot view definition -->
+        <!-- explicit graph view definition -->
 
-      <record model="ir.ui.view" id="medical_insurance_pivot_visit">
-      <field name="name">visit graph</field>
-      <field name="model">medical.insurance.claim</field>
-      <field name="arch" type="xml">
-        <pivot>
-          <field name="date_of_visit" type="row"/>
-        </pivot>
-      </field>
-    </record>
+        <record model="ir.ui.view" id="medical_insurance_graph_visit">
+            <field name="name">visit graph</field>
+            <field name="model">medical.insurance.claim</field>
+            <field name="arch" type="xml">
+                <graph type="bar">
+                    <field name="date_of_visit" type="row"/>
+                </graph>
+            </field>
+        </record>
 
 
-    <!-- explicit calendar view definition -->
+        <!-- explicit pivot view definition -->
+
+        <record model="ir.ui.view" id="medical_insurance_pivot_visit">
+            <field name="name">visit graph</field>
+            <field name="model">medical.insurance.claim</field>
+            <field name="arch" type="xml">
+                <pivot>
+                    <field name="date_of_visit" type="row"/>
+                </pivot>
+            </field>
+        </record>
+
+
+        <!-- explicit calendar view definition -->
 
         <record id="medical_insurance_calendar_visit" model="ir.ui.view">
             <field name="name">claim calendar</field>
@@ -201,88 +200,174 @@
 
         <!-- explicit search view definition -->
 
-    <record id="search_all_claims" model="ir.ui.view">
-        <field name="model">medical.insurance.claim</field>
-        <field name="arch" type="xml">
-        <search>
-            <field name="name" />
-            <field name="medical_center_id"/>
-            <field name="service_line_id" widget="many2one" />
-            <group expand="0" string="Group By">
-                <filter name="groupby_medical_center" string="Medical Center" domain="[]" context="{'group_by':'medical_center_id'}"/>
-                <filter name="groupby_service_line" string="Service" domain="[]" context="{'group_by':'service_line_id'}"/>
-                <filter name="groupby_price_plan" string="Price Plan" domain="[]" context="{'group_by':'price_plan'}"/>
-			</group>
-            <filter name="date_of_visit" string="Date Of Visit" date="date_of_visit"/>
-        </search>
-        </field>
-    </record>
+        <record id="search_all_claims" model="ir.ui.view">
+            <field name="model">medical.insurance.claim</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name" />
+                    <field name="medical_center_id"/>
+                    <field name="service_line_id" widget="many2one" />
+                    <group expand="0" string="Group By">
+                        <filter name="groupby_medical_center" string="Medical Center" domain="[]" context="{'group_by':'medical_center_id'}"/>
+                        <filter name="groupby_service_line" string="Service" domain="[]" context="{'group_by':'service_line_id'}"/>
+                        <filter name="groupby_price_plan" string="Price Plan" domain="[]" context="{'group_by':'price_plan'}"/>
+                    </group>
+                    <filter name="date_of_visit" string="Date Of Visit" date="date_of_visit"/>
+                </search>
+            </field>
+        </record>
 
 
-              <!-- explicit report view definition -->
+        <!-- explicit report view definition -->
 
-     <report
-      id="medical_insurance_claim_report"
-      model="medical.insurance.claim"
-      string="Claim Report"
-      report_type="qweb-pdf"
-      name="medical_insurance.medical_insurance_claim_report_view"
-      file="medical_insurance.medical_insurance_claim_report_view"
-    />
+        <report
+                id="medical_insurance_claim_report"
+                model="medical.insurance.claim"
+                string="Claim Report"
+                report_type="qweb-pdf"
+                name="medical_insurance.medical_insurance_claim_report_view"
+                file="medical_insurance.medical_insurance_claim_report_view"
+        />
 
-    <template id="medical_insurance_claim_report_view">
-        <t t-call="web.html_container">
-            <t t-foreach="docs" t-as="doc">
-                <t t-call="web.external_layout">
-                    <div class="page">
-                        <h2>Claim</h2>
-                        <p>This object's name is <span t-field="doc.name"/></p>
-                    </div>
+        <template id="medical_insurance_claim_report_view">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <h5 style="color:blue">Claim Report</h5>
+                            <div class="oe_structure"/>
+                            <div class="row col mt32 mb32" id="informations">
+                                <div class="mr32">
+                                    <strong>Patient Name:</strong>
+                                    <p t-field="doc.name"/>
+                                </div>
+                                <div  class="mr32">
+                                    <strong>Medical Center:</strong>
+                                    <p t-field="doc.medical_center_id"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <t t-foreach="docs" t-as="doc">
+                            <t t-call="web.external_layout">
+                                <div class="oe_structure"/>
+                                <div class="row col mt32 mb32" id="informations">
+                                    <div  class="mr32">
+                                        <strong>Service Name:</strong>
+                                        <p t-field="doc.service_line_id"/>
+                                    </div>
+                                    <div  class="mr32">
+                                        <strong>Service Type:</strong>
+                                        <p t-field="doc.service_line_type"/>
+                                    </div>
+                                </div>
+                            </t>
+                        </t>
+                        <t t-foreach="docs" t-as="doc">
+                            <t t-call="web.external_layout">
+                                <div class="oe_structure"/>
+                                <div class="row col mt32 mb32" id="informations">
+                                    <div  class="mr32">
+                                        <strong>Patient  Status:</strong>
+                                        <p t-field="doc.price_plan_status"/>
+                                    </div>
+                                    <div>
+                                        <strong>Visiy Type:</strong>
+                                        <p t-field="doc.visit_type"/>
+                                    </div>
+                                </div>
+                            </t>
+                        </t>
+                        <t t-foreach="docs" t-as="doc">
+                            <t t-call="web.external_layout">
+                                <div class="oe_structure"/>
+                                <div class="row col mt32 mb32" id="informations">
+                                     <div  class="mr32">
+                                        <strong>Claim  Status:</strong>
+                                        <p t-field="doc.claim_status"/>
+                                    </div>
+                                    <div  class="mr32">
+                                        <strong>Price  Plan:</strong>
+                                        <p t-field="doc.price_plan"/>
+                                    </div>
+
+                                </div>
+                            </t>
+                        </t>
+                        <t t-foreach="docs" t-as="doc">
+                            <t t-call="web.external_layout">
+                                <div class="oe_structure"/>
+                                <div class="row col mt32 mb32" id="informations">
+
+                                    <div  class="mr32">
+                                        <strong>Patient Charge:</strong>
+                                        <p t-field="doc.patient_charge"/>
+                                    </div>
+                                    <div  class="mr32">
+                                        <strong>Contribution Charge:</strong>
+                                        <p t-field="doc.contribution_charge"/>
+                                    </div>
+                                </div>
+                            </t>
+                        </t>
+                        <t t-foreach="docs" t-as="doc">
+                            <t t-call="web.external_layout">
+                                <div class="oe_structure"/>
+                                <div class="row col mt32 mb32" id="informations">
+                                    <div  class="mr32">
+                                        <strong>Date Of Visit:</strong>
+                                        <p t-field="doc.date_of_visit"/>
+                                    </div>
+                                </div>
+                            </t>
+                        </t>
+
+
+                    </t>
                 </t>
             </t>
-        </t>
-    </template>
+        </template>
 
 
-    <!-- actions opening views on models -->
+        <!-- actions opening views on models -->
 
-    <record model="ir.actions.act_window" id="medical_insurance_action_visit">
-      <field name="name">claim window</field>
-      <field name="res_model">medical.insurance.claim</field>
-      <field name="view_mode">tree,form,pivot,graph,search,activity,kanban,calendar</field>
-        <field name="context">{}</field>
-    </record>
-
-
-    <!-- server action to the one above -->
-    <!--
-    <record model="ir.actions.server" id="medical_insurance.action_server">
-      <field name="name">medical_insurance server</field>
-      <field name="model_id" ref="model_medical_insurance_medical_insurance"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": self._name,
-        }
-      </field>
-    </record>
-    -->
-
-    <!-- Top menu item -->
-
-    <!--menuitem name="medical_insurance" id="medical_insurance_menu_root"/-->
-
-    <!-- menu categories -->
-
-    <!--menuitem name="Registration" id="medical_insurance_Registration" parent="medical_insurance_menu_root"/-->
-
-    <!-- actions -->
-
-    <menuitem name="Claim" id="medical_insurance_visit" parent="medical_insurance_menu_registration"
-              action="medical_insurance_action_visit"/>
+        <record model="ir.actions.act_window" id="medical_insurance_action_visit">
+            <field name="name">claim window</field>
+            <field name="res_model">medical.insurance.claim</field>
+            <field name="view_mode">tree,form,pivot,graph,search,activity,kanban,calendar</field>
+            <field name="context">{}</field>
+        </record>
 
 
-  </data>
+        <!-- server action to the one above -->
+        <!--
+        <record model="ir.actions.server" id="medical_insurance.action_server">
+          <field name="name">medical_insurance server</field>
+          <field name="model_id" ref="model_medical_insurance_medical_insurance"/>
+          <field name="state">code</field>
+          <field name="code">
+            action = {
+              "type": "ir.actions.act_window",
+              "view_mode": "tree,form",
+              "res_model": self._name,
+            }
+          </field>
+        </record>
+        -->
+
+        <!-- Top menu item -->
+
+        <!--menuitem name="medical_insurance" id="medical_insurance_menu_root"/-->
+
+        <!-- menu categories -->
+
+        <!--menuitem name="Registration" id="medical_insurance_Registration" parent="medical_insurance_menu_root"/-->
+
+        <!-- actions -->
+
+        <menuitem name="Claim" id="medical_insurance_visit" parent="medical_insurance_menu_registration"
+                  action="medical_insurance_action_visit"/>
+
+
+    </data>
 </odoo>
