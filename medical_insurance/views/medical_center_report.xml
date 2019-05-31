@@ -104,7 +104,7 @@
                                 <th class="text-right">Patient Name</th>
                                 <th class="text-right">Medical Center</th>
                                 <th class="text-right">Visit State</th>
-<!--                                <th class="text-right">Visit Type</th>-->
+                                <th class="text-right">Visit Type</th>
 <!--                                <th class="text-right">ServiceLine</th>-->
 
                             </tr>
@@ -124,9 +124,9 @@
                                 <td class="text-right">
                                     <span t-field="t.claim_status"/>
                                 </td>
-<!--                                 <td class="text-right">-->
-<!--                                    <span t-field="t.visit_type"/>-->
-<!--                                </td>-->
+                                 <td class="text-right">
+                                    <span t-field="t.visit_type"/>
+                                </td>
 <!--                                <td class="text-right">-->
 <!--                                    <span t-field="t.patient"/>-->
 <!--                                </td>-->

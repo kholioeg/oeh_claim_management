@@ -304,6 +304,10 @@
                                 <div class="oe_structure"/>
                                 <div class="row col mt32 mb32" id="informations">
                                     <div  class="mr32">
+                                        <strong>Visit Type</strong>
+                                        <p t-field="doc.visit_type"/>
+                                    </div>
+                                    <div  class="mr32">
                                         <strong>Date Of Visit:</strong>
                                         <p t-field="doc.date_of_visit"/>
                                     </div>
