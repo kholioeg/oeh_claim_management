@@ -25,6 +25,6 @@ from odoo import http
 import json
 
 class MedicalInsurance(http.Controller):
-   @http.route('/medical_insurance/patient_validate/', auth='public', methods=['GET'])
+   @http.route('/medical_insurance/patient_validate/', auth='public', methods=['GET'], type='http')
    def index(self, **kw):
        return json.dumps({'result': 'Test result'})
