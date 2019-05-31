@@ -73,10 +73,10 @@
                                     <strong>Blood Group:</strong>
                                     <p t-field="doc.blood_group"/>
                                 </div>
-                                <div  class="mr32">
-                                    <strong>Blood Group:</strong>
-                                    <p t-field="doc.blood_group"/>
-                                </div>
+<!--                                <div  class="mr32">-->
+<!--                                    <strong>Blood Group:</strong>-->
+<!--                                    <p t-field="doc.blood_group"/>-->
+<!--                                </div>-->
 
                                 <div  class="mr32">
                                     <strong>Weight:</strong>
