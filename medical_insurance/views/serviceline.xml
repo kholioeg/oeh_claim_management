@@ -55,6 +55,8 @@
                         <div class="oe_structure"/>
                         <div class="row col mt32 mb32" id="informations">
 
+
+
                             <div  class="mr32">
                                 <strong>Service Line Name :</strong>
                                 <p t-field="doc.name"/>

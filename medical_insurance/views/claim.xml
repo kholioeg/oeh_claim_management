@@ -241,6 +241,10 @@
                                     <strong>Patient Name:</strong>
                                     <p t-field="doc.name"/>
                                 </div>
+                                 <div  class="mr32">
+                                        <strong>Patient  Status:</strong>
+                                        <p t-field="doc.price_plan_status"/>
+                                    </div>
                                 <div  class="mr32">
                                     <strong>Medical Center:</strong>
                                     <p t-field="doc.medical_center_id"/>
@@ -259,21 +263,6 @@
                                     <div  class="mr32">
                                         <strong>Service Type:</strong>
                                         <p t-field="doc.service_line_type"/>
-                                    </div>
-                                </div>
-                            </t>
-                        </t>
-                        <t t-foreach="docs" t-as="doc">
-                            <t t-call="web.external_layout">
-                                <div class="oe_structure"/>
-                                <div class="row col mt32 mb32" id="informations">
-                                    <div  class="mr32">
-                                        <strong>Patient  Status:</strong>
-                                        <p t-field="doc.price_plan_status"/>
-                                    </div>
-                                    <div>
-                                        <strong>Visiy Type:</strong>
-                                        <p t-field="doc.visit_type"/>
                                     </div>
                                 </div>
                             </t>
@@ -314,6 +303,10 @@
                             <t t-call="web.external_layout">
                                 <div class="oe_structure"/>
                                 <div class="row col mt32 mb32" id="informations">
+                                    <div  class="mr32">
+                                        <strong>Visit Type</strong>
+                                        <p t-field="doc.visit_type"/>
+                                    </div>
                                     <div  class="mr32">
                                         <strong>Date Of Visit:</strong>
                                         <p t-field="doc.date_of_visit"/>
