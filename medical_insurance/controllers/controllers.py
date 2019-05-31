@@ -39,7 +39,9 @@ import json
 class MedicalInsurance(http.Controller):
     @http.route('/medical_insurance/patient_validate/', auth='public')
     def index(self, **kw):
-        return json.dumps({'result': 'Test result'})
+        # patients = self.env['medical.insurance.patient'].search([('patient_id', 'in', ids)])
+        # if patients:
+        return json.dumps({'patient': "test"})
 
 
 
