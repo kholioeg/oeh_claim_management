@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <odoo>
-<report
+    <report
 
-         id="patient_report"
-        model="medical.insurance.patient"
-        string="Patient Report"
+            id="patient_report"
+            model="medical.insurance.patient"
+            string="Patient Report"
 
-        report_type="qweb-pdf"
-        name="medical_insurance.patient_report_view"
-        file="medical_insurance.patient_report_view"
-        />
+            report_type="qweb-pdf"
+            name="medical_insurance.patient_report_view"
+            file="medical_insurance.patient_report_view"
+    />
 
 
 
@@ -18,22 +18,138 @@
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="doc">
                 <t t-call="web.external_layout">
+                    <h3 class="text-center" style="color:blue">Patient Report </h3>
                     <div class="page">
-                        <h2>patient info</h2>
-                        <h3>first_name: </h3>
-                        <h5 t-field="doc.first_name"/>
-                        <h3>last_name: </h3>
-                        <h5 t-field="doc.last_name"/>
-                        <h3>mobile:</h3>
-                        <h5 t-field="doc.mobile"/>
-                        <h3>phone: </h3>
-                        <h5 t-field="doc.phone"/>
-                        <h3>blood group</h3>
-                        <h5 t-field="doc.blood_group"/>
-                        <h3>price plan</h3>
-                        <h5 t-field="doc.price_plan"/>
+                        <h5 style="color:blue">Patient Info </h5>
+                        <div class="oe_structure"/>
+                        <div class="row col mt32 mb32" id="informations">
 
+                            <div  class="mr32">
+                                <strong>MRN:</strong>
+                                <p t-field="doc.name"/>
+                            </div>
+                        </div>
                     </div>
+                    <t t-foreach="docs" t-as="doc">
+                        <t t-call="web.external_layout">
+                            <div class="page">
+
+                                <div class="oe_structure"/>
+                                <div class="row col mt32 mb32" id="informations">
+                                    <div  class="mr32">
+                                        <strong>NID:</strong>
+                                        <p t-field="doc.NID"/>
+                                    </div>
+
+                                    <div  class="mr32">
+                                        <strong>First Name:</strong>
+                                        <p t-field="doc.first_name"/>
+                                    </div>
+                                    <div  class="mr32">
+                                        <strong>Last Name:</strong>
+                                        <p t-field="doc.last_name"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </t>
+                    <t t-foreach="docs" t-as="doc">
+                        <t t-call="web.external_layout">
+                            <div class="page">
+
+                                <div class="oe_structure"/>
+                                <div class="row col mt32 mb32" id="informations">
+
+
+
+                                    <div  class="mr32">
+                                        <strong>Date Of Birth:</strong>
+                                        <p t-field="doc.date_of_birth"/>
+                                    </div>
+                                    <div  class="mr32">
+                                        <strong>Gender:</strong>
+                                        <p t-field="doc.gender"/>
+                                    </div>
+                                    <div  class="mr32">
+                                        <strong>Marital Status:</strong>
+                                        <p t-field="doc.marital_status"/>
+                                    </div>
+                                </div>
+                            </div></t>
+                    </t>
+
+
+
+                    <t t-foreach="docs" t-as="doc">
+                        <t t-call="web.external_layout">
+
+                            <h5 style="color:blue">Medical Info</h5>
+                            <div class="oe_structure"/>
+                            <div class="row col mt32 mb32" id="informations">
+                                <div  class="mr32">
+                                    <strong>Blood Group:</strong>
+                                    <p t-field="doc.blood_group"/>
+                                </div>
+                                <div  class="mr32">
+                                    <strong>Blood Group:</strong>
+                                    <p t-field="doc.blood_group"/>
+                                </div>
+
+                                <div  class="mr32">
+                                    <strong>Weight:</strong>
+                                    <p t-field="doc.weight"/>
+                                </div>
+                                <div  class="mr32">
+                                    <strong>Hieght:</strong>
+                                    <p t-field="doc.height"/>
+                                </div>
+
+                            </div>
+                        </t>
+                    </t>
+                    <t t-foreach="docs" t-as="doc">
+                        <t t-call="web.external_layout">
+
+                            <h5 style="color:blue">Contact Info</h5>
+                            <div class="oe_structure"/>
+                            <div class="row col mt32 mb32" id="informations">
+                                <div  class="mr32">
+                                    <strong>Mobile:</strong>
+                                    <p t-field="doc.mobile"/>
+                                </div>
+                                <div  class="mr32">
+                                    <strong>E-mail:</strong>
+                                    <p t-field="doc.email"/>
+                                </div>
+                                <div  class="mr32">
+                                    <strong>Phone:</strong>
+                                    <p t-field="doc.phone"/>
+                                </div>
+                            </div>
+                        </t>
+                    </t>
+                    <t t-foreach="docs" t-as="doc">
+                        <t t-call="web.external_layout">
+
+                            <h5 style="color:blue">Patient Line Info</h5>
+                            <div class="oe_structure"/>
+                            <div class="row col mt32 mb32" id="informations">
+                                <div  class="mr32">
+                                    <strong>Price Plan:</strong>
+                                    <p t-field="doc.price_plan"/>
+                                </div>
+                                <div  class="mr40">
+                                    <strong>Patient Status:</strong>
+                                    <p t-field="doc.patient_status"/>
+                                </div>
+
+                            </div>
+                        </t>
+                    </t>
+
+
+
+
                 </t>
             </t>
         </t>
