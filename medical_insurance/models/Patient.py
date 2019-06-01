@@ -43,12 +43,7 @@ class Patient(models.Model):
     def create(self, vals):
         seq = self.env['ir.sequence'].next_by_code('medical.insurance.patient') or '/'
         vals['name'] = seq
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
-        return super(Patient, self).create(vals)
-=======
->>>>>>> 014f956e410d14f4132ae4885ad251b8273b6e88
+
         return super(Patient, self).create(vals)
 
 
@@ -82,8 +77,6 @@ class Patient(models.Model):
 # def _compute_display_name(self):
 #     names = [self.first_name, self.name]
 #     self.display_name = ' / '.join(filter(None, names))
-<<<<<<< HEAD
-=======
 #
 # @api.multi
 # def name_get(self, cr, uid, ids, context=None):
@@ -101,27 +94,15 @@ class Patient(models.Model):
 
 
 
->>>>>>> 014f956e410d14f4132ae4885ad251b8273b6e88
 
 def name_get(self, cr, uid, ids, context=None):
     if not ids:
         return []
-<<<<<<< HEAD
-    reads = self.read(cr, uid, ids, ['name', 'first_name'], context=context)
-=======
     reads = self.read(cr, uid, ids, ['name','first_name'], context=context)
->>>>>>> 014f956e410d14f4132ae4885ad251b8273b6e88
     res = []
     for record in reads:
         name = record['name']
         if record['first_name']:
-<<<<<<< HEAD
-            name = record['first_name'][1] + ' / ' + name
-        res.append((record['id'], name))
-    return res
-=======
             name = record['first_name'][1]+' / '+name
         res.append((record['id'], name))
     return res
->>>>>>> Stashed changes
->>>>>>> 014f956e410d14f4132ae4885ad251b8273b6e88

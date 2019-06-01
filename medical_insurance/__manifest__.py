@@ -32,13 +32,6 @@
         'views/serviceline.xml',
         'views/priceplan.xml',
         'views/medicalcenter.xml',
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
-        'views/patientline.xml',
-        'views/ehr.xml'
-=======
->>>>>>> 014f956e410d14f4132ae4885ad251b8273b6e88
         'views/ehr.xml',
         'views/price_plan_report.xml',
         'views/patient_report.xml',
@@ -51,14 +44,7 @@
         'views/medicine.xml',
         'views/antenatal_care_line.xml',
         'views/disease_info.xml',
-<<<<<<< HEAD
         'views/medicine_info.xml'
-=======
-        'views/medicine_info.xml',
-        'views/library_book.xml',
-        'views/demo.xml'
->>>>>>> Stashed changes
->>>>>>> 014f956e410d14f4132ae4885ad251b8273b6e88
     ],
     # only loaded in demonstration mode
     'demo': [
