@@ -18,5 +18,22 @@
         <!--     </t> -->
         <!--   </dl> -->
         <!-- </template> -->
+
+                <!-- it works asmaa 1st -->
+<!--        <template id="index">-->
+<!--            <title>Book</title>-->
+<!--            <t t-foreach="teachers" t-as="teacher">-->
+<!--              <p><t t-esc="teacher"/></p>-->
+<!--            </t>-->
+<!--        </template>-->
+
+
+         <template id="index">
+            <title>Book</title>
+            <t t-foreach="teachers" t-as="teacher">
+                <p><t t-esc="teacher.id"/> <t t-esc="teacher.name"/></p>
+            </t>
+        </template>
+
     </data>
 </odoo>
