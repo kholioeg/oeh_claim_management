@@ -1,0 +1,40 @@
+<odoo>
+    <record id="library_book_view_form" model="ir.ui.view">
+                <field name="name">Library Book Form</field>
+                <field name="model">medical.insurance.library.book</field>
+                <field name="arch" type="xml">
+            <form>
+            <group>
+                <field name="name"/>
+
+            </group>
+
+            </form>
+            </field>
+    </record>
+
+<!-- explicit form view definition-->
+    <record id="library_book_view_tree" model="ir.ui.view">
+                <field name="name">Library Book List</field>
+                <field name="model">medical.insurance.library.book</field>
+                <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+
+            </tree>
+            </field>
+    </record>
+<!-- explicit list view definition -->
+
+     <record model="ir.actions.act_window" id="medical_insurance_action_book">
+      <field name="name">book window</field>
+      <field name="res_model">medical.insurance.library.book</field>
+      <field name="view_mode">tree,form</field>
+
+    </record>
+
+
+  <menuitem name="Books" id="medical_insurance_book" parent="medical_insurance_menu_registration"
+              action="medical_insurance_action_book"/>
+
+</odoo>
