@@ -42,7 +42,3 @@ class MedicalInsurance(http.Controller):
         # patients = self.env['medical.insurance.patient'].search([('patient_id', 'in', ids)])
         # if patients:
         return json.dumps({'patient': "test"})
-
-
-
-
