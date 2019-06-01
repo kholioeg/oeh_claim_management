@@ -62,3 +62,16 @@ class Main(http.Controller):
         return http.request.render('medical_insurance.index', {
             'teachers': Teachers.search([])
         })
+
+
+class MedicalCenter(http.Controller):
+
+    @http.route('/medical_insurance/center/',type='http', auth='public')
+    def medical_center(self , **kw):
+        Centers = http.request.env['medical.insurance.medical.center']
+        return http.request.render('medical_insurance.centers',{
+            'centers':Centers.search([])
+        })
+
+
+

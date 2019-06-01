@@ -35,5 +35,53 @@
             </t>
         </template>
 
+        <template id="centers">
+            <title>Book</title>
+            <style>
+                    table {
+                      font-family: arial, sans-serif;
+                      border-collapse: collapse;
+                      width: 100%;
+                    }
+                                    td, th {
+                      border: 1px solid #dddddd;
+                      text-align: left;
+                      padding: 8px;
+                    }
+
+                    tr:nth-child(even) {
+                      background-color: #dddddd;
+                    }
+            </style>
+            <table>
+                <tr>
+                        <th>id</th>
+                        <th>Center name</th>
+                        <th>Center email</th>
+                        <th>Center phone</th>
+                        <th>Center P.P</th>
+                        <th>Country</th>
+                        <th>Visit name</th>
+                        <th>Visit Type</th>
+                      </tr>
+            <t t-foreach="centers" t-as="center">
+
+
+
+
+                      <tr>
+                        <td><t t-esc="center.id"/></td>
+                        <td><t t-esc="center.name"/></td>
+                        <td><t t-esc="center.email"/></td>
+                        <td><t t-esc="center.phone"/></td>
+                        <td><t t-esc="center.price_plan_id.product_id.name"/></td>
+                        <td><t t-esc="center.country_id.name"/></td>
+                        <td><t t-esc="center.visit.name"/></td>
+                        <td><t t-esc="center.visit.visit_type"/></td>
+                      </tr>
+            </t>
+            </table>
+        </template>
+
     </data>
 </odoo>
