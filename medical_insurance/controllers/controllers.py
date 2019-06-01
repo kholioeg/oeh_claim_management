@@ -45,3 +45,4 @@ class MedicalInsurance(http.Controller):
 
 
 
+
