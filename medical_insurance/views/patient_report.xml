@@ -20,7 +20,6 @@
                 <t t-call="web.external_layout">
                     <h3 class="text-center" style="color:blue">Patient Report </h3>
                     <div class="page">
-                        <h5 style="color:blue">Patient Info </h5>
                         <div class="oe_structure"/>
                         <div class="row col mt32 mb32" id="informations">
 
@@ -28,15 +27,7 @@
                                 <strong>MRN:</strong>
                                 <p t-field="doc.name"/>
                             </div>
-                        </div>
-                    </div>
-                    <t t-foreach="docs" t-as="doc">
-                        <t t-call="web.external_layout">
-                            <div class="page">
-
-                                <div class="oe_structure"/>
-                                <div class="row col mt32 mb32" id="informations">
-                                    <div  class="mr32">
+                             <div  class="mr32">
                                         <strong>NID:</strong>
                                         <p t-field="doc.NID"/>
                                     </div>
@@ -49,51 +40,43 @@
                                         <strong>Last Name:</strong>
                                         <p t-field="doc.last_name"/>
                                     </div>
-                                </div>
-                            </div>
-                        </t>
-                    </t>
-                    <t t-foreach="docs" t-as="doc">
-                        <t t-call="web.external_layout">
-                            <div class="page">
-
-                                <div class="oe_structure"/>
-                                <div class="row col mt32 mb32" id="informations">
-
-
-
-                                    <div  class="mr32">
-                                        <strong>Date Of Birth:</strong>
-                                        <p t-field="doc.date_of_birth"/>
-                                    </div>
-                                    <div  class="mr32">
+                                     <div  class="mr32">
                                         <strong>Gender:</strong>
                                         <p t-field="doc.gender"/>
+                                    </div>
+                                    <div  class="mr32">
+                                        <strong>Age:</strong>
+                                        <p t-field="doc.age"/>
+                                    </div>
+                                    <div  class="mr32">
+                                        <strong>DOB:</strong>
+                                        <p t-field="doc.birthday"/>
                                     </div>
                                     <div  class="mr32">
                                         <strong>Marital Status:</strong>
                                         <p t-field="doc.marital_status"/>
                                     </div>
-                                </div>
-                            </div></t>
-                    </t>
+                        </div>
+                    </div>
 
-
-
+                    <hr/>
+                    <br/>
+                    <h6 class="text-center"  style="color:blue">Medical  Info </h6>
+                    <br/>
                     <t t-foreach="docs" t-as="doc">
                         <t t-call="web.external_layout">
 
-                            <h5 style="color:blue">Medical Info</h5>
+
                             <div class="oe_structure"/>
                             <div class="row col mt32 mb32" id="informations">
                                 <div  class="mr32">
                                     <strong>Blood Group:</strong>
                                     <p t-field="doc.blood_group"/>
                                 </div>
-                                <div  class="mr32">
-                                    <strong>Blood Group:</strong>
-                                    <p t-field="doc.blood_group"/>
-                                </div>
+<!--                                <div  class="mr32">-->
+<!--                                    <strong>Blood Group:</strong>-->
+<!--                                    <p t-field="doc.blood_group"/>-->
+<!--                                </div>-->
 
                                 <div  class="mr32">
                                     <strong>Weight:</strong>
@@ -105,12 +88,51 @@
                                 </div>
 
                             </div>
+                             <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <t t-set="colspan" t-value="5"/>
+                                <th class="text-left">Disease Name</th>
+                                <th class="text-left">Severity</th>
+                                <th class="text-left">State</th>
+                                <th class="text-left">Infectious</th>
+                                <th class="text-left">Diagnosed On</th>
+                                <th class="text-left">Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+
+                            <tr t-foreach="docs.disease" t-as="t">
+                                <td class="text-left">
+                                    <span t-field="t.disease"/>
+                                </td>
+                                <td class="text-left">
+                                    <span t-field="t.severity"/>
+                                </td>
+                                 <td class="text-left">
+                                    <span t-field="t.state"/>
+                                </td>
+                                <td class="text-left">
+                                    <span t-field="t.infectious"/>
+                                </td>
+                                <td class="text-left">
+                                    <span t-field="t.diagnosed_on"/>
+                                </td>
+                                <td class="text-left">
+                                    <span t-field="t.remarks"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                         </t>
                     </t>
+                    <br/>
+                    <br/>
+                    <hr/>
+                    <h6 class="text-center"  style="color:blue">Contact Info </h6>
+                    <br/>
                     <t t-foreach="docs" t-as="doc">
                         <t t-call="web.external_layout">
-
-                            <h5 style="color:blue">Contact Info</h5>
                             <div class="oe_structure"/>
                             <div class="row col mt32 mb32" id="informations">
                                 <div  class="mr32">
@@ -128,10 +150,13 @@
                             </div>
                         </t>
                     </t>
+                      <hr/>
+                    <br/>
+                    <h6 class="text-center"  style="color:blue">Patient Line Info </h6>
+                    <br/>
+
                     <t t-foreach="docs" t-as="doc">
                         <t t-call="web.external_layout">
-
-                            <h5 style="color:blue">Patient Line Info</h5>
                             <div class="oe_structure"/>
                             <div class="row col mt32 mb32" id="informations">
                                 <div  class="mr32">

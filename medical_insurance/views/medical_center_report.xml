@@ -16,7 +16,7 @@
             <t t-foreach="docs" t-as="doc">
                 <t t-call="web.external_layout">
                     <div class="page">
-                        <h5  style="color:blue">Medical Center Report </h5>
+                       <h3  class="text-center"  style="color:blue">Medical Center Report </h3>
                         <div class="oe_structure"/>
                         <div class="row col mt32 mb32" id="informations">
                             <div  class="mr32">
@@ -46,6 +46,12 @@
 
                         </div>
                     </div>
+                     <hr/>
+                    <br/>
+                    <br/>
+
+                    <h6  class="text-center" style="color:blue">Price Plan Info </h6>
+                    <br/>
                     <table class="table table-sm">
                         <thead>
                             <tr>
@@ -84,6 +90,12 @@
                             </tr>
                         </tbody>
                     </table>
+                     <hr/>
+                    <br/>
+                    <br/>
+
+                    <h6  class="text-center" style="color:blue">Visit Info </h6>
+                    <br/>
                        <table class="table table-sm">
                         <thead>
                             <tr>
