@@ -32,8 +32,26 @@
         'views/serviceline.xml',
         'views/priceplan.xml',
         'views/medicalcenter.xml',
+<<<<<<< Updated upstream
         'views/patientline.xml',
         'views/ehr.xml'
+=======
+        'views/ehr.xml',
+        'views/price_plan_report.xml',
+        'views/patient_report.xml',
+        'views/medical_center_report.xml',
+        'views/disease.xml',
+        'views/vital_signs_history.xml',
+        'views/operation_reservation.xml',
+        'views/doctors.xml',
+        'views/room.xml',
+        'views/medicine.xml',
+        'views/antenatal_care_line.xml',
+        'views/disease_info.xml',
+        'views/medicine_info.xml',
+        'views/library_book.xml',
+        'views/demo.xml'
+>>>>>>> Stashed changes
     ],
     # only loaded in demonstration mode
     'demo': [

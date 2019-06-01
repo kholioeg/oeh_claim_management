@@ -8,4 +8,17 @@ from . import PricePlan
 from . import MedicalCenter
 from . import PatientLine
 from . import EHR
+<<<<<<< Updated upstream
 # from . import Disease
+=======
+from . import Disease
+from . import VitalSignsHistory
+from . import OperationReservation
+from . import Doctors
+from . import Room
+from . import Medicine
+from . import AntenatalCareLine
+from . import DiseaseInfo
+from . import MedicineInfo
+from . import Library_book
+>>>>>>> Stashed changes
