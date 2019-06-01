@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import http
+# from odoo import http
 
 # class MedicalInsurance(http.Controller):
 #     @http.route('/medical_insurance/medical_insurance/', auth='public')
@@ -20,15 +20,28 @@ from odoo import http
 #         })
 
 
+# from odoo import http
+# from odoo.http import request
+#
+#
+# class PatientData(http.Controller):
+#
+#     @http.route('/patient_validate/', type='http', auth='none', methods=['GET'])
+#     def patient_details(self, **kwargs):
+#         #pa_details = request.env['medical.insurance.patient'].sudo().search([])
+#         #if(pa_details):
+#         return request.render('', None)
+
 from odoo import http
-from odoo.http import request
+import json
+
+
+class MedicalInsurance(http.Controller):
+    @http.route('/medical_insurance/patient_validate/', auth='public')
+    def index(self, **kw):
+        # patients = self.env['medical.insurance.patient'].search([('patient_id', 'in', ids)])
+        # if patients:
+        return json.dumps({'patient': "test"})
 
 
 
-class PatientData(http.Controller):
-
-    @http.route('/patient_validate', type='json', auth='public')
-    def patient_details(self, **kwargs):
-        #pa_details = request.env['medical.insurance.patient'].sudo().search([])
-        #if(pa_details):
-        return '{"response": "OK"}'

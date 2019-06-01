@@ -6,13 +6,13 @@
         <field name="priority" eval="16"/>
         <field name="arch" type="xml">
             <tree>
-                <field name="name"/>
-                <field name="state"/>
+                <field name="product_id"/>
+                <field name="status"/>
                 <field name="start_date"/>
                 <field name="end_date"/>
+<!--                  <field name="patient"/>-->
                 <!--field name="medical_center"/-->
-                <field name="service_line"/>
-                <field name="price"/>
+<!--                <field name="service_line"/>-->
             </tree>
         </field>
     </record>
@@ -26,11 +26,10 @@
             <notebook position="inside">
               <page string="Price Plan Info">
                 <group col="4">
-                  <field name="name"/>
-                  <field name="state"/>
-                  <field name="start_date"/>
-                  <field name="end_date"/>
-                  <field name="price"/>
+                    <field name="product_id"/>
+                    <field name="status"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
                 </group>
               </page>
                 <page string="Medical Center  Info">
@@ -40,10 +39,15 @@
                     </group>
                 </group>
               </page>
-                <page string="Patient  Info">
-                <group>
-                   <field name="patient"/>
+                <page string="Patient Price Plan Info">
+                <group col="4">
+                    <field name="plan_cost"/>
+                    <field name="paid_cost"/>
+                    <field name="remain_cost" />
                 </group>
+                 <group>
+                     <field name="patient"/>
+                 </group>
               </page>
               <page string="Service Line  Info">
                 <group>
@@ -55,6 +59,45 @@
           </form>
       </field>
     </record>
+
+
+    <!--report view -->
+
+    <!-- <report
+
+         id="price_plan_report"
+        model="medical.insurance.price.plan"
+        string="Price Plan Report"
+
+        report_type="qweb-pdf"
+        name="medical_insurance.price_plan_report_view"
+        file="medical_insurance.price_plan_report_view"
+
+
+        /> -->
+
+
+
+
+    <!-- <template id="price_plan_report_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+
+                        <h3>price plan:</h3>
+                        <h5 t-field="doc.product_id"/>
+                        <h3>status: </h3>
+                        <h5 t-field="doc.status"/>
+                        <h3>start_date:</h3>
+                        <h5 t-field="doc.start_date"/>
+                        <h3>end_date: </h3>
+                        <h5 t-field="doc.end_date"/>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template> -->
 
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="PricePlan_action_window">

@@ -1,0 +1,207 @@
+<?xml version="1.0"?>
+<odoo>
+    <report
+
+            id="price_plan_report"
+            model="medical.insurance.price.plan"
+            string="Price Plan Report"
+
+            report_type="qweb-pdf"
+            name="medical_insurance.price_plan_report_view"
+            file="medical_insurance.price_plan_report_view"
+
+    />
+
+
+
+
+    <template id="price_plan_report_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <h3  class="text-center"  style="color:blue">Price Plan Report </h3>
+                    <br/>
+                    <div class="page">
+
+                        <div class="oe_structure"/>
+                        <div class="row col mt32 mb32" id="informations">
+
+                            <div  class="mr32">
+                                <strong>Price Plan Service:</strong>
+                                <p t-field="doc.product_id"/>
+                            </div>
+                              <div  class="mr32">
+                                        <strong>Start At :</strong>
+                                        <p t-field="doc.start_date"/>
+                                    </div>
+                                    <div  class="mr32">
+                                        <strong>End  At :</strong>
+                                        <p t-field="doc.end_date"/>
+                                    </div>
+                            <div  class="mr32">
+                                <strong>Status :</strong>
+                                <p t-field="doc.status"/>
+                            </div>
+
+                        </div>
+                    </div>
+                    <hr/>
+                    <br/>
+                    <br/>
+
+                    <h6  class="text-center" style="color:blue">Medical Center Info </h6>
+                    <br/>
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <t t-set="colspan" t-value="5"/>
+                                <th class="text-left">Name</th>
+                                <th class="text-left">Email</th>
+                                <th class="text-right">Phone</th>
+                                <th class="text-right">Mobile</th>
+                                <th class="text-right">Country</th>
+                                <th class="text-right">Complete Address</th>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+
+                            <tr t-foreach="docs.medical_center_id " t-as="t">
+                                <td class="text-left">
+                                    <span t-field="t.name"/>
+                                </td>
+                                <td class="text-left">
+                                    <span t-field="t.email"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="t.phone"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="t.mobile"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="t.country_id"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="t.contact_address"/>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <hr/>
+                    <br/>
+                    <br/>
+                    <h6 class="text-center"  style="color:blue">Patient Info </h6>
+                    <br/>
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <t t-set="colspan" t-value="5"/>
+                                <th class="text-left">First Name</th>
+                                <th class="text-left">Last Name</th>
+                                <!--                           <th class="text-right">DOB</th>-->
+                                <!--                                <th class="text-right">Age</th>    -->
+
+                                <th class="text-right">NID</th>
+                                <th class="text-right">Gender</th>
+                                <!--                                <th class="text-left">Marital Status</th>-->
+                                <th class="text-left">Mobile</th>
+                                <th class="text-left">Phone</th>
+                                <!--                                <th class="text-right">Email</th>-->
+                                <th class="text-left">Blood Group</th>
+                                <!--                                <th class="text-right">Height</th>-->
+                                <!--                                 <th class="text-right">Weight</th>-->
+                                <th class="text-right">Patient Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+
+                            <tr t-foreach="docs.patient" t-as="t">
+                                <td class="text-left">
+                                    <span t-field="t.first_name"/>
+                                </td>
+                                <td class="text-left">
+                                    <span t-field="t.last_name"/>
+                                </td>
+                                <!--                                <td class="text-right">-->
+                                <!--                                    <span t-field="t.birthday"/>-->
+                                <!--                                </td>-->
+                                <!--                                <td class="text-right">-->
+                                <!--                                    <span t-field="t.age"/>-->
+                                <!--                                </td>-->
+                                <td class="text-right">
+                                    <span t-field="t.NID"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="t.gender"/>
+                                </td>
+                                <!--                                <td class="text-right">-->
+                                <!--                                    <span t-field="t.marital_status"/>-->
+                                <!--                                </td>-->
+                                <td class="text-left">
+                                    <span t-field="t.mobile"/>
+                                </td>
+                                <td class="text-left">
+                                    <span t-field="t.phone"/>
+                                </td>
+                                <!--                                <td class="text-right">-->
+                                <!--                                    <span t-field="t.email"/>-->
+                                <!--                                </td>-->
+                                <td class="text-left">
+                                    <span t-field="t.blood_group"/>
+                                </td>
+                                <!--                                 <td class="text-right">-->
+                                <!--                                    <span t-field="t.height"/>-->
+                                <!--                                </td>-->
+                                <!--                                <td class="text-right">-->
+                                <!--                                    <span t-field="t.weight"/>-->
+                                <!--                                </td>-->
+                                <td class="text-right">
+                                    <span t-field="t.patient_status"/>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <hr/>
+                    <br/>
+                    <br/>
+                    <h6 class="text-center"  style="color:blue">Service Line Info </h6>
+                    <br/>
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <t t-set="colspan" t-value="5"/>
+                                <th class="text-left">Product</th>
+                                <th class="text-left">Sales Price</th>
+                                <th class="text-left">Vendor Price</th>
+                                <th class="text-left">Patient Price</th>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+
+                            <tr t-foreach="docs.service_line" t-as="t">
+                                <td class="text-left">
+                                    <span t-field="t.name"/>
+                                </td>
+                                <td class="text-left">
+                                    <span t-field="t.sale_price"/>
+                                </td>
+                                <td class="text-left">
+                                    <span t-field="t.vendor_price"/>
+                                </td>
+                                <td class="text-left">
+                                    <span t-field="t.patient_price"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </t>
+            </t>
+        </t>
+    </template>
+    <menuitem name="PricePlan" id="medical_insurance_menu_2_list" parent="medical_insurance_menu_conf"
+              action="PricePlan_action_window"/>
+</odoo>

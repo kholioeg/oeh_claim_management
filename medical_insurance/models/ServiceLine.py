@@ -12,6 +12,7 @@ class ServiceLine(models.Model):
     # visit = fields.One2many('medical.insurance.claim', inverse_name='service_line_id',
     #                         string="Visit")
     #
+    service_type = fields.Char(string="Service Type")
 
 
 @api.onchange('name.list_price')
