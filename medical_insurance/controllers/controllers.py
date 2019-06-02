@@ -40,3 +40,38 @@ class MedicalInsurance(http.Controller):
     @http.route('/medical_insurance/patient_validate/', auth='public')
     def index(self, **kw):
         return json.dumps({'result': 'Test result'})
+
+
+#working asmaa
+# from odoo import http, registry
+#
+# class Main(http.Controller):
+#
+#
+#     @http.route('/medical_insurance/book/', type='http', auth='public')
+#     def books_json(self , **kw):
+#         return http.request.render('medical_insurance.index', {
+#             'teachers': ["Diana Padilla", "Jody Caroll", "Lester Vaughn"],
+#         })
+
+class Main(http.Controller):
+
+    @http.route('/medical_insurance/book/', type='http', auth='public')
+    def books_json(self , **kw):
+        Teachers = http.request.env['medical.insurance.library.book']
+        return http.request.render('medical_insurance.index', {
+            'teachers': Teachers.search([])
+        })
+
+
+class MedicalCenter(http.Controller):
+
+    @http.route('/medical_insurance/center/',type='http', auth='public')
+    def medical_center(self , **kw):
+        Centers = http.request.env['medical.insurance.medical.center']
+        return http.request.render('medical_insurance.centers',{
+            'centers':Centers.search([])
+        })
+
+
+
