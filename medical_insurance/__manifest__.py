@@ -44,7 +44,9 @@
         'views/medicine.xml',
         'views/antenatal_care_line.xml',
         'views/disease_info.xml',
-        'views/medicine_info.xml'
+        'views/medicine_info.xml',
+        'views/demo.xml',
+        'views/library_book.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
