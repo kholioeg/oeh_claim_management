@@ -1,4 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_medical_insurance_center,centers,model_medical_insurance_medical_center,,1,0,0,0
 access_medical_insurance_patient,centers,model_medical_insurance_patient,,1,0,0,0
 access_medical_insurance_claim,centers,model_medical_insurance_claim,,1,0,0,0
 access_medical_insurance_service_line,centers,model_medical_insurance_service_line,,1,0,0,0

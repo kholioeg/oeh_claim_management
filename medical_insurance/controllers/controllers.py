@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import http
+# from odoo import http
 
 # class MedicalInsurance(http.Controller):
 #     @http.route('/medical_insurance/medical_insurance/', auth='public')
@@ -20,11 +20,76 @@ from odoo import http
 #         })
 
 
+# from odoo import http
+# from odoo.http import request
+#
+#
+# class PatientData(http.Controller):
+#
+#     @http.route('/patient_validate/', type='http', auth='none', methods=['GET'])
+#     def patient_details(self, **kwargs):
+#         #pa_details = request.env['medical.insurance.patient'].sudo().search([])
+#         #if(pa_details):
+#         return request.render('', None)
 
 from odoo import http
 import json
+import logging
+
+_logger = logging.getLogger(__name__)
+
+
+
 
 class MedicalInsurance(http.Controller):
-   @http.route('/medical_insurance/patient_validate/', auth='public', methods=['GET'], type='http')
-   def index(self, **kw):
-       return json.dumps({'result': 'Test result'})
+    @http.route('/medical_insurance/patient_validate/', auth='public')
+    def index(self, **kw):
+        return json.dumps({'result': 'Test result'})
+
+
+#working asmaa
+# from odoo import http, registry
+#
+# class Main(http.Controller):
+#
+#
+#     @http.route('/medical_insurance/book/', type='http', auth='public')
+#     def books_json(self , **kw):
+#         return http.request.render('medical_insurance.index', {
+#             'teachers': ["Diana Padilla", "Jody Caroll", "Lester Vaughn"],
+#         })
+
+class Main(http.Controller):
+
+    @http.route('/medical_insurance/book/', type='http', auth='public')
+    def books_json(self , **kw):
+        Teachers = http.request.env['medical.insurance.library.book']
+        return http.request.render('medical_insurance.index', {
+            'teachers': Teachers.search([])
+        })
+
+
+class MedicalCenter(http.Controller):
+
+    @http.route('/medical_insurance/center/',type='http', auth='public' , method='GET')
+    def medical_center(self , **kw):
+        Centers = http.request.env['medical.insurance.medical.center']
+        # return http.request.render('medical_insurance.centers',{
+        #     'centers':Centers.search([])
+        d = []
+        center = Centers.sudo().search([])
+        for x in center:
+            d.append({'id': x.id, 'name': x.name})
+        return json.dumps({'data': d})
+        # })
+
+    # @http.route('/medical_insurance/patient_validate/', type='http', auth='public')
+    # def patient_info(self, **kw):
+    #     Patients = http.request.env['medical.insurance.patient']
+    #     return http.request.render('medical_insurance.index', {
+    #         'patients': Patients.search([])
+    #     })
+
+
+
+

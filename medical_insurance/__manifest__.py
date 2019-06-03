@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'portal', 'product'],
+    'depends': ['base', 'portal', 'product', 'sale'],
 
     # always loaded
     'data': [
@@ -36,7 +36,18 @@
         'views/ehr.xml',
         'views/price_plan_report.xml',
         'views/patient_report.xml',
-        'views/medical_center_report.xml'
+        'views/medical_center_report.xml',
+        'views/disease.xml',
+        'views/vital_signs_history.xml',
+        'views/operation_reservation.xml',
+        'views/doctors.xml',
+        'views/room.xml',
+        'views/medicine.xml',
+        'views/antenatal_care_line.xml',
+        'views/disease_info.xml',
+        'views/medicine_info.xml',
+        'views/demo.xml',
+        'views/library_book.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -1,140 +1,134 @@
 <odoo>
 <!-- explicit list view definition -->
-  <record model="ir.ui.view" id="medical_insurance_patient_list">
-      <field name="name">Patient list</field>
-      <field name="model">medical.insurance.patient</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="image_small" widget='image' class="oe_avatar"/>
-          <field name="first_name"/>
-          <field name="last_name"/>
-          <field name="NID"/>
-          <field name="date_of_birth"/>
-          <field name="gender"/>
-          <field name="marital_status"/>
-          <field name="mobile"/>
-          <field name="phone"/>
-          <field name="email"/>
-          <field name="blood_group"/>
-          <field name="height"/>
-          <field name="weight"/>
-          <field name="patient_status"/>
-        </tree>
-      </field>
-    </record>
+      <record model="ir.ui.view" id="medical_insurance_patient_list">
+          <field name="name">Patient list</field>
+          <field name="model">medical.insurance.patient</field>
+          <field name="arch" type="xml">
+            <tree>
+              <field name="first_name"/>
+              <field name="last_name"/>
+              <field name="birthday"/>
+              <field name="age" on_change="0"/>
+              <field name="NID"/>
+              <field name="gender"/>
+              <field name="marital_status"/>
+              <field name="mobile"/>
+              <field name="phone"/>
+              <field name="email"/>
+              <field name="blood_group"/>
+              <field name="height"/>
+              <field name="weight"/>
+              <field name="patient_status"/>
+            </tree>
+          </field>
+      </record>
 
-    <record model="ir.sequence" id="seq_patient_id">
+      <record model="ir.sequence" id="seq_patient_id">
         <field name="name">Patient Number</field>
         <field name="code">medical.insurance.patient</field>
         <field name="prefix">PA</field>
         <field name="padding">5</field>
-    </record>
+      </record>
 
 <!-- explicit form view definition -->
-    <record model="ir.ui.view" id="patient_form">
-      <field name="name">patient form</field>
-      <field name="model">medical.insurance.patient</field>
-      <field name="arch" type="xml">
-          <form>
+      <record model="ir.ui.view" id="patient_form">
+          <field name="name">patient form</field>
+          <field name="model">medical.insurance.patient</field>
+          <field name="arch" type="xml">
+              <form>
+                <sheet>
+                      <field name="image_medium" widget="image" class="oe_avatar"/>
+                        <div class="oe_title">
+                            <label class="oe_edit_only" for="name" string="MRN"/>
+                            <h1><field name="name" placeholder="MRN"/></h1>
+                        </div>
 
-            <sheet>
-                  <field name="image_medium" widget="image" class="oe_avatar"/>
-                    <div class="oe_title">
-                        <label class="oe_edit_only" for="name" string="MRN"/>
-                        <h1><field name="name" placeholder="MRN"/></h1>
-                    </div>
+                <notebook position="inside">
+                  <page string="Personal Info">
+                      <group>
+                          <field name="name"/>
+                      </group>
+                    <group col="4">
 
-            <notebook position="inside">
-              <page string="Personal Info">
-<!--              <group col="2">-->
-<!--                  <field name="name"/>-->
-<!--              </group>-->
-                  <group>
-                      <field name="name"/>
-                  </group>
-                <group col="4">
-
-                  <field name="first_name"/>
-                  <field name="last_name"/>
-                  <field name="NID"/>
-                  <field name="date_of_birth"/>
-                  <field name="gender"/>
-                  <field name="marital_status"/>
-                </group>
-              </page>
-              <page string="Medical Info">
-                <group col="4">
-                  <field name="blood_group"/>
-                  <field name="height"/>
-                  <field name="weight"/>
-                  <field name="patient_status"/>
-                </group>
-              </page>
-              <page string="Contact Info">
-                <group col="4">
-                  <field name="mobile"/>
-                  <field name="phone"/>
-                  <field name="email"/>
-                </group>
-              </page>
-               <page string="Patient Line Info">
-                <group  col="2">
-                    <group>
-                   <field name="price_plan"/>
+                      <field name="first_name"/>
+                      <field name="last_name"/>
+                      <field name="birthday"/>
+                      <field name="age"/>
+                      <field name="NID"/>
+                      <field name="gender"/>
+                      <field name="marital_status"/>
                     </group>
-                </group>
-              </page>
-              <page string="EHR">
-                  <group>
-                    <field name="EHR"/>
-                  </group>
-              </page>
-               </notebook>
-            </sheet>
-              <div class="oe_chatter">
-                <field name="message_follower_ids" widget="mail_followers"/>
-                <field name="activity_ids" widget="mail_activity"/>
-                <field name="message_ids" widget="mail_thread"/>
-            </div>
-          </form>
-      </field>
-    </record>
-
-       <!--report view -->
-<!--<report-->
-
-<!--         id="patient_report"-->
-<!--        model="medical.insurance.patient"-->
-<!--        string="Patient Report"-->
-
-<!--        report_type="qweb-pdf"-->
-<!--        name="medical_insurance.patient_report_view"-->
-<!--        file="medical_insurance.patient_report_view"-->
-<!--        />-->
+                  </page>
+                  <page string="Medical Info">
 
 
+                       <notebook position="inside">
+                           <page string="Basic Info">
+                              <group col="4">
+                                  <field name="blood_group"/>
+                                  <field name="height"/>
+                                  <field name="weight"/>
+                                  <field name="patient_status"/>
+                              </group>
+                           </page>
+                           <page string="Disease">
+                              <group>
+                                <field name="disease"/>
+                              </group>
+                          </page>
+                          <page string="Vital Signs History">
+                              <group>
+                                <field name="vital_signs_history"/>
+                              </group>
+                          </page>
+                          <page string="Operation Reservation">
+                              <group>
+                                <field name="operation_reservation"/>
+                              </group>
+                          </page>
+                          <page string="Medicine">
+                              <group>
+                                <field name="medicine"/>
+                              </group>
+                          </page>
+                           <page string="Antenatal Care Line">
+                                <group>
+                                 <field name="antenatal_care"/>
+                                </group>
+                           </page>
+                      </notebook>
+                  </page>
+
+                  <page string="Contact Info">
+                    <group col="4">
+                      <field name="mobile"/>
+                      <field name="phone"/>
+                      <field name="email"/>
+                    </group>
+                  </page>
+                   <page string="Patient Line Info">
+                    <group  col="2">
+                        <group>
+                       <field name="price_plan"/>
+                        </group>
+                    </group>
+                  </page>
+                </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+
+              </form>
+          </field>
+      </record>
+
+  
 
 
-<!--    <template id="patient_report_view">-->
-<!--        <t t-call="web.html_container">-->
-<!--            <t t-foreach="docs" t-as="doc">-->
-<!--                <t t-call="web.external_layout">-->
-<!--                    <div class="page">-->
-
-<!--                        <h3>first_name: </h3>-->
-<!--                        <h5 t-field="doc.first_name"/>-->
-<!--                        <h3>last_name: </h3>-->
-<!--                        <h5 t-field="doc.last_name"/>-->
-<!--                        <h3>mobile:</h3>-->
-<!--                        <h5 t-field="doc.mobile"/>-->
-<!--                        <h3>Total phone: </h3>-->
-<!--                        <h5 t-field="doc.phone"/>-->
-<!--                    </div>-->
-<!--                </t>-->
-<!--            </t>-->
-<!--        </t>-->
-<!--    </template>-->
-
+  
     <record model="ir.actions.act_window" id="medical_insurance_action_patient">
       <field name="name">patient window</field>
       <field name="res_model">medical.insurance.patient</field>

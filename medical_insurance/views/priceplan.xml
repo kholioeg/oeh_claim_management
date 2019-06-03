@@ -10,9 +10,9 @@
                 <field name="status"/>
                 <field name="start_date"/>
                 <field name="end_date"/>
-                  <field name="patient"/>
+<!--                  <field name="patient"/>-->
                 <!--field name="medical_center"/-->
-                <field name="service_line"/>
+<!--                <field name="service_line"/>-->
             </tree>
         </field>
     </record>
