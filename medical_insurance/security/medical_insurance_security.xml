@@ -1,0 +1,12 @@
+<odoo>
+    
+    <record id="group_claim_operator" model="res.groups">
+        <field name="name">Claim / Operator</field>
+    </record>
+
+    <record id="group_claim_account" model="res.groups">
+        <field name="name">Claim / Account</field>
+    </record>
+
+</odoo>
+

@@ -83,7 +83,7 @@ class MedicalCenter(http.Controller):
         return json.dumps({'data': d})
         # })
 
-    # @http.route('/medical_insurance/patient/', type='http', auth='public')
+    # @http.route('/medical_insurance/patient_validate/', type='http', auth='public')
     # def patient_info(self, **kw):
     #     Patients = http.request.env['medical.insurance.patient']
     #     return http.request.render('medical_insurance.index', {
