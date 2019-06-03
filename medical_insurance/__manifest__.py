@@ -24,6 +24,7 @@
 
     # always loaded
     'data': [
+        'security/medical_insurance_security.xml',
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',

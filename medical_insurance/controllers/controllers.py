@@ -87,16 +87,29 @@ class MedicalCenter(http.Controller):
         for x in center:
             d.append({'id': x.id, 'name': x.name})
         return json.dumps({'data': d})
+        # })
 
-
-
+    # @http.route('/medical_insurance/patient_validate/', type='http', auth='public')
+    # def patient_info(self, **kw):
+    #     Patients = http.request.env['medical.insurance.patient']
+    #     return http.request.render('medical_insurance.index', {
+    #         'patients': Patients.search([])
+    #     })
+    @http.route('/medical_insurance/patients/', type='http', auth='public', method='GET')
+    def medical_patient(self, **kw):
+        patients = http.request.env['medical.insurance.patient']
+        d = []
+        patient = patients.sudo().search([])
+        for x in patient:
+            d.append({'id': x.id, 'name': x.name})
+        return json.dumps({'data': d})
 
     @http.route('/medical_insurance/patient/<int:id>/',type='http', auth='public', method='GET')
     def patient_info_by_id(self, id):
         Patients = http.request.env['medical.insurance.patient']
         d = []
         patient = Patients.sudo().search([])
-        for patients in patient:
+        for patients in patient[id]:
             for PricePlan in patients.price_plan:
                 d.append({'id': patients.id,
                           'MRN': patients.name,
