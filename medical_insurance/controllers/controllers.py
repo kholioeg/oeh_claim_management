@@ -34,6 +34,11 @@
 
 from odoo import http
 import json
+import logging
+
+_logger = logging.getLogger(__name__)
+
+
 
 
 class MedicalInsurance(http.Controller):
@@ -66,12 +71,25 @@ class Main(http.Controller):
 
 class MedicalCenter(http.Controller):
 
-    @http.route('/medical_insurance/center/',type='http', auth='public')
+    @http.route('/medical_insurance/center/',type='http', auth='public' , method='GET')
     def medical_center(self , **kw):
         Centers = http.request.env['medical.insurance.medical.center']
-        return http.request.render('medical_insurance.centers',{
-            'centers':Centers.search([])
-        })
+        # return http.request.render('medical_insurance.centers',{
+        #     'centers':Centers.search([])
+        d = []
+        center = Centers.sudo().search([])
+        for x in center:
+            d.append({'id': x.id, 'name': x.name})
+        return json.dumps({'data': d})
+        # })
+
+    # @http.route('/medical_insurance/patient/', type='http', auth='public')
+    # def patient_info(self, **kw):
+    #     Patients = http.request.env['medical.insurance.patient']
+    #     return http.request.render('medical_insurance.index', {
+    #         'patients': Patients.search([])
+    #     })
+
 
 
 
