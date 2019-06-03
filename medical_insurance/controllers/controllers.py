@@ -111,6 +111,11 @@ class MedicalCenter(http.Controller):
                           })
         return json.dumps({'data': d})
 
+    # @http.route('/medical_insurance/createclaim/', type='http', auth='public', methods=['POST'])
+    # def test(self, **kwargs):
+    #     record = http.request.env['medical.insurance.claim'].sudo()
+    #     record.create(kwargs)
+
 
 
 
