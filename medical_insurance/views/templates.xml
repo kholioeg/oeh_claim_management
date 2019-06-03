@@ -65,10 +65,6 @@
                         <th>Visit Type</th>
                       </tr>
             <t t-foreach="centers" t-as="center">
-
-
-
-
                       <tr>
                         <td><t t-esc="center.id"/></td>
                         <td><t t-esc="center.name"/></td>

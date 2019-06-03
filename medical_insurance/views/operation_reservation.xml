@@ -12,7 +12,6 @@
                         <field name="doctor_name"/>
                         <field name="room_number"/>
                         <field name="patient_id"/>
-
             </tree>
         </field>
     </record>
