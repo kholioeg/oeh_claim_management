@@ -95,14 +95,45 @@ class Patient(models.Model):
 
 
 
-def name_get(self, cr, uid, ids, context=None):
-    if not ids:
-        return []
-    reads = self.read(cr, uid, ids, ['name','first_name'], context=context)
-    res = []
-    for record in reads:
-        name = record['name']
-        if record['first_name']:
-            name = record['first_name'][1]+' / '+name
-        res.append((record['id'], name))
-    return res
+# def name_get(self, cr, uid, ids, context=None):
+#     if not ids:
+#         return []
+#     reads = self.read(cr, uid, ids, ['name','first_name'], context=context)
+#     res = []
+#     for record in reads:
+#         name = record['name']
+#         if record['first_name']:
+#             name = record['first_name'][1]+' / '+name
+#         res.append((record['id'], name))
+#     return res
+#
+# @api.multi
+# def name_get(self, cr, uid, ids, context=None):
+#     if context is None:
+#         context = {}
+#     if isinstance(ids, (int)):
+#         ids = [ids]
+#     res = []
+#     if context.get('special_display_name', False):
+#         for record in self.browse(cr, uid, ids, context=context):
+#             name = record.name
+#             first_name = record.first_name
+#             res.append(record.id, name + " - " + first_name + "%")
+#     else:
+#         # Do a for and set here the standard display name, for example if the standard display name were name, you should do the next for
+#         for record in self.browse(cr, uid, ids, context=context):
+#             res.append(record.id, record.name, record.first_name)
+#     return res
+
+    @api.multi
+    def name_get(self,  context=None):
+        if context is None:
+            context = {}
+        result = []
+        for record in self:
+            if self.env.context.get('custom_search', True):
+                name = '[' + str(record.name) + ']' + ' ' + record.first_name
+                result.append((record.name, name))
+        return result
+
+
