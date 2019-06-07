@@ -113,17 +113,22 @@ class MedicalCenter(http.Controller):
             for PricePlan in patients.price_plan:
                 d.append({'id': patients.id,
                           'MRN': patients.name,
-                          'first_name' : patients.first_name,
-                          'last_name' : patients.last_name,
-                          'patient_status' : patients.patient_status,
-                          'NID' : patients.NID,
-                          'age' : patients.age,
-                          'gender' : patients.gender,
-                          'marital_status' : patients.marital_status,
-                          'price_plan' : PricePlan.name,
+                          'first_name': patients.first_name,
+                          'last_name': patients.last_name,
+                          'patient_status': patients.patient_status,
+                          'NID': patients.NID,
+                          'age': patients.age,
+                          'gender': patients.gender,
+                          'marital_status': patients.marital_status,
+                          'price_plan': PricePlan.name,
                           })
         return json.dumps({'data': d})
 
+    @http.route('/medical_insurance/claim/new', type='json', auth="public", method='POST')
+    def insert_claim(self, **kwargs):
+        record = http.request.env['medical.insurance.claim'].sudo()
+
+        record.create(kwargs)
 
 
 
