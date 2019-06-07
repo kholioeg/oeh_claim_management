@@ -116,3 +116,34 @@ class Visit(models.Model):
             self.claim_status = 'Not Valid'
 
 
+    # @api.multi
+    # def name_get(self, ids, context=None):
+    #     res = []
+    #     for patient_id in self.browse( ids, context=context):
+    #         res.append((patient_id.id, str(patient_id.name) + ' ' + str(patient_id.first_name)))
+    #     return res
+
+    # @api.multi
+    # def name_get(self):
+    #     result = []
+    #     for patient_id in self:
+    #         name = '[' + str(patient_id.name) + ']' + ' ' + patient_id.first_name
+    #         result.append((patient_id.id, name))
+    #     return result
+    # def name_get(self, cr, uid, ids, context=None):
+    #     if context is None:
+    #         context = {}
+    #     if isinstance(ids, (int)):
+    #         ids = [ids]
+    #     res = []
+    #     if context.get('special_display_name', False):
+    #         for patient_id in self.browse(cr, uid, ids, context=context):
+    #             name = patient_id.name
+    #             first_name = patient_id.first_name
+    #             res.append(patient_id.id, name + " - " + first_name + "%")
+    #     else:
+    #         # Do a for and set here the standard display name, for example if the standard display name were name, you should do the next for
+    #         for patient_id in self.browse( ids, context=context):
+    #             res.append(patient_id.id, patient_id.name, patient_id.first_name)
+    #     return res
+
