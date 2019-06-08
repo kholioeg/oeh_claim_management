@@ -31,10 +31,14 @@
 #         #pa_details = request.env['medical.insurance.patient'].sudo().search([])
 #         #if(pa_details):
 #         return request.render('', None)
+from reportlab.lib import yaml
 
 from odoo import http
 import json
 import logging
+
+from odoo.addons.payment_ogone import data
+from odoo.http import Response, request
 
 _logger = logging.getLogger(__name__)
 
@@ -75,6 +79,7 @@ class MedicalInsurance(http.Controller):
  #        return http.request.render('medical_insurance.index', {
  #            'teachers': Teachers.search([])
  #        })
+
 
 
 class MedicalCenter(http.Controller):
@@ -124,15 +129,56 @@ class MedicalCenter(http.Controller):
                           })
         return json.dumps({'data': d})
 
-    # @http.route('/medical_insurance/createclaim/', type='http', auth='public', methods=['POST'])
-    # def test(self, **kwargs):
-    #     record = http.request.env['medical.insurance.claim'].sudo()
-    #     record.create(kwargs)
+
+
+    # @http.route('/medical_insurance/createclaim', methods=['POST'], type='http', csrf=False, auth="public")
+    # def createClaim(self, **kwargs):
+    #     return Response(json.dumps({"yes": "asmaaaaa"}), content_type='application/json;charset=utf-8', status=200)
 
 
 
+    #static name
+    # @http.route('/medical_insurance/createbook/', auth='public', methods=['POST'], type='http',csrf=False)
+    # def index(self, **args):
+    #     name = args.get('name', False)
+        # if not name:
+        #     Response.status = '400 Bad Request'
+        # return '{"response": "OK"}'
+        # request.env['medical.insurance.library.book'].sudo().create({
+        #         'name' :args.get('name', "java book")
+        #     })
 
+    # @http.route('/medical_insurance/createbook', methods=['POST'], type='http', csrf=False, auth="public")
+    # def _process_registration(self, post):
+    #     request.env['medical.insurance.library.book'].sudo().create({
+    #         'name' : "python book"
+    #     })
+    # return Response(json.dumps({"yes": "book created"}), content_type='application/json;charset=utf-8', status=200)
+    #
 
+    #test working
+    @http.route('/medical_insurance/createbook/', auth='public', methods=['POST'], type='json', csrf=False)
+    def index(self, **params):
+        data = request.httprequest.data
+        res = json.loads(data)
+        print (res['name'])
+        request.env['medical.insurance.library.book'].sudo().create({
+        'name': res['name']
+        })
+
+    @http.route('/medical_insurance/createclaim/', auth='public', methods=['POST'], type='json', csrf=False)
+    def index(self, **params):
+        data = request.httprequest.data
+        res = json.loads(data)
+
+        request.env['medical.insurance.claim'].sudo().create({
+
+            'patient_id' : res['patient_id'],
+            'medical_center_id' : res['medical_center_id'],
+            'service_line_id' : res['service_line_id'],
+            'visit_type' : res['visit_type']
+            # 'contribution_charge' : res['contribution_charge']
+        })
 
 
 
