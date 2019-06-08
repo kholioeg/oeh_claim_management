@@ -135,6 +135,6 @@
       <field name="view_mode">tree,form</field>
     </record>
     <!-- actions -->
-    <menuitem name="Patient" id="medical_insurance_patient" parent="medical_insurance_menu_registration" action="medical_insurance_action_patient"/>
+    <menuitem name="Patient" id="medical_insurance_patient" parent="medical_insurance_menu_registration" action="medical_insurance_action_patient" groups="group_patient_doctor"/>
 
 </odoo>

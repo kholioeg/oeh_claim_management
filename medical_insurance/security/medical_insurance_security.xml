@@ -8,5 +8,16 @@
         <field name="name">Patient / Doctor</field>
     </record>
 
+    <record id="only_responsible_can_modify" model="ir.rule">
+        <field name="name">Only Responsible can modify Course</field>
+        <field name="model_id" ref="model_medical_insurance_patient"/>
+        <field name="groups" eval="[(4, ref('medical_insurance.group_patient_doctor'))]"/>
+        <field name="perm_read" eval="0"/>
+        <field name="perm_write" eval="0"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="1"/>
+        <field name="domain_force">[('patient_status','=','Inactive')]</field>
+    </record>
+
 </odoo>
 
