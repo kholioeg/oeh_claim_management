@@ -11,7 +11,7 @@ class Visit(models.Model):
     price_plan_status = fields.Char(string='Patient Status', related='patient_id.patient_status', readonly=True, store='True')
     medical_center_id = fields.Many2one('medical.insurance.medical.center', required=True, store='True')
     service_line_id = fields.Many2one('medical.insurance.service.line', string='Service', required=True, store='True')
-    contribution_charge = fields.Float(string='Contribution Charge', related='service_line_id.vendor_price', readonly=True, store='True')
+    contribution_charge = fields.Float(string='Contribution Charge', related='service_line_id.vendor_price', readonly=True, store='True', groups="account.group_account_invoice")
     patient_charge = fields.Float(string='Patient Charge', related='service_line_id.patient_price', readonly=True, store='True')
     date_of_visit = fields.Datetime(default=lambda self: fields.datetime.now(), store='True')
     claim_status = fields.Char(compute='compute_claim_status', readonly=True)
