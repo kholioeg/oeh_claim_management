@@ -19,24 +19,13 @@
         <!--   </dl> -->
         <!-- </template> -->
 
-                <!-- it works asmaa 1st -->
-<!--        <template id="index">-->
-<!--            <title>Book</title>-->
-<!--            <t t-foreach="teachers" t-as="teacher">-->
-<!--              <p><t t-esc="teacher"/></p>-->
-<!--            </t>-->
-<!--        </template>-->
 
 
-         <template id="index">
-            <title>Book</title>
-            <t t-foreach="teachers" t-as="teacher">
-                <p><t t-esc="teacher.id"/> <t t-esc="teacher.name"/></p>
-            </t>
-        </template>
+
+
 
         <template id="centers">
-            <title>Book</title>
+            <title>center</title>
             <style>
                     table {
                       font-family: arial, sans-serif;
@@ -81,23 +70,6 @@
 
 
 
-<template id="register">
-        <t t-call="website.layout">
-          <t t-set="title">Register</t>
-          <form action="/medical_insurance/createbook" method="post">
-            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-            <div class="container">
-                <div class="row">
-                  <div class="col-md-6 form-group">
-                    <label for="name"> name:</label>
-                    <input type="text" name="name" class="form-control" t-att-value="name" />
-                  </div>
-                </div>
-
-            </div>
-          </form>
-    </t>
-</template>
 
     </data>
 </odoo>
