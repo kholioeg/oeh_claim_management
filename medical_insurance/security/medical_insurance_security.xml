@@ -1,22 +1,11 @@
 <odoo>
 
-    <record id="group_claim_front_office" model="res.groups">
-        <field name="name">Claim / FrontOffice</field>
+    <record id="group_front_office" model="res.groups">
+        <field name="name">Medical Insurance / Front Office</field>
     </record>
 
-    <record id="group_patient_doctor" model="res.groups">
-        <field name="name">Patient / Doctor</field>
-    </record>
-
-    <record id="only_invalid_patient_can_be_deleted" model="ir.rule">
-        <field name="name">only invalid patient can be deleted</field>
-        <field name="model_id" ref="model_medical_insurance_patient"/>
-        <field name="groups" eval="[(4, ref('group_patient_doctor'))]"/>
-        <field name="perm_read" eval="0"/>
-        <field name="perm_write" eval="0"/>
-        <field name="perm_create" eval="0"/>
-        <field name="perm_unlink" eval="1"/>
-        <field name="domain_force">[('patient_status','=','Inactive')]</field>
+    <record id="group_claim_admin" model="res.groups">
+        <field name="name">Medical Insurance / Claim Admin</field>
     </record>
 
 </odoo>

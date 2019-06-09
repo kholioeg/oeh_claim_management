@@ -349,7 +349,7 @@
         <!-- actions -->
 
         <menuitem name="Claim" id="medical_insurance_visit" parent="medical_insurance_menu_registration"
-                  action="medical_insurance_action_visit" groups="group_claim_front_office"/>
+                  action="medical_insurance_action_visit"/>
 
 
     </data>
