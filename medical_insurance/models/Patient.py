@@ -5,6 +5,7 @@ from dateutil.relativedelta import relativedelta
 
 from odoo import models, fields, api,tools
 
+
 class Patient(models.Model):
     _name = 'medical.insurance.patient'
     _inherit = ['res.partner', 'portal.mixin', 'mail.thread', 'mail.activity.mixin']
@@ -66,7 +67,8 @@ class Patient(models.Model):
         result = []
         for record in self:
             if self.env.context.get('custom_search', True):
-                name = '[' + str(record.name) + ']' + ' ' + record.first_name
+                name = '[{}] {} - {}'.format (record.name, record.first_name, record.last_name)
+                # name = '[' + str(record.name) + ']' + ' ' + record.first_name
 
                 result.append((record.id, name))
 
