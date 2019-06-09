@@ -38,6 +38,7 @@ import json
 import logging
 
 from odoo.addons.payment_ogone import data
+from odoo.exceptions import ValidationError
 from odoo.http import Response, request
 
 _logger = logging.getLogger(__name__)
@@ -109,25 +110,37 @@ class MedicalCenter(http.Controller):
             d.append({'id': x.id, 'name': x.name})
         return json.dumps({'data': d})
 
-    @http.route('/medical_insurance/patient/<int:id>/',type='http', auth='public', method='GET')
-    def patient_info_by_id(self, id):
+
+
+    @http.route('/medical_insurance/patient/',type='http', auth='public', method='GET')
+    def patient_info_by_id(self, **kwargs):
         Patients = http.request.env['medical.insurance.patient']
         d = []
-        patient = Patients.sudo().search([])
-        for patients in patient[id]:
-            for PricePlan in patients.price_plan:
-                d.append({'id': patients.id,
-                          'MRN': patients.name,
-                          'first_name' : patients.first_name,
-                          'last_name' : patients.last_name,
-                          'patient_status' : patients.patient_status,
-                          'NID' : patients.NID,
-                          'age' : patients.age,
-                          'gender' : patients.gender,
-                          'marital_status' : patients.marital_status,
-                          'price_plan' : PricePlan.name,
-                          })
-        return json.dumps({'data': d})
+        patients = Patients.sudo().search([('name', '=', kwargs['mrn'])])
+
+        if patients.exists():
+            for patient in patients:
+                if patient.patient_status == 'Active':
+                    # print (patient.patient_status)
+                    for PricePlan in patients.price_plan:
+                        d.append({'id': patient.id,
+                                  'MRN': patient.name,
+                                  'first_name' : patient.first_name,
+                                  'last_name' : patient.last_name,
+                                  'patient_status' : patient.patient_status,
+                                  'NID' : patient.NID,
+                                  'age' : patient.age,
+                                  'gender' : patient.gender,
+                                  'marital_status' : patient.marital_status,
+                                  'price_plan' : PricePlan.name
+                                  })
+                        return json.dumps({'data': d})
+                else:
+                    Response.status = '400'
+                    return '{"response": "this patient is Inactive"}'
+        else:
+            Response.status = '404'
+            return '{"response": "not exist"}'
 
 
 
@@ -183,3 +196,6 @@ class MedicalCenter(http.Controller):
 
 
 
+        # if not patients.exists():
+        #         Response.status = '404'
+        #         return '{"response": "not exist"}'
