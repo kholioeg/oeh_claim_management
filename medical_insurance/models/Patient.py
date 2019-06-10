@@ -5,9 +5,10 @@ from dateutil.relativedelta import relativedelta
 
 from odoo import models, fields, api,tools
 
+
 class Patient(models.Model):
     _name = 'medical.insurance.patient'
-    _inherit = ['res.partner', 'portal.mixin', 'mail.thread', 'mail.activity.mixin']
+    _inherit = ['res.partner', 'mail.thread', 'mail.activity.mixin']
 
     sale_order_id = fields.Many2one('sale.order', string="Sale Order Info")
     name = fields.Char(string="MRN", readonly=True)
@@ -60,15 +61,17 @@ class Patient(models.Model):
                 record.age = 0
 
 
-    # @api.multi
-    # def name_get(self, context=None):
-    #     if context is None:
-    #         context = {}
-    #     result = []
-    #     for record in self:
-    #         if self.env.context.get('custom_search', True):
-    #             name = '[' + str(record.name) + ']' + ' ' + record.first_name
-    #             result.append((record.id, name))
-    #
-    #     return result
+    @api.multi
+    def name_get(self, context=None):
+        if context is None:
+            context = {}
+        result = []
+        for record in self:
+            if self.env.context.get('custom_search', True):
+                name = '[{}] {} - {}'.format (record.name, record.first_name, record.last_name)
+                # name = '[' + str(record.name) + ']' + ' ' + record.first_name
+
+                result.append((record.id, name))
+
+        return result
 

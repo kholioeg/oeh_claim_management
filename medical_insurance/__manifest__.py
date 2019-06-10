@@ -33,7 +33,6 @@
         'views/serviceline.xml',
         'views/priceplan.xml',
         'views/medicalcenter.xml',
-        'views/ehr.xml',
         'views/price_plan_report.xml',
         'views/patient_report.xml',
         'views/medical_center_report.xml',
@@ -47,7 +46,7 @@
         'views/disease_info.xml',
         'views/medicine_info.xml',
         'views/demo.xml',
-        'views/library_book.xml'
+
     ],
     # only loaded in demonstration mode
     'demo': [
