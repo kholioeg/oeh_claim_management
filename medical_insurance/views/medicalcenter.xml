@@ -21,6 +21,10 @@
                     <group>
                         <field name="visit"/>
                     </group>
+                    <group>
+                        <field name="supplier" attrs="{'readonly':[('supplier','=',True)]}"/>
+                        <field name="order_id"/>
+                    </group>
                 </sheet>
             </form>
         </field>

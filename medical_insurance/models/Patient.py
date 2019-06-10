@@ -9,6 +9,7 @@ class Patient(models.Model):
     _name = 'medical.insurance.patient'
     _inherit = ['res.partner', 'portal.mixin', 'mail.thread', 'mail.activity.mixin']
 
+    sale_order_id = fields.Many2one('sale.order', string="Sale Order Info")
     name = fields.Char(string="MRN", readonly=True)
     first_name = fields.Char(string="First name")
     last_name = fields.Char(string="Last name")
@@ -59,16 +60,15 @@ class Patient(models.Model):
                 record.age = 0
 
 
-    @api.multi
-    def name_get(self, context=None):
-        if context is None:
-            context = {}
-        result = []
-        for record in self:
-            if self.env.context.get('custom_search', True):
-                name = '[' + str(record.name) + ']' + ' ' + record.first_name
-
-                result.append((record.id, name))
-
-        return result
+    # @api.multi
+    # def name_get(self, context=None):
+    #     if context is None:
+    #         context = {}
+    #     result = []
+    #     for record in self:
+    #         if self.env.context.get('custom_search', True):
+    #             name = '[' + str(record.name) + ']' + ' ' + record.first_name
+    #             result.append((record.id, name))
+    #
+    #     return result
 
