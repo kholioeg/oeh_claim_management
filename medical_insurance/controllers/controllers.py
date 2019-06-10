@@ -22,7 +22,6 @@ class MedicalInsurance(http.Controller):
         return json.dumps({'data': d})
 
 
-
     @http.route('/medical_insurance/patient/',type='http', auth='public', method='GET')
     def patient_info_by_id(self, **kwargs):
         Patients = http.request.env['medical.insurance.patient']
