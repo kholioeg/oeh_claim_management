@@ -3,7 +3,7 @@ from odoo import models, fields, api
 
 class Visit(models.Model):
     _name = 'medical.insurance.claim'
-    _inherit = ['portal.mixin', 'mail.thread', 'mail.activity.mixin']
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string="Claim No", readonly=True, required=True, copy=False, default='New', store='True')
     patient_id = fields.Many2one('medical.insurance.patient', string='Patient Name', store='True')
@@ -28,6 +28,7 @@ class Visit(models.Model):
         ('cancelled', 'Cancelled'),
     ], default='new', readonly=True, store='True')
     service_line_type = fields.Char(string="Service Type", related='service_line_id.service_type', readonly=True)
+    invoice_id = fields.Many2one('account.invoice', string="Invoice")
 
 
     #Blood_Group = fields.Char()
