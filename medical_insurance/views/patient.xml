@@ -1,119 +1,126 @@
 <odoo>
-<!-- explicit list view definition -->
-      <record model="ir.ui.view" id="medical_insurance_patient_list">
-          <field name="name">Patient list</field>
-          <field name="model">medical.insurance.patient</field>
-          <field name="arch" type="xml">
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="medical_insurance_patient_list">
+        <field name="name">Patient list</field>
+        <field name="model">medical.insurance.patient</field>
+        <field name="arch" type="xml">
             <tree>
-              <field name="first_name"/>
-              <field name="last_name"/>
-              <field name="birthday"/>
-              <field name="age" on_change="0"/>
-              <field name="NID"/>
-              <field name="gender"/>
-              <field name="marital_status"/>
-              <field name="mobile"/>
-              <field name="phone"/>
-              <field name="email"/>
-              <field name="blood_group"/>
-              <field name="height"/>
-              <field name="weight"/>
-              <field name="patient_status"/>
+                <field name="first_name"/>
+                <field name="last_name"/>
+                <field name="birthday"/>
+                <field name="age" on_change="0"/>
+                <field name="NID"/>
+                <field name="gender"/>
+                <field name="marital_status"/>
+                <field name="mobile"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="blood_group"/>
+                <field name="height"/>
+                <field name="weight"/>
+                <field name="patient_status"/>
             </tree>
-          </field>
-      </record>
+        </field>
+    </record>
 
-      <record model="ir.sequence" id="seq_patient_id">
+    <record model="ir.sequence" id="seq_patient_id">
         <field name="name">Patient Number</field>
         <field name="code">medical.insurance.patient</field>
         <field name="prefix">PA</field>
         <field name="padding">5</field>
-      </record>
+    </record>
 
-<!-- explicit form view definition -->
-      <record model="ir.ui.view" id="patient_form">
-          <field name="name">patient form</field>
-          <field name="model">medical.insurance.patient</field>
-          <field name="arch" type="xml">
-              <form>
+    <!-- explicit form view definition -->
+    <record model="ir.ui.view" id="patient_form">
+        <field name="name">patient form</field>
+        <field name="model">medical.insurance.patient</field>
+        <field name="arch" type="xml">
+            <form>
                 <sheet>
-                      <field name="image_medium" widget="image" class="oe_avatar"/>
-                        <div class="oe_title">
-                            <label class="oe_edit_only" for="name" string="MRN"/>
-                            <h1><field name="name" placeholder="MRN" /></h1>
-                        </div>
+                    <field name="image_medium" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <label class="oe_edit_only" for="name" string="MRN"/>
+                        <h1><field name="name" placeholder="MRN" /></h1>
+                    </div>
 
-                <notebook position="inside">
-                  <page string="Personal Info">
-                      <group>
-                          <field name="name"/>
-                      </group>
-                    <group col="4">
+                    <notebook position="inside">
+                        <page string="Personal Info">
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group col="4">
+                                <field name="first_name"/>
+                                <field name="last_name"/>
+                                <field name="birthday"/>
+                                <field name="age"/>
+                                <field name="NID"/>
+                                <field name="gender"/>
+                                <field name="marital_status"/>
+                                <field name="customer" attrs="{'readonly':[('customer','=',True)]}"/>
+                            </group>
+                        </page>
+                        <page string="Medical Info">
 
-                      <field name="first_name"/>
-                      <field name="last_name"/>
-                      <field name="birthday"/>
-                      <field name="age"/>
-                      <field name="NID"/>
-                      <field name="gender"/>
-                      <field name="marital_status"/>
-                    </group>
-                  </page>
-                  <page string="Medical Info">
 
+                            <notebook position="inside">
+                                <page string="Basic Info">
+                                    <group col="4">
+                                        <field name="blood_group"/>
+                                        <field name="height"/>
+                                        <field name="weight"/>
+                                        <field name="patient_status"/>
+                                    </group>
+                                </page>
+                                <page string="Disease">
+                                    <group>
+                                        <field name="disease"/>
+                                    </group>
+                                </page>
+                                <page string="Vital Signs History">
+                                    <group>
+                                        <field name="vital_signs_history"/>
+                                    </group>
+                                </page>
+                                <page string="Operation Reservation">
+                                    <group>
+                                        <field name="operation_reservation"/>
+                                    </group>
+                                </page>
+                                <page string="Medicine">
+                                    <group>
+                                        <field name="medicine"/>
+                                    </group>
+                                </page>
+                                <page string="Antenatal Care Line">
+                                    <group>
+                                        <field name="antenatal_care"/>
+                                    </group>
+                                </page>
+                            </notebook>
+                        </page>
 
-                       <notebook position="inside">
-                           <page string="Basic Info">
-                              <group col="4">
-                                  <field name="blood_group"/>
-                                  <field name="height"/>
-                                  <field name="weight"/>
-                                  <field name="patient_status"/>
-                              </group>
-                           </page>
-                           <page string="Disease">
-                              <group>
-                                <field name="disease"/>
-                              </group>
-                          </page>
-                          <page string="Vital Signs History">
-                              <group>
-                                <field name="vital_signs_history"/>
-                              </group>
-                          </page>
-                          <page string="Operation Reservation">
-                              <group>
-                                <field name="operation_reservation"/>
-                              </group>
-                          </page>
-                          <page string="Medicine">
-                              <group>
-                                <field name="medicine"/>
-                              </group>
-                          </page>
-                           <page string="Antenatal Care Line">
+                        <page string="Contact Info">
+                            <group col="4">
+                                <field name="mobile"/>
+                                <field name="phone"/>
+                                <field name="email"/>
+                            </group>
+                        </page>
+                        <page string="Patient Line Info">
+                            <group  col="2">
                                 <group>
-                                 <field name="antenatal_care"/>
+                                    <field name="price_plan"/>
                                 </group>
-                           </page>
-                      </notebook>
-                  </page>
-
-                  <page string="Contact Info">
-                    <group col="4">
-                      <field name="mobile"/>
-                      <field name="phone"/>
-                      <field name="email"/>
-                    </group>
-                  </page>
-                   <page string="Patient Line Info">
-                    <group  col="2">
-                        <group>
-                       <field name="price_plan"/>
-                        </group>
-                    </group>
-                  </page>
-                </notebook>
+                            </group>
+                        </page>
+                        <page string="Sale Order Info">
+                            <group  col="2">
+                                <group>
+                                    <field name="sale_order_id" />
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers"/>
@@ -121,9 +128,9 @@
                     <field name="message_ids" widget="mail_thread"/>
                 </div>
 
-              </form>
-          </field>
-      </record>
+            </form>
+        </field>
+    </record>
 
 
 

@@ -10,6 +10,7 @@ class Patient(models.Model):
     _name = 'medical.insurance.patient'
     _inherit = ['res.partner', 'mail.thread', 'mail.activity.mixin']
 
+    sale_order_id = fields.Many2one('sale.order', string="Sale Order Info")
     name = fields.Char(string="MRN", readonly=True)
     first_name = fields.Char(string="First name")
     last_name = fields.Char(string="Last name")

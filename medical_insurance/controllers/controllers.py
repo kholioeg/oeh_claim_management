@@ -9,8 +9,8 @@ from odoo.http import Response, request
 _logger = logging.getLogger(__name__)
 
 
+class MedicalInsurance(http.Controller):
 
-class MedicalCenter(http.Controller):
 
     @http.route('/medical_insurance/patients/', type='http', auth='public', method='GET')
     def medical_patient(self, **kw):
@@ -53,14 +53,23 @@ class MedicalCenter(http.Controller):
 
 
     @http.route('/medical_insurance/createclaim/', auth='public', methods=['POST'], type='json', csrf=False)
-    def index(self, **params):
+    def index(self, **args):
         data = request.httprequest.data
         res = json.loads(data)
-
-        request.env['medical.insurance.claim'].sudo().create({
-
+        var=request.env['medical.insurance.claim'].sudo().create({
             'patient_id' : res['patient_id'],
             'medical_center_id' : res['medical_center_id'],
             'service_line_id' : res['service_line_id'],
             'visit_type' : res['visit_type']
         })
+
+        if var.claim_status == 'Not Valid':
+            return '{"response": "this claim is not valid"}'
+
+        return '{"response": "claim created succesfully"}'
+
+
+
+
+
+
