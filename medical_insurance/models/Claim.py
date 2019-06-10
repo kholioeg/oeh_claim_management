@@ -28,6 +28,7 @@ class Visit(models.Model):
         ('cancelled', 'Cancelled'),
     ], default='new', readonly=True, store='True')
     service_line_type = fields.Char(string="Service Type", related='service_line_id.service_type', readonly=True)
+    invoice_id = fields.Many2one('account.invoice', string="Invoice")
 
 
     #Blood_Group = fields.Char()

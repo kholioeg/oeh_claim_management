@@ -1,7 +1,6 @@
 <odoo>
     <data>
 
-
         <!-- explicit list view definition -->
 
         <record model="ir.ui.view" id="medical_insurance_list_visit">
@@ -53,6 +52,7 @@
                             <field name="contribution_charge"/>
                             <field name="patient_charge"/>
                             <field name="date_of_visit"/>
+                            <field name="invoice"/>
                         </group>
 
                         <group string="Service based info" attrs="{'invisible': [('service_line_type','!=', 'Re-Assessment')]}">
