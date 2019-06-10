@@ -10,25 +10,7 @@ _logger = logging.getLogger(__name__)
 
 
 
-
-class MedicalInsurance(http.Controller):
-    @http.route('/medical_insurance/patient_validate/', auth='public')
-    def index(self, **kw):
-        return json.dumps({'result': 'Test result'})
-
-
 class MedicalCenter(http.Controller):
-
-    @http.route('/medical_insurance/center/',type='http', auth='public' , method='GET')
-    def medical_center(self , **kw):
-        Centers = http.request.env['medical.insurance.medical.center']
-        d = []
-        center = Centers.sudo().search([])
-        for x in center:
-            d.append({'id': x.id, 'name': x.name})
-        return json.dumps({'data': d})
-
-
 
     @http.route('/medical_insurance/patients/', type='http', auth='public', method='GET')
     def medical_patient(self, **kw):
@@ -38,7 +20,6 @@ class MedicalCenter(http.Controller):
         for x in patient:
             d.append({'id': x.id, 'name': x.name})
         return json.dumps({'data': d})
-
 
 
     @http.route('/medical_insurance/patient/',type='http', auth='public', method='GET')
@@ -83,7 +64,3 @@ class MedicalCenter(http.Controller):
             'service_line_id' : res['service_line_id'],
             'visit_type' : res['visit_type']
         })
-
-
-
-
