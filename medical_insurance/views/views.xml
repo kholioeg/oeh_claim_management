@@ -47,9 +47,9 @@
 
     <!-- menu categories -->
 
-    <menuitem name="Registration" id="medical_insurance_menu_registration" parent="medical_insurance_menu_root" sequence="1" groups="group_front_office,group_claim_admin"/>
+    <menuitem name="Registration" id="medical_insurance_menu_registration" parent="medical_insurance_menu_root" sequence="1"/>
     <menuitem name="Reports" id="medical_insurance_menu_reports" parent="medical_insurance_menu_root"/>
-    <menuitem name="Configuration" id="medical_insurance_menu_conf" parent="medical_insurance_menu_root" groups="group_claim_admin"/>
+    <menuitem name="Configuration" id="medical_insurance_menu_conf" parent="medical_insurance_menu_root"/>
 
     <!-- actions -->
     <!--

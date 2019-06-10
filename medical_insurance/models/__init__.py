@@ -6,7 +6,6 @@ from . import Claim
 from . import ServiceLine
 from . import PricePlan
 from . import MedicalCenter
-from . import EHR
 from . import Disease
 from . import VitalSignsHistory
 from . import OperationReservation
@@ -16,4 +15,4 @@ from . import Medicine
 from . import AntenatalCareLine
 from . import DiseaseInfo
 from . import MedicineInfo
-from . import Library_book
+
