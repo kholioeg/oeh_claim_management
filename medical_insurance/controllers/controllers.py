@@ -57,17 +57,27 @@ class MedicalInsurance(http.Controller):
     def index(self, **args):
         data = request.httprequest.data
         res = json.loads(data)
-        var=request.env['medical.insurance.claim'].sudo().create({
+        claim=request.env['medical.insurance.claim'].sudo().create({
             'patient_id' : res['patient_id'],
             'medical_center_id' : res['medical_center_id'],
             'service_line_id' : res['service_line_id'],
             'visit_type' : res['visit_type']
         })
 
-        if var.claim_status == 'Not Valid':
+        if claim.claim_status == 'Not Valid':
             return '{"response": "this claim is not valid"}'
 
-        return '{"response": "claim created succesfully"}'
+        return {
+                'name': claim.name,
+                'price plan': claim.price_plan,
+                'date of visit': claim.date_of_visit,
+                'patient status': claim.price_plan_status,
+                'contribution charge': claim.contribution_charge,
+                'patient charge': claim.patient_charge,
+                'claim status' :claim.claim_status,
+                'visit type': claim.visit_type,
+                'visit state': claim.visit_state,
+                }
 
 
 
