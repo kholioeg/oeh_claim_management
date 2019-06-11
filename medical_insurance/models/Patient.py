@@ -10,7 +10,7 @@ class Patient(models.Model):
     _name = 'medical.insurance.patient'
     _inherit = ['res.partner', 'mail.thread', 'mail.activity.mixin']
 
-    sale_order_id = fields.Many2one('sale.order', string="Sale Order Info")
+    partner_id = fields.Many2one('sale.order', string='Customer')
     name = fields.Char(string="MRN", readonly=True)
     first_name = fields.Char(string="First name")
     last_name = fields.Char(string="Last name")
@@ -75,3 +75,13 @@ class Patient(models.Model):
 
         return result
 
+
+    def order_line_function(self):
+
+        # to fetch sale order partner from context.
+
+        partner = self.env.context.get('partner_id')
+
+        # rest of the code
+
+        return True

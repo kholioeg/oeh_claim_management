@@ -116,7 +116,7 @@
                         <page string="Sale Order Info">
                             <group  col="2">
                                 <group>
-                                    <field name="sale_order_id" />
+                                    <field name="partner_id"/>
                                 </group>
                             </group>
                         </page>
