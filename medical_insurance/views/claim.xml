@@ -1,7 +1,6 @@
 <odoo>
     <data>
 
-
         <!-- explicit list view definition -->
 
         <record model="ir.ui.view" id="medical_insurance_list_visit">
@@ -40,6 +39,7 @@
                         <field name="name"/>
                         <field name="visit_state" widget="statusbar"/>
                     </header>
+
                     <sheet>
                         <group string="Claim"  col="4">
                             <field name="patient_id"  options='{"always_reload": True}'/>
@@ -53,6 +53,7 @@
                             <field name="contribution_charge"/>
                             <field name="patient_charge"/>
                             <field name="date_of_visit"/>
+                            <field name="invoice_id"/>
                         </group>
 
                         <group string="Service based info" attrs="{'invisible': [('service_line_type','!=', 'Re-Assessment')]}">
@@ -149,6 +150,7 @@
                             </group>
                         </group>
                     </sheet>
+                    
                     <div class="oe_chatter">
                         <field name="message_follower_ids" widget="mail_followers"/>
                         <field name="activity_ids" widget="mail_activity"/>
@@ -303,7 +305,6 @@
                                     <p t-field="doc.date_of_visit"/>
                                 </div>
                             </div>
-
 
                         </div>
                     </t>

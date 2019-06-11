@@ -56,7 +56,7 @@
                                 <field name="NID"/>
                                 <field name="gender"/>
                                 <field name="marital_status"/>
-                                <field name="customer" attrs="{'readonly':[('customer','=',True)]}"/>
+                                <field name="customer"/>
                             </group>
                         </page>
                         <page string="Medical Info">
@@ -113,13 +113,6 @@
                                 </group>
                             </group>
                         </page>
-                        <page string="Sale Order Info">
-                            <group  col="2">
-                                <group>
-                                    <field name="partner_id"/>
-                                </group>
-                            </group>
-                        </page>
                     </notebook>
                 </sheet>
                 <div class="oe_chatter">
@@ -141,6 +134,7 @@
         <field name="res_model">medical.insurance.patient</field>
         <field name="context">{'custom_search': True}</field>
         <field name="view_mode">tree,form</field>
+        <field name="context">{'default_customer': True}</field>
     </record>
     <!-- actions -->
     <menuitem name="Patient" id="medical_insurance_patient" parent="medical_insurance_menu_registration" action="medical_insurance_action_patient"/>
