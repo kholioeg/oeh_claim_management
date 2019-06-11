@@ -14,7 +14,6 @@
                         <field name="mobile"/>
                         <field name="country_id"/>
                         <field name="contact_address"/>
-                        <field name="supplier" default="False"/>
                     </group>
                     <group>
                         <field name="price_plan_id"/>
@@ -23,14 +22,12 @@
                         <field name="visit"/>
                     </group>
                     <group>
-                        <field name="supplier" attrs="{'readonly':[('supplier','=',True)]}"/>
-                        <field name="order_id"/>
+                        <field name="supplier"/>
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
-
 
 
 <!-- explicit list view definition -->
@@ -93,6 +90,7 @@
       <field name="name">MedicalCenter window</field>
       <field name="res_model">medical.insurance.medical.center</field>
       <field name="view_mode">tree,form</field>
+        <field name="context">{'default_supplier': True}</field>
     </record>
 
 <!-- actions  -->
