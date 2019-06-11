@@ -28,7 +28,7 @@ class Visit(models.Model):
         ('cancelled', 'Cancelled'),
     ], default='new', readonly=True, store='True')
     service_line_type = fields.Char(string="Service Type", related='service_line_id.service_type', readonly=True)
-    invoice_id = fields.Many2one('account.invoice', string="Invoice")
+    invoice_id = fields.Many2one('account.invoice', string="Invoice", readonly=True)
 
 
     #Blood_Group = fields.Char()
@@ -98,6 +98,43 @@ class Visit(models.Model):
         seq = self.env['ir.sequence'].next_by_code('medical.insurance.claim') or '/'
         vals['name'] = seq
         return super(Visit, self).create(vals)
+
+    # This function is triggered when the user clicks on the button 'Set to concept'
+    @api.one
+    def concept_progressbar(self):
+        self.write({
+            'visit_state': 'concept',
+        })
+
+    # This function is triggered when the user clicks on the button 'Confirmed'
+    @api.one
+    def confirmed_progressbar(self):
+        self.sudo().write({
+            'visit_state': 'confirmed'
+        })
+
+    # This function is triggered when the user clicks on the button 'In progress'
+    @api.one
+    def progress_progressbar(self):
+        self.write({
+            'visit_state': 'progress'
+        })
+
+    # This function is triggered when the user clicks on the button 'Done'
+    @api.one
+    def done_progressbar(self):
+        self.write({
+            'visit_state': 'done',
+        })
+
+    # This function is triggered when the user clicks on the button 'Cancelled'
+    @api.one
+    def cancelled_progressbar(self):
+        self.write({
+            'visit_state': 'cancelled',
+        })
+
+
 
     @api.one
     def compute_claim_status(self):

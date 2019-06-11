@@ -21,9 +21,6 @@
                     <group>
                         <field name="visit"/>
                     </group>
-                    <group>
-                        <field name="supplier"/>
-                    </group>
                 </sheet>
             </form>
         </field>
