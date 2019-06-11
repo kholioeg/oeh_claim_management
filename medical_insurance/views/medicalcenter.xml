@@ -22,9 +22,7 @@
                         <field name="visit"/>
                     </group>
                     <group>
-<!--                        <field name="supplier" attrs="{'readonly':[('supplier','=',True)]}"/>-->
                         <field name="supplier"/>
-                        <field name="partner_id" context="{'default_supplier': name}"/>
                     </group>
                 </sheet>
             </form>
