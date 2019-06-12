@@ -34,7 +34,6 @@
             <field name="name">claim form</field>
             <field name="model">medical.insurance.claim</field>
             <field name="arch" type="xml">
-<!--                <field name="id" context="{'invoice_id': invoice_id}">-->
                 <form>
                     <header>
                         <button string="Confirmed" type="object" name="confirmed_progressbar" class="oe_highlight" attrs="{'invisible': [('visit_state','=','confirmed')]}"/>
