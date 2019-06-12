@@ -14,7 +14,7 @@ class Visit(models.Model):
     contribution_charge = fields.Float(string='Contribution Charge', related='service_line_id.vendor_price', readonly=True, store='True')
     patient_charge = fields.Float(string='Patient Charge', related='service_line_id.patient_price', readonly=True, store='True')
     date_of_visit = fields.Datetime(default=lambda self: fields.datetime.now(), store='True')
-    claim_status = fields.Char(compute='compute_claim_status', readonly=True)
+    claim_status = fields.Char(compute='compute_claim_status', readonly=True, store='True')
     visit_type = fields.Selection([
         ('outpatient', 'Outpatient'),
         ('ambulatory', 'Ambulatory'),
@@ -26,7 +26,7 @@ class Visit(models.Model):
         ('progress', 'In progress'),
         ('done', 'Done'),
         ('cancelled', 'Cancelled'),
-    ], default='new', readonly=True, store='True')
+    ], default='new', store='True')
     service_line_type = fields.Char(string="Service Type", related='service_line_id.service_type', readonly=True)
     invoice_id = fields.Many2one('account.invoice', string="Invoice")
 
@@ -99,6 +99,58 @@ class Visit(models.Model):
         vals['name'] = seq
         return super(Visit, self).create(vals)
 
+    # This function is triggered when the user clicks on the button 'Confirmed' and create invoice
+    @api.one
+    def confirmed_progressbar(self):
+        self.write({
+            'visit_state': 'confirmed'
+        })
+        print('confirmed')
+        res_id = self.env['account.invoice'].create({
+            'partner_id': self.medical_center_id.partner_id.id,
+        })
+        print(res_id)
+        print(res_id.name)
+        print(self.medical_center_id.partner_id.name)
+        print(self.service_line_id.id)
+        print(self.service_line_id.name.id)
+        print(self.service_line_id.name.name)
+
+
+        res2 = self.env['account.invoice.line'].create({
+            'invoice_id': res_id.id,
+            'product_id': self.service_line_id.name.id,
+            'account_id': self.service_line_id.name.id,
+            'quantity': 1.00,
+            'name': self.service_line_id.name.name,
+            'price_unit': self.contribution_charge,
+        })
+        print(res2)
+
+        self.invoice_id = res_id.id
+
+    # This function is triggered when the user clicks on the button 'In progress'
+    @api.one
+    def progress_progressbar(self):
+        self.write({
+            'visit_state': 'progress'
+        })
+
+    # This function is triggered when the user clicks on the button 'Done'
+    @api.one
+    def done_progressbar(self):
+        self.write({
+            'visit_state': 'done',
+        })
+
+    # This function is triggered when the user clicks on the button 'Cancelled'
+    @api.one
+    def cancelled_progressbar(self):
+        self.write({
+            'visit_state': 'cancelled',
+        })
+
+
     @api.one
     def compute_claim_status(self):
         if self.price_plan_status == 'Active' and self.patient_id.price_plan.medical_center_id and self.patient_id.price_plan.service_line:
@@ -115,4 +167,8 @@ class Visit(models.Model):
                     self.claim_status = 'Not Valid'
         else:
             self.claim_status = 'Not Valid'
+
+
+
+
 
