@@ -8,8 +8,8 @@ from odoo import models, fields, api,tools
 
 class Patient(models.Model):
     _name = 'medical.insurance.patient'
-    _inherit = ['res.partner', 'mail.thread', 'mail.activity.mixin']
-    # _inherits = {'res.partner':'partner_id'}
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _inherits = {'res.partner':'partner_id'}
 
     name = fields.Char(string="MRN", readonly=True)
     first_name = fields.Char(string="First name")
