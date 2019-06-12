@@ -116,7 +116,3 @@ class Visit(models.Model):
         else:
             self.claim_status = 'Not Valid'
 
-
-
-
-
