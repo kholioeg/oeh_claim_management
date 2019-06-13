@@ -5,10 +5,12 @@ from dateutil.relativedelta import relativedelta
 
 from odoo import models, fields, api,tools
 
+
 class Patient(models.Model):
     _name = 'medical.insurance.patient'
-    _inherit = ['res.partner', 'portal.mixin', 'mail.thread', 'mail.activity.mixin']
+    _inherit = ['res.partner', 'mail.thread', 'mail.activity.mixin']
 
+    sale_order_id = fields.Many2one('sale.order', string="Sale Order Info")
     name = fields.Char(string="MRN", readonly=True)
     first_name = fields.Char(string="First name")
     last_name = fields.Char(string="Last name")
@@ -58,50 +60,16 @@ class Patient(models.Model):
                 record.age = 0
 
 
-# @api.multi
-# def name_get(self, cr, uid, ids, context=None):
-#     if context is None:
-#         context = {}
-#         res = []
-#         for record in self.browse(cr, uid, ids, context=context):
-#             mrn = record.name
-#             patient = record.first_name
-#             tit = "%s <%s>" % (mrn, patient)
-#             res.append((record.id, tit))
-#         return res
+    @api.multi
+    def name_get(self, context=None):
+        if context is None:
+            context = {}
+        result = []
+        for record in self:
+            if self.env.context.get('custom_search', True):
+                name = '[{}] {} - {}'.format (record.name, record.first_name, record.last_name)
+                # name = '[' + str(record.name) + ']' + ' ' + record.first_name
 
+                result.append((record.id, name))
 
-# @api.one
-# @api.depends('name', 'first_name')
-# def _compute_display_name(self):
-#     names = [self.first_name, self.name]
-#     self.display_name = ' / '.join(filter(None, names))
-#
-# @api.multi
-# def name_get(self, cr, uid, ids, context=None):
-#     if not ids:
-#         return []
-#     reads = self.read(cr, uid, ids, ['first_name', 'name'], context=context)
-#     res = []
-#     for record in reads:
-#         name = record['first_name']
-#         if record['name']:
-#             name = record['name'][1] + ' / ' + name
-#         res.append((record['id'], name))
-#     return res
-
-
-
-
-
-def name_get(self, cr, uid, ids, context=None):
-    if not ids:
-        return []
-    reads = self.read(cr, uid, ids, ['name','first_name'], context=context)
-    res = []
-    for record in reads:
-        name = record['name']
-        if record['first_name']:
-            name = record['first_name'][1]+' / '+name
-        res.append((record['id'], name))
-    return res
+        return result

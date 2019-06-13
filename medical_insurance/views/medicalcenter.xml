@@ -27,7 +27,6 @@
     </record>
 
 
-
 <!-- explicit list view definition -->
     <record model="ir.ui.view" id="medical_center_list">
         <field name="name">MedicalCenter list</field>
@@ -88,6 +87,7 @@
       <field name="name">MedicalCenter window</field>
       <field name="res_model">medical.insurance.medical.center</field>
       <field name="view_mode">tree,form</field>
+        <field name="context">{'default_supplier': True}</field>
     </record>
 
 <!-- actions  -->

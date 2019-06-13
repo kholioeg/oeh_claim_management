@@ -67,43 +67,42 @@
                             </div>
                         </div>
 
-                    <t t-foreach="docs" t-as="doc">
-                        <t t-call="web.external_layout">
-                            <div class="oe_structure"/>
-                            <div class="row col mt32 mb32" id="informations">
 
-                                <div   class="mr32">
-                                    <strong>Vendor Contribution:</strong>
-                                    <p t-field="doc.vendor_price"/>
-                                </div>
-                                <div class="mr32">
-                                    <strong>Patient Price:</strong>
-                                    <p t-field="doc.patient_price"/>
-                                </div>
+                        <div class="oe_structure"/>
+                        <div class="row col mt32 mb32" id="informations">
+
+                            <div   class="mr32">
+                                <strong>Vendor Contribution:</strong>
+                                <p t-field="doc.vendor_price"/>
                             </div>
+                            <div class="mr32">
+                                <strong>Patient Price:</strong>
+                                <p t-field="doc.patient_price"/>
+                            </div>
+                        </div>
 
 
-                        </t>
-                    </t>
-                </div>
+
+                        <div class="oe_structure"/>
+                    </div>
+                </t>
             </t>
         </t>
-    </t>
-</template>
+    </template>
 
-        <!-- actions opening views on models -->
-<record model="ir.actions.act_window" id="ServiceLine_action_window">
-<field name="name">ServiceLine window</field>
-<field name="res_model">medical.insurance.service.line</field>
-<field name="view_mode">tree,form</field>
-</record>
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="ServiceLine_action_window">
+        <field name="name">ServiceLine window</field>
+        <field name="res_model">medical.insurance.service.line</field>
+        <field name="view_mode">tree,form</field>
+    </record>
 
-        <!-- actions -->
-<menuitem name="ServiceLine" id="medical_insurance_menu_service" parent="medical_insurance_menu_conf"
-          action="ServiceLine_action_window"/>
-
+    <!-- actions -->
+    <menuitem name="ServiceLine" id="medical_insurance_menu_service" parent="medical_insurance_menu_conf"
+              action="ServiceLine_action_window"/>
 
 
 
 
-        </odoo>
+
+</odoo>
