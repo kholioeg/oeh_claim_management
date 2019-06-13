@@ -21,7 +21,6 @@ class Patient(models.Model):
         ('male', "Male"),
         ('female', "Female"),
     ])
-
     marital_status = fields.Selection([
         ('single', "Single"),
         ('married', "Married"),

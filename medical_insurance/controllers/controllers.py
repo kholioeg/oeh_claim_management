@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # from odoo import http
-
+import args as args
 
 from odoo import http
 import json
@@ -22,7 +22,6 @@ class MedicalInsurance(http.Controller):
         return json.dumps({'data': d})
 
 
-
     @http.route('/medical_insurance/patient/',type='http', auth='public', method='GET')
     def patient_info_by_id(self, **kwargs):
         Patients = http.request.env['medical.insurance.patient']
@@ -31,7 +30,6 @@ class MedicalInsurance(http.Controller):
         if patients.exists():
             for patient in patients:
                 if patient.patient_status == 'Active':
-                    # print (patient.patient_status)
                     for PricePlan in patients.price_plan:
                         d.append({'id': patient.id,
                                   'MRN': patient.name,
@@ -53,6 +51,20 @@ class MedicalInsurance(http.Controller):
             return '{"response": "not exist"}'
 
 
+
+
+    @http.route('/medical_insurance/services/', type='http', auth='public', method='GET')
+    def medical_patient(self, **kwargs):
+        patients = http.request.env['medical.insurance.patient']
+        d = []
+        patient = patients.sudo().search(['price_plan', '=', kwargs['price_plan']])
+        for x in patient:
+            d.append({'price_plan': x.price_plan})
+        return json.dumps({'data': d})
+
+
+
+
     @http.route('/medical_insurance/createclaim/', auth='public', methods=['POST'], type='json', csrf=False)
     def index(self, **args):
         data = request.httprequest.data
@@ -65,9 +77,9 @@ class MedicalInsurance(http.Controller):
         })
 
         if claim.claim_status == 'Not Valid':
-            return '{"response": "this claim is not valid"}'
+            return {"response": 404}
 
-        return {
+        return {'response': 200,
                 'name': claim.name,
                 'price plan': claim.price_plan,
                 'date of visit': claim.date_of_visit,
@@ -77,7 +89,41 @@ class MedicalInsurance(http.Controller):
                 'claim status' :claim.claim_status,
                 'visit type': claim.visit_type,
                 'visit state': claim.visit_state,
+
                 }
+
+
+
+
+    
+    @http.route('/medical_insurance/updateclaim/', type='http', auth='public', method='GET')
+    def get_claim(self, **kwargs):
+        Claims = http.request.env['medical.insurance.claim']
+        d = []
+        claims = Claims.sudo().search([('name', '=', kwargs['cl'])])
+
+        for claim in claims:
+            d.append({
+                      'name': claim.name,
+                      'price_plan': claim.price_plan,
+                      'contribution_charge' : claim.contribution_charge
+                      })
+        return json.dumps({'data': d})
+
+
+    def update_claim(self, price_plan):
+
+        data = request.httprequest.data
+        res = json.loads(data)
+        request.env['medical.insurance.claim'].sudo().write({
+            price_plan: res['price_plan'],
+            'contribution_charge': res['contribution_charge'],
+        })
+
+
+
+
+
 
 
 
