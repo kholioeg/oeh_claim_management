@@ -9,7 +9,7 @@ class Visit(models.Model):
     patient_id = fields.Many2one('medical.insurance.patient', string='Patient Name', required=True, store='True', ondelete='set null')
     price_plan = fields.Char(string='Price Plane', related='patient_id.price_plan.name', readonly=True, store=True)
     price_plan_status = fields.Char(string='Patient Status', related='patient_id.patient_status', readonly=True, store='True')
-    medical_center_id = fields.Many2one('medical.insurance.medical.center', store='True', ondelete='set null')
+    medical_center_id = fields.Many2one('medical.insurance.medical.center', required=True, store='True', ondelete='set null')
     service_line_id = fields.Many2one('medical.insurance.service.line', string='Service', required=True, store='True', ondelete='set null')
     contribution_charge = fields.Float(string='Contribution Charge', related='service_line_id.vendor_price', readonly=True, store='True')
     patient_charge = fields.Float(string='Patient Charge', related='service_line_id.patient_price', readonly=True, store='True')
@@ -28,7 +28,7 @@ class Visit(models.Model):
         ('cancelled', 'Cancelled'),
     ], default='new', store='True')
     service_line_type = fields.Char(string="Service Type", related='service_line_id.service_type', readonly=True)
-    invoice_id = fields.Many2one('account.invoice', string="Invoice")
+    invoice_id = fields.Many2one('account.invoice', string="Invoice", readonly=True)
 
 
     #Blood_Group = fields.Char()
@@ -154,7 +154,9 @@ class Visit(models.Model):
 
     @api.one
     def compute_claim_status(self):
+        print("one")
         if self.price_plan_status == 'Active' and self.patient_id.price_plan.medical_center_id and self.patient_id.price_plan.service_line:
+            print("two")
             for med in self.patient_id.price_plan.medical_center_id:
                 if med.name == self.medical_center_id.name:
                     for s in self.patient_id.price_plan.service_line:
