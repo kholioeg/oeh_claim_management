@@ -168,16 +168,7 @@ class Visit(models.Model):
         else:
             self.claim_status = 'Not Valid'
 
-<<<<<<< HEAD
-    @api.multi
-    @api.onchange('visit_state')
-    def onchange_visit_state(self):
-        print('not confirmed')
-        # if self.claim_status == 'confirmed':
-        #     print('confirmed')
-=======
 
 
 
->>>>>>> 805ceb669d7eb502c4f12b98a0064d7344a27929
 
