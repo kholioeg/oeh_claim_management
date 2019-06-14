@@ -108,6 +108,7 @@ class Visit(models.Model):
         print('confirmed')
         res_id = self.env['account.invoice'].create({
             'partner_id': self.medical_center_id.partner_id.id,
+            'state':'open',
         })
         print(res_id)
         print(res_id.name)
