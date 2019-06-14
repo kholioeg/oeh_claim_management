@@ -6,11 +6,11 @@ class Visit(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string="Claim No", readonly=True, required=True, copy=False, default='New', store='True')
-    patient_id = fields.Many2one('medical.insurance.patient', string='Patient Name', store='True')
+    patient_id = fields.Many2one('medical.insurance.patient', string='Patient Name', required=True, store='True', ondelete='set null')
     price_plan = fields.Char(string='Price Plane', related='patient_id.price_plan.name', readonly=True, store=True)
     price_plan_status = fields.Char(string='Patient Status', related='patient_id.patient_status', readonly=True, store='True')
-    medical_center_id = fields.Many2one('medical.insurance.medical.center', store='True')
-    service_line_id = fields.Many2one('medical.insurance.service.line', string='Service', required=True, store='True')
+    medical_center_id = fields.Many2one('medical.insurance.medical.center', store='True', ondelete='set null')
+    service_line_id = fields.Many2one('medical.insurance.service.line', string='Service', required=True, store='True', ondelete='set null')
     contribution_charge = fields.Float(string='Contribution Charge', related='service_line_id.vendor_price', readonly=True, store='True')
     patient_charge = fields.Float(string='Patient Charge', related='service_line_id.patient_price', readonly=True, store='True')
     date_of_visit = fields.Datetime(default=lambda self: fields.datetime.now(), store='True')
@@ -108,6 +108,7 @@ class Visit(models.Model):
         print('confirmed')
         res_id = self.env['account.invoice'].create({
             'partner_id': self.medical_center_id.partner_id.id,
+            'state': 'open'
         })
         print(res_id)
         print(res_id.name)
