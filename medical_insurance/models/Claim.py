@@ -117,7 +117,6 @@ class Visit(models.Model):
         print(self.service_line_id.name.id)
         print(self.service_line_id.name.name)
 
-
         res2 = self.env['account.invoice.line'].create({
             'invoice_id': res_id.id,
             'product_id': self.service_line_id.name.id,
@@ -126,7 +125,7 @@ class Visit(models.Model):
             'name': self.service_line_id.name.name,
             'price_unit': self.contribution_charge,
         })
-        print(res2)
+        print(res_id.id)
 
         self.invoice_id = res_id.id
 
