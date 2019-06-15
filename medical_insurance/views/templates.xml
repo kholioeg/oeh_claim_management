@@ -71,5 +71,39 @@
 
 
 
+        <template id='create'>
+           <form action="/medical_insurance/createclaim/" method="POST">
+               patient_id : <input type="text" name="patient_id"/>
+               medical_center_id : <input type="text" name="medical_center_id"/>
+               service_line_id : <input type="text" name="service_line_id"/>
+               visit_type : <input type="text" name="visit_type"/>
+
+               <button name="submit" type="submit" > Submit </button>
+<!--               <script>-->
+<!--                    function addMsg() {-->
+<!--                       var patient_id = $('input[patient_id=patient_id]').val();-->
+<!--                       var medical_center_id = $('input[medical_center_id=medical_center_id]').val();-->
+<!--                       var service_line_id = $('input[service_line_id=service_line_id]').val();-->
+<!--                       var visit_type = $('input[visit_type=visit_type]').val();-->
+<!--                        $.ajax({-->
+<!--                            type: "POST",-->
+<!--                            url: "/medical_insurance/createclaim/",-->
+<!--                            data: {'patient_id': patient_id ,-->
+<!--                                    'medical_center_id' : medical_center_id,-->
+<!--                                    'service_line_id' : service_line_id,-->
+<!--                                    'visit_type' : 'visit_type'},-->
+
+<!--                            cache: false-->
+<!--                        });-->
+<!--                    }-->
+<!--               </script>-->
+           </form>
+        </template>
+
+
+
+
+
+
     </data>
 </odoo>

@@ -4,6 +4,7 @@ import datetime
 
 class PricePlan(models.Model):
     _name = 'medical.insurance.price.plan'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _inherits = {'product.template':'product_id'}
 
     product_id = fields.Many2one('product.template', string='Price Plan Service', ondelete='cascade')

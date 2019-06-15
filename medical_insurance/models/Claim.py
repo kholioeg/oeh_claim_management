@@ -31,7 +31,8 @@ class Visit(models.Model):
     invoice_id = fields.Many2one('account.invoice', string="Invoice")
 
 
-    #Blood_Group = fields.Char()
+
+    #Additional forms
     history = fields.Text(string="History And Clinical Examination:")
     care_plan = fields.Text(string="Plan Of Care:")
     diagnosis = fields.Text(string="DIAGNOSIS:")
