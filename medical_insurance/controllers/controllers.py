@@ -139,9 +139,12 @@ class MedicalInsurance(http.Controller):
         }
         claim = request.env['medical.insurance.claim'].sudo().create(new_patient)
 
-        # if claim.claim_status == 'Not Valid':
-        #     return {"response": 404}
-        #
+        if claim.claim_status == 'Not Valid':
+            return http.request.render('medical_insurance.notFound', {})
+
+        return http.request.render('medical_insurance.claim_info', {
+            'claims': claim
+        })
         # return {'response': 200,
         #         'name': claim.name,
         #         'price plan': claim.price_plan,

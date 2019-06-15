@@ -101,9 +101,58 @@
         </template>
 
 
+        <!--- claim template-->
+
+        <template id='notFound'>
+            <h1>Ooooooops not found</h1>
+        </template>
 
 
+        <template id="claim_info">
+            <title>claim info</title>
+            <style>
+                    table {
+                      font-family: arial, sans-serif;
+                      border-collapse: collapse;
+                      width: 100%;
+                    }
+                                    td, th {
+                      border: 1px solid #dddddd;
+                      text-align: left;
+                      padding: 8px;
+                    }
 
+                    tr:nth-child(even) {
+                      background-color: #dddddd;
+                    }
+            </style>
+            <table>
+                <tr>
 
+                        <th>Claim name</th>
+                        <th>Price plan</th>
+                        <th>Date of visit</th>
+                        <th>Patient status</th>
+                        <th>contribution charge</th>
+                        <th>patient charge</th>
+                        <th>claim status</th>
+                        <th>visit type</th>
+                        <th>visit state</th>
+                      </tr>
+            <t t-foreach="claims" t-as="claim">
+                      <tr>
+                        <td><t t-esc="claim.name"/></td>
+                        <td><t t-esc="claim.price_plan"/></td>
+                        <td><t t-esc="claim.date_of_visit"/></td>
+                        <td><t t-esc="claim.price_plan_status"/></td>
+                        <td><t t-esc="claim.contribution_charge"/></td>
+                        <td><t t-esc="claim.patient_charge"/></td>
+                        <td><t t-esc="claim.claim_status"/></td>
+                        <td><t t-esc="claim.visit_type"/></td>
+                        <td><t t-esc="claim.visit_state"/></td>
+                      </tr>
+            </t>
+            </table>
+        </template>
     </data>
 </odoo>
