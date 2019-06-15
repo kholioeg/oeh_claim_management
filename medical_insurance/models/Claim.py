@@ -6,32 +6,37 @@ class Visit(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string="Claim No", readonly=True, required=True, copy=False, default='New', store='True')
-    patient_id = fields.Many2one('medical.insurance.patient', string='Patient Name', required=True, store='True', ondelete='set null')
+    patient_id = fields.Many2one('medical.insurance.patient', string='Patient Name', required=True, store='True',
+                                 ondelete='set null')
     price_plan = fields.Char(string='Price Plane', related='patient_id.price_plan.name', readonly=True, store=True)
-    price_plan_status = fields.Char(string='Patient Status', related='patient_id.patient_status', readonly=True, store='True')
-    medical_center_id = fields.Many2one('medical.insurance.medical.center', required=True, store='True', ondelete='set null')
-    service_line_id = fields.Many2one('medical.insurance.service.line', string='Service', required=True, store='True', ondelete='set null')
-    contribution_charge = fields.Float(string='Contribution Charge', related='service_line_id.vendor_price', readonly=True, store='True')
-    patient_charge = fields.Float(string='Patient Charge', related='service_line_id.patient_price', readonly=True, store='True')
+    price_plan_status = fields.Char(string='Patient Status', related='patient_id.patient_status', readonly=True,
+                                    store='True')
+    medical_center_id = fields.Many2one('medical.insurance.medical.center', required=True, store='True',
+                                        ondelete='set null')
+    service_line_id = fields.Many2one('medical.insurance.service.line', string='Service', required=True, store='True',
+                                      ondelete='set null')
+    contribution_charge = fields.Float(string='Contribution Charge', related='service_line_id.vendor_price',
+                                       readonly=True, store='True')
+    patient_charge = fields.Float(string='Patient Charge', related='service_line_id.patient_price', readonly=True,
+                                  store='True')
     date_of_visit = fields.Datetime(default=lambda self: fields.datetime.now(), store='True')
     claim_status = fields.Char(compute='compute_claim_status', readonly=True, store='True')
     visit_type = fields.Selection([
         ('outpatient', 'Outpatient'),
         ('ambulatory', 'Ambulatory'),
         ('opd/er', 'OPD/ER'),
-    ], required=True, store='True')
+    ], required=True)
     visit_state = fields.Selection([
         ('new', 'New'),
         ('confirmed', 'Confirmed'),
         ('progress', 'In progress'),
         ('done', 'Done'),
         ('cancelled', 'Cancelled'),
-    ], default='new', store='True')
+    ], default='new')
     service_line_type = fields.Char(string="Service Type", related='service_line_id.service_type', readonly=True)
-    invoice_id = fields.Many2one('account.invoice', string="Invoice", readonly=True)
+    invoice_id = fields.Many2one('account.invoice', string="Invoice")
 
-
-    #Blood_Group = fields.Char()
+    # Blood_Group = fields.Char()
     history = fields.Text(string="History And Clinical Examination:")
     care_plan = fields.Text(string="Plan Of Care:")
     diagnosis = fields.Text(string="DIAGNOSIS:")
@@ -43,14 +48,13 @@ class Visit(models.Model):
     o2_saturation = fields.Boolean(string="O2 Saturation")
     pain_score = fields.Boolean(string="Pain Score")
 
-
-    clinical_comments =fields.Text(string="clinical comments:")
+    clinical_comments = fields.Text(string="clinical comments:")
     Requested_by = fields.Text(string="Requested by")
     stamp_and_signature = fields.Text(string="Stamp & signature")
     lab_date = fields.Date(string="Date")
     requested_test = fields.Text(string="Requested test:")
     results = fields.Text(string="Results:")
-    Pathologist =fields.Char(string="Pathologist:")
+    Pathologist = fields.Char(string="Pathologist:")
     Examiner_Name = fields.Char(string="Examiner Name:")
     routine = fields.Boolean('routine')
     Urgent = fields.Boolean('Urgent')
@@ -92,70 +96,45 @@ class Visit(models.Model):
     stamp_signature = fields.Text(string="Stamp & Signature :")
     date = fields.Date(string="Date")
 
-
     @api.model
     def create(self, vals):
         seq = self.env['ir.sequence'].next_by_code('medical.insurance.claim') or '/'
         vals['name'] = seq
         return super(Visit, self).create(vals)
 
-    # This function is triggered when the user clicks on the button 'Confirmed' and create invoice
-    @api.one
-    def confirmed_progressbar(self):
-        self.write({
-            'visit_state': 'confirmed'
-        })
-        print('confirmed')
-        res_id = self.env['account.invoice'].create({
-            'partner_id': self.medical_center_id.partner_id.id,
-            'state': 'open'
-        })
-        print(res_id)
-        print(res_id.name)
-        print(self.medical_center_id.partner_id.name)
-        print(self.service_line_id.id)
-        print(self.service_line_id.name.id)
-        print(self.service_line_id.name.name)
+    @api.multi
+    def write(self, vals):
+        result = super(Visit, self).write(vals)
+        if self.visit_state == 'confirmed':
+            if not self.invoice_id:
+                res_id = self.env['account.invoice'].create({
+                    'partner_id': self.medical_center_id.partner_id.id,
+                })
+                print(res_id)
+                print(res_id.state)
+                print(self.medical_center_id.partner_id.name)
+                print(self.service_line_id.id)
+                print(self.service_line_id.name.id)
+                print(self.service_line_id.name.name)
 
-        res2 = self.env['account.invoice.line'].create({
-            'invoice_id': res_id.id,
-            'product_id': self.service_line_id.name.id,
-            'account_id': self.service_line_id.name.id,
-            'quantity': 1.00,
-            'name': self.service_line_id.name.name,
-            'price_unit': self.contribution_charge,
-        })
-        print(res_id.id)
-
-        self.invoice_id = res_id.id
-
-    # This function is triggered when the user clicks on the button 'In progress'
-    @api.one
-    def progress_progressbar(self):
-        self.write({
-            'visit_state': 'progress'
-        })
-
-    # This function is triggered when the user clicks on the button 'Done'
-    @api.one
-    def done_progressbar(self):
-        self.write({
-            'visit_state': 'done',
-        })
-
-    # This function is triggered when the user clicks on the button 'Cancelled'
-    @api.one
-    def cancelled_progressbar(self):
-        self.write({
-            'visit_state': 'cancelled',
-        })
-
+                res2 = self.env['account.invoice.line'].create({
+                    'invoice_id': res_id.id,
+                    'product_id': self.service_line_id.name.id,
+                    'account_id': self.service_line_id.name.id,
+                    'quantity': 1.00,
+                    'name': self.service_line_id.name.name,
+                    'price_unit': self.contribution_charge,
+                })
+                print(res_id.id)
+                res_id.action_invoice_open()
+                self.write({'invoice_id': res_id.id})
+        return result
 
     @api.one
+    @api.depends('patient_id', 'patient_id.price_plan.medical_center_id', 'patient_id.price_plan.service_line',
+                 'price_plan_status')
     def compute_claim_status(self):
-        print("one")
         if self.price_plan_status == 'Active' and self.patient_id.price_plan.medical_center_id and self.patient_id.price_plan.service_line:
-            print("two")
             for med in self.patient_id.price_plan.medical_center_id:
                 if med.name == self.medical_center_id.name:
                     for s in self.patient_id.price_plan.service_line:
@@ -169,8 +148,3 @@ class Visit(models.Model):
                     self.claim_status = 'Not Valid'
         else:
             self.claim_status = 'Not Valid'
-
-
-
-
-
