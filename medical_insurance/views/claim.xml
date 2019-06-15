@@ -36,11 +36,7 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <button string="Confirmed" type="object" name="confirmed_progressbar" class="oe_highlight" attrs="{'invisible': [('visit_state','=','confirmed')]}"/>
-	                    <button string="In progress" type="object" name="progress_progressbar" attrs="{'invisible': [('visit_state','=','progress')]}"/>
-                        <button string="Done" type="object" name="done_progressbar" attrs="{'invisible': [('visit_state','=','done')]}"/>
-                        <button string="Cancelled" type="object" name="cancelled_progressbar" attrs="{'invisible': [('visit_state','=','cancelled')]}"/>
-                        <field name="visit_state" widget="statusbar"/>
+                        <field name="visit_state" widget="statusbar" clickable="1"/>
                     </header>
 
                     <sheet>
@@ -56,7 +52,7 @@
                             <field name="contribution_charge"/>
                             <field name="patient_charge"/>
                             <field name="date_of_visit"/>
-                            <field name="invoice_id"/>
+                            <field name="invoice_id" attrs="{'invisible': [('visit_state','=','new')]}"/>
                         </group>
 
                         <group string="Service based info" attrs="{'invisible': [('service_line_type','!=', 'Re-Assessment')]}">
@@ -135,7 +131,6 @@
                         </group>
 
                         <group string="Service based info" attrs="{'invisible': [('service_line_type','!=', 'Laboratory Multipurpose')]}">
-
                             <group col="6">
                                 <field name="routine"/>
                                 <field name="Urgent"/>
