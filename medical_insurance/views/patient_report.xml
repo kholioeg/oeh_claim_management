@@ -18,6 +18,7 @@
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="doc">
                 <t t-call="web.external_layout">
+                    <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', doc.name , 200, 50)"/>
                     <h3 class="text-center" style="color:blue">Patient Report </h3>
                     <div class="page">
                         <div class="row col mt32 mb32" id="informations">

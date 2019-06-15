@@ -11,7 +11,6 @@ class Patient(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _inherits = {'res.partner': 'partner_id'}
 
-    sale_order_id = fields.Many2one('sale.order', string="Sale Order Info")
     first_name = fields.Char(string="First name")
     last_name = fields.Char(string="Last name")
     image = fields.Binary()
@@ -31,7 +30,7 @@ class Patient(models.Model):
     blood_group = fields.Char(string='blood group')
     weight = fields.Float()
     height = fields.Float()
-    # status = fields.Boolean()
+    status = fields.Boolean()
     price_plan = fields.Many2one('medical.insurance.price.plan', ondelete="set null", string="price plan")
     patient_status = fields.Char(string='Patient Status', related='price_plan.status', readonly=True, store='True')
     # EHR = fields.One2many('medical.insurance.ehr', inverse_name="patient_id", string="EHR")
@@ -74,3 +73,6 @@ class Patient(models.Model):
                 result.append((record.id, name))
 
         return result
+
+
+
