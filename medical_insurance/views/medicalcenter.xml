@@ -6,6 +6,9 @@
         <field name="model">medical.insurance.medical.center</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button string="Get Invoice" type="object" class="oe_highlight" name="total_invoice"/>
+                </header>
                 <sheet>
                     <group string="Medical Center" col="4">
                         <field name="name"/>

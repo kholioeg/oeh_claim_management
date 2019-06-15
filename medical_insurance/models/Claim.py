@@ -6,11 +6,11 @@ class Visit(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string="Claim No", readonly=True, required=True, copy=False, default='New', store='True')
-    patient_id = fields.Many2one('medical.insurance.patient', string='Patient Name', store='True')
+    patient_id = fields.Many2one('medical.insurance.patient', string='Patient Name', required=True, store='True', ondelete='set null')
     price_plan = fields.Char(string='Price Plane', related='patient_id.price_plan.name', readonly=True, store=True)
     price_plan_status = fields.Char(string='Patient Status', related='patient_id.patient_status', readonly=True, store='True')
-    medical_center_id = fields.Many2one('medical.insurance.medical.center', store='True')
-    service_line_id = fields.Many2one('medical.insurance.service.line', string='Service', required=True, store='True')
+    medical_center_id = fields.Many2one('medical.insurance.medical.center', required=True, store='True', ondelete='set null')
+    service_line_id = fields.Many2one('medical.insurance.service.line', string='Service', required=True, store='True', ondelete='set null')
     contribution_charge = fields.Float(string='Contribution Charge', related='service_line_id.vendor_price', readonly=True, store='True')
     patient_charge = fields.Float(string='Patient Charge', related='service_line_id.patient_price', readonly=True, store='True')
     date_of_visit = fields.Datetime(default=lambda self: fields.datetime.now(), store='True')
@@ -28,7 +28,7 @@ class Visit(models.Model):
         ('cancelled', 'Cancelled'),
     ], default='new', store='True')
     service_line_type = fields.Char(string="Service Type", related='service_line_id.service_type', readonly=True)
-    invoice_id = fields.Many2one('account.invoice', string="Invoice")
+    invoice_id = fields.Many2one('account.invoice', string="Invoice", readonly=True)
 
 
     #Blood_Group = fields.Char()
@@ -102,13 +102,14 @@ class Visit(models.Model):
     # This function is triggered when the user clicks on the button 'Confirmed' and create invoice
     @api.one
     def confirmed_progressbar(self):
+        print('confirmed')
         self.write({
             'visit_state': 'confirmed'
         })
         print('confirmed')
         res_id = self.env['account.invoice'].create({
             'partner_id': self.medical_center_id.partner_id.id,
-            'state':'open',
+            'state': 'open'
         })
         print(res_id)
         print(res_id.name)
@@ -154,7 +155,9 @@ class Visit(models.Model):
 
     @api.one
     def compute_claim_status(self):
+        print("one")
         if self.price_plan_status == 'Active' and self.patient_id.price_plan.medical_center_id and self.patient_id.price_plan.service_line:
+            print("two")
             for med in self.patient_id.price_plan.medical_center_id:
                 if med.name == self.medical_center_id.name:
                     for s in self.patient_id.price_plan.service_line:
