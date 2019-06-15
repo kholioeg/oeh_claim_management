@@ -21,55 +21,7 @@
 
 
 
-
-
-
-        <template id="centers">
-            <title>center</title>
-            <style>
-                    table {
-                      font-family: arial, sans-serif;
-                      border-collapse: collapse;
-                      width: 100%;
-                    }
-                                    td, th {
-                      border: 1px solid #dddddd;
-                      text-align: left;
-                      padding: 8px;
-                    }
-
-                    tr:nth-child(even) {
-                      background-color: #dddddd;
-                    }
-            </style>
-            <table>
-                <tr>
-                        <th>id</th>
-                        <th>Center name</th>
-                        <th>Center email</th>
-                        <th>Center phone</th>
-                        <th>Center P.P</th>
-                        <th>Country</th>
-                        <th>Visit name</th>
-                        <th>Visit Type</th>
-                      </tr>
-            <t t-foreach="centers" t-as="center">
-                      <tr>
-                        <td><t t-esc="center.id"/></td>
-                        <td><t t-esc="center.name"/></td>
-                        <td><t t-esc="center.email"/></td>
-                        <td><t t-esc="center.phone"/></td>
-                        <td><t t-esc="center.price_plan_id.product_id.name"/></td>
-                        <td><t t-esc="center.country_id.name"/></td>
-                        <td><t t-esc="center.visit.name"/></td>
-                        <td><t t-esc="center.visit.visit_type"/></td>
-                      </tr>
-            </t>
-            </table>
-        </template>
-
-
-
+        <!--- create claim template-->
 
         <template id='create'>
            <form action="/medical_insurance/createclaim/" method="POST">
@@ -79,29 +31,8 @@
                visit_type : <input type="text" name="visit_type"/>
 
                <button name="submit" type="submit" > Submit </button>
-<!--               <script>-->
-<!--                    function addMsg() {-->
-<!--                       var patient_id = $('input[patient_id=patient_id]').val();-->
-<!--                       var medical_center_id = $('input[medical_center_id=medical_center_id]').val();-->
-<!--                       var service_line_id = $('input[service_line_id=service_line_id]').val();-->
-<!--                       var visit_type = $('input[visit_type=visit_type]').val();-->
-<!--                        $.ajax({-->
-<!--                            type: "POST",-->
-<!--                            url: "/medical_insurance/createclaim/",-->
-<!--                            data: {'patient_id': patient_id ,-->
-<!--                                    'medical_center_id' : medical_center_id,-->
-<!--                                    'service_line_id' : service_line_id,-->
-<!--                                    'visit_type' : 'visit_type'},-->
-
-<!--                            cache: false-->
-<!--                        });-->
-<!--                    }-->
-<!--               </script>-->
            </form>
         </template>
-
-
-        <!--- claim template-->
 
         <template id='notFound'>
             <h1>Ooooooops not found</h1>
@@ -128,7 +59,6 @@
             </style>
             <table>
                 <tr>
-
                         <th>Claim name</th>
                         <th>Price plan</th>
                         <th>Date of visit</th>
@@ -153,6 +83,20 @@
                       </tr>
             </t>
             </table>
+        </template>
+
+
+        <!--- update claim template-->
+        <template id='update'>
+           <form action="/medical_insurance/updateclaim/" method="POST">
+               <t t-foreach="claims" t-as="claim">
+               patient_id : <input type="text" name="patient_id" t-att-value="claim.patient_id.name"/>
+               medical_center_id : <input type="text" name="medical_center_id" t-att-value="claim.medical_center_id.name"/>
+               service_line_id : <input type="text" name="service_line_id" t-att-value="claim.service_line_id.name.name"/>
+               visit_type : <input type="text" name="visit_type" t-att-value="claim.visit_type"/>
+               <button name="submit" type="submit"> Submit </button>
+               </t>
+           </form>
         </template>
     </data>
 </odoo>
