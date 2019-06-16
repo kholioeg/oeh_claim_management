@@ -94,6 +94,7 @@
                medical_center_id : <input type="text" name="medical_center_id" t-att-value="claim.medical_center_id.name"/>
                service_line_id : <input type="text" name="service_line_id" t-att-value="claim.service_line_id.name.name"/>
                visit_type : <input type="text" name="visit_type" t-att-value="claim.visit_type"/>
+               claim id : <input type="text" name="id" t-att-value="claim.id"/>
                <button name="submit" type="submit"> Submit </button>
                </t>
            </form>

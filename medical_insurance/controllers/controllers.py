@@ -120,16 +120,26 @@ class MedicalInsurance(http.Controller):
 
     @http.route('/medical_insurance/updateclaim/', type='http', auth='public', methods=['POST'], csrf=False)
     def webupdateclaim(self, **kw):
-        print(kw)
-        id=kw['patient_id']
+        patient_id = kw['patient_id']
+        center_id = kw['medical_center_id']
+        service_id = kw['service_line_id']
+        claim_id = kw['id']
+
+        patient_obj = http.request.env['medical.insurance.patient'].sudo().search([('name', '=', patient_id)])
+        center_obj = http.request.env['medical.insurance.medical.center'].sudo().search([('name', '=', center_id)])
+        service_obj = http.request.env['medical.insurance.service.line'].sudo().search([('name', '=', service_id)])
+
+
         update_patient = {
-            'patient_id': kw['patient_id'],
-            'medical_center_id': kw['medical_center_id'],
-            'service_line_id': kw['service_line_id'],
-            'visit_type': kw['visit_type']
+            'patient_id': patient_obj.id,
+            'medical_center_id': center_obj.id,
+            'service_line_id': service_obj.id,
+            'visit_type': kw['visit_type'],
+            'id' : claim_id
         }
-        cl=request.env['medical.insurance.claim'].sudo().write(update_patient)
-        print(cl)
+
+        http.request.env['medical.insurance.claim'].sudo().search([('id', '=', claim_id )]).write(update_patient)
+
 
 
 
