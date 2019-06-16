@@ -21,11 +21,26 @@
 
 
 
+        <!--- create claim template-->
+
+        <template id='create'>
+           <form action="/medical_insurance/createclaim/" method="POST">
+               patient_id : <input type="text" name="patient_id"/>
+               medical_center_id : <input type="text" name="medical_center_id"/>
+               service_line_id : <input type="text" name="service_line_id"/>
+               visit_type : <input type="text" name="visit_type"/>
+
+               <button name="submit" type="submit" > Submit </button>
+           </form>
+        </template>
+
+        <template id='notFound'>
+            <h1>Ooooooops not found</h1>
+        </template>
 
 
-
-        <template id="centers">
-            <title>center</title>
+        <template id="claim_info">
+            <title>claim info</title>
             <style>
                     table {
                       font-family: arial, sans-serif;
@@ -44,32 +59,44 @@
             </style>
             <table>
                 <tr>
-                        <th>id</th>
-                        <th>Center name</th>
-                        <th>Center email</th>
-                        <th>Center phone</th>
-                        <th>Center P.P</th>
-                        <th>Country</th>
-                        <th>Visit name</th>
-                        <th>Visit Type</th>
+                        <th>Claim name</th>
+                        <th>Price plan</th>
+                        <th>Date of visit</th>
+                        <th>Patient status</th>
+                        <th>contribution charge</th>
+                        <th>patient charge</th>
+                        <th>claim status</th>
+                        <th>visit type</th>
+                        <th>visit state</th>
                       </tr>
-            <t t-foreach="centers" t-as="center">
+            <t t-foreach="claims" t-as="claim">
                       <tr>
-                        <td><t t-esc="center.id"/></td>
-                        <td><t t-esc="center.name"/></td>
-                        <td><t t-esc="center.email"/></td>
-                        <td><t t-esc="center.phone"/></td>
-                        <td><t t-esc="center.price_plan_id.product_id.name"/></td>
-                        <td><t t-esc="center.country_id.name"/></td>
-                        <td><t t-esc="center.visit.name"/></td>
-                        <td><t t-esc="center.visit.visit_type"/></td>
+                        <td><t t-esc="claim.name"/></td>
+                        <td><t t-esc="claim.price_plan"/></td>
+                        <td><t t-esc="claim.date_of_visit"/></td>
+                        <td><t t-esc="claim.price_plan_status"/></td>
+                        <td><t t-esc="claim.contribution_charge"/></td>
+                        <td><t t-esc="claim.patient_charge"/></td>
+                        <td><t t-esc="claim.claim_status"/></td>
+                        <td><t t-esc="claim.visit_type"/></td>
+                        <td><t t-esc="claim.visit_state"/></td>
                       </tr>
             </t>
             </table>
         </template>
 
 
-
-
+        <!--- update claim template-->
+        <template id='update'>
+           <form action="/medical_insurance/updateclaim/" method="POST">
+               <t t-foreach="claims" t-as="claim">
+               patient_id : <input type="text" name="patient_id" t-att-value="claim.patient_id.name"/>
+               medical_center_id : <input type="text" name="medical_center_id" t-att-value="claim.medical_center_id.name"/>
+               service_line_id : <input type="text" name="service_line_id" t-att-value="claim.service_line_id.name.name"/>
+               visit_type : <input type="text" name="visit_type" t-att-value="claim.visit_type"/>
+               <button name="submit" type="submit"> Submit </button>
+               </t>
+           </form>
+        </template>
     </data>
 </odoo>
