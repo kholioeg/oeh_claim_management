@@ -1,10 +1,8 @@
 from dateutil.relativedelta import relativedelta
-from datetime import datetime
+
 from dateutil.relativedelta import relativedelta
-
-
 from odoo import models, fields, api,tools
-
+import datetime
 
 class Patient(models.Model):
     _name = 'medical.insurance.patient'
@@ -35,11 +33,11 @@ class Patient(models.Model):
     paid_cost = fields.Float()
     remain_cost = fields.Float(compute='_compute_remain_cost')
 
-    status = fields.Char(compute='_compute_plan_status', readonly=True, string="price plan status")
-    patient_status = fields.Char(compute='_compute_patient_status')
+    status = fields.Char(compute='_plan_status', string="patient status", readonly=True)
+    patient_status = fields.Char(attrs="{'invisible':1}")
 
-    start_date = fields.Date(string="Start At")
-    end_date = fields.Date(string="End At")
+    start_date = fields.Date(string="subscription start at")
+    end_date = fields.Date(string="subscription end at")
     # EHR = fields.One2many('medical.insurance.ehr', inverse_name="patient_id", string="EHR")
     disease = fields.One2many('medical.insurance.disease', inverse_name="patient_id", string="Disease")
     vital_signs_history = fields.One2many('medical.insurance.vitalsignshistory', inverse_name="patient_id", string="Vital Signs")
@@ -51,30 +49,29 @@ class Patient(models.Model):
     def create(self, vals):
         seq = self.env['ir.sequence'].next_by_code('medical.insurance.patient') or '/'
         vals['name'] = seq
-
         return super(Patient, self).create(vals)
 
-    @api.one
+    @api.multi
+    @api.onchange('paid_cost')
     def _compute_remain_cost(self):
         self.remain_cost = self.plan_cost - self.paid_cost
 
-    @api.one
-    def _compute_patient_status(self):
-        self.patient_status = self.status
+     @api.multi
+     @api.onchange('status')
+     def _compute_patient_status(self):
+         self.patient_status = self.status
 
-    @api.one
-    def _compute_plan_status(self):
-        for rec in self:
-            today = datetime.today().date()
-            start = self.start_date
-            end = self.end_date
-            if today <= start or today >= end:
-             pw3933812
-             self.status = 'Inactive'
-            else:
-                self.status = 'Active'
+    @api.multi
+    @api.onchange('end_date')
+    def _plan_status(self):
+        for record in self:
+            if record.end_date :
+                if fields.Date.today() < record.start_date or fields.Date.today() > record.end_date:
+                    self.status = 'Inactive'
+                else:
+                    self.status = 'Active'
 
-
+    @api.multi
     @api.onchange('product_id.list_price')
     def onchange_field(self):
         self.plan_cost = self.product_id.list_price
