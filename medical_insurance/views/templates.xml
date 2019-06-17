@@ -34,8 +34,8 @@
            </form>
         </template>
 
-        <template id='notFound'>
-            <h1>Ooooooops not found</h1>
+        <template id='notValid'>
+            <h1>this claim is not valid</h1>
         </template>
 
 

@@ -65,7 +65,7 @@ class MedicalInsurance(http.Controller):
         })
 
         if claim.claim_status == 'Not Valid':
-            return {"response": 404}
+            return {"response": 403}
 
         return {'response': 200,
                 'name': claim.name,
@@ -97,10 +97,11 @@ class MedicalInsurance(http.Controller):
             'service_line_id': kw['service_line_id'],
             'visit_type': kw['visit_type']
         }
+        #not valid claim temp
         claim = request.env['medical.insurance.claim'].sudo().create(new_patient)
         print(claim)
         if claim.claim_status == 'Not Valid':
-            return http.request.render('medical_insurance.notFound', {})
+            return http.request.render('medical_insurance.notValid', {})
 
         return http.request.render('medical_insurance.claim_info', {
             'claims': claim
@@ -135,7 +136,7 @@ class MedicalInsurance(http.Controller):
             'medical_center_id': center_obj.id,
             'service_line_id': service_obj.id,
             'visit_type': kw['visit_type'],
-            'id' : claim_id
+            'id': claim_id
         }
 
         http.request.env['medical.insurance.claim'].sudo().search([('id', '=', claim_id )]).write(update_patient)
