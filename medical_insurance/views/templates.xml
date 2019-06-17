@@ -24,7 +24,7 @@
         <!--- create claim template-->
 
         <template id='create'>
-           <form action="/medical_insurance/createclaim/" method="POST">
+           <form action="/web/medical_insurance/create_claim" method="POST">
                patient_id : <input type="text" name="patient_id"/>
                medical_center_id : <input type="text" name="medical_center_id"/>
                service_line_id : <input type="text" name="service_line_id"/>
@@ -88,7 +88,7 @@
 
         <!--- update claim template-->
         <template id='update'>
-           <form action="/medical_insurance/updateclaim/" method="POST">
+           <form action="/web/medical_insurance/update_claim/" method="POST">
                <t t-foreach="claims" t-as="claim">
                patient_id : <input type="text" name="patient_id" t-att-value="claim.patient_id.name"/>
                medical_center_id : <input type="text" name="medical_center_id" t-att-value="claim.medical_center_id.name"/>
