@@ -446,7 +446,7 @@
             <field name="context">{}</field>
         </record>
 
-        <record id="medical_insurance_action_visit_form" model="ir.actions.act_window">
+        <record id="medical_insurance_action_visit_form" model="ir.actions.act_window.view">
            <field name="view_mode">form</field>
            <field name="view_id" ref="medical_insurance_form_visit_two" />
            <field name="act_window_id" ref="medical_insurance_action_visit" />
