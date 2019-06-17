@@ -1,5 +1,4 @@
 <odoo>
-    <data>
 
         <!-- explicit list view definition -->
 
@@ -52,7 +51,9 @@
                             <field name="contribution_charge"/>
                             <field name="patient_charge"/>
                             <field name="date_of_visit"/>
-                            <field name="invoice_id" attrs="{'invisible': [('visit_state','=','new')]}"/>
+                            <field name="invoice_id" attrs="{'invisible': [('invoice_id','=',False)]}"/>
+                            <field name="id"/>
+
                         </group>
 
                         <group string="Service based info" attrs="{'invisible': [('service_line_type','!=', 'Re-Assessment')]}">
@@ -159,6 +160,130 @@
             </field>
         </record>
 
+
+        <!-- ====================================================================================================== -->
+
+        <record model="ir.ui.view" id="medical_insurance_form_visit_two">
+            <field name="name">claim form</field>
+            <field name="model">medical.insurance.claim</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="visit_state" widget="statusbar" clickable="1" attrs="{'readonly':[('id','=',False)]}"/>
+                    </header>
+
+                    <sheet>
+                        <group string="Claim"  col="4">
+                            <field name="patient_id"  options='{"always_reload": True}'/>
+                            <field name="medical_center_id"/>
+                            <field name="service_line_id"/>
+                            <field name="service_line_type"/>
+                            <field name="visit_type"/>
+                            <field name="price_plan_status"/>
+                            <field name="price_plan"/>
+                            <field name="claim_status"/>
+                            <field name="contribution_charge"/>
+                            <field name="patient_charge"/>
+                            <field name="date_of_visit"/>
+                            <field name="invoice_id" attrs="{'invisible': [('invoice_id','=',False)]}"/>
+                        </group>
+
+                        <group string="Service based info" attrs="{'invisible': [('service_line_type','!=', 'Re-Assessment')]}">
+                            <group col="2">
+                                <field name="history"/>
+                                <field name="care_plan"/>
+                                <field name="diagnosis"/>
+                                <field name="instructions"/>
+                            </group>
+                            <group col="6" string="Vital Signs">
+                                <field name="temperature"/>
+                                <field name="pulse_rate"/>
+                                <field name="respiratory_rate"/>
+                                <field name="blood_pressure"/>
+                                <field name="o2_saturation"/>
+                                <field name="pain_score"/>
+                            </group>
+                        </group>
+
+                        <group string="Service based info" attrs="{'invisible': [('service_line_type','!=', 'Iv Request')]}">
+
+                            <group col="6" string="Referring physician">
+                                <field name="resident"/>
+                                <field name="specialist"/>
+                                <field name="consultant"/>
+                            </group>
+
+                            <group col="8" string="Degree of urgency">
+                                <field name="routine"/>
+                                <field name="semi_urgent"/>
+                                <field name="urgent"/>
+                                <field name="life_saving"/>
+                            </group>
+
+                            <group col="8" string="Types of access">
+                                <field name="peripheral_line"/>
+                                <field name="cutdown"/>
+                                <field name="port_a_cath"/>
+                                <field name="central_line"/>
+                            </group>
+
+                            <group col="4" string="Estimation duration of time">
+                                <field name="days"/>
+                                <field name="more_than_2_weeks"/>
+                            </group>
+
+                            <group col="8" string="Indication">
+                                <field name="blood_exchange"/>
+                                <field name="tpn"/>
+                                <field name="chemotherapy"/>
+                                <field name="coagulopathy"/>
+                            </group>
+
+                            <group col="4" string="Any previous insertion of central line">
+                                <field name="yes"/>
+                                <field name="no"/>
+                            </group>
+
+                            <separator/>
+                            <separator string="If for removal reason"/>
+                            <field name="removal_reason"/>
+                            <separator string="Surgical note"/>
+                            <field name="surgical_note"/>
+                            <separator string="Anesthetist note"/>
+                            <field name="anesthetist_note"/>
+                            <separator string="Procedure"/>
+                            <field name="procedure"/>
+
+                            <separator/><separator/>
+
+                            <group>
+                                <field name="physician_name"/>
+                                <field name="stamp_signature"/>
+                            </group>
+
+                        </group>
+
+                        <group string="Service based info" attrs="{'invisible': [('service_line_type','!=', 'Laboratory Multipurpose')]}">
+                            <group col="6">
+                                <field name="routine"/>
+                                <field name="Urgent"/>
+                                <field name="pre_operative"/>
+                            </group>
+                            <group col="2">
+                                <field name="Requested_by"/>
+                                <field name="stamp_and_signature"/>
+                                <field name="lab_date"/>
+                                <field name="requested_test"/>
+                                <field name="results"/>
+                                <field name="Pathologist"/>
+                                <field name="Examiner_Name"/>
+                                <field name="clinical_comments"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
         <!-- explicit graph view definition -->
 
@@ -321,30 +446,15 @@
             <field name="context">{}</field>
         </record>
 
-
-        <!-- server action to the one above -->
-        <!--
-        <record model="ir.actions.server" id="medical_insurance.action_server">
-          <field name="name">medical_insurance server</field>
-          <field name="model_id" ref="model_medical_insurance_medical_insurance"/>
-          <field name="state">code</field>
-          <field name="code">
-            action = {
-              "type": "ir.actions.act_window",
-              "view_mode": "tree,form",
-              "res_model": self._name,
-            }
-          </field>
+        <record id="medical_insurance_action_visit_form" model="ir.actions.act_window">
+           <field name="view_mode">form</field>
+           <field name="view_id" ref="medical_insurance_form_visit_two" />
+           <field name="act_window_id" ref="medical_insurance_action_visit" />
         </record>
-        -->
 
-        <!-- Top menu item -->
 
-        <!--menuitem name="medical_insurance" id="medical_insurance_menu_root"/-->
 
-        <!-- menu categories -->
 
-        <!--menuitem name="Registration" id="medical_insurance_Registration" parent="medical_insurance_menu_root"/-->
 
         <!-- actions -->
 
@@ -352,5 +462,4 @@
                   action="medical_insurance_action_visit"/>
 
 
-    </data>
 </odoo>
