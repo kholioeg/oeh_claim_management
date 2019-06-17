@@ -10,7 +10,7 @@
                 <sheet>
                     <group string="Medical Center" col="4">
                         <field name="name"/>
-                        <field name="partner_id" string="related vendor" />
+                        <field name="partner_id" string="related vendor" readonly="1"/>
                         <field name="phone"/>
                         <field name="mobile"/>
                         <field name="country_id"/>
