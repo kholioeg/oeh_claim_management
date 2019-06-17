@@ -30,18 +30,6 @@
                                 <strong>Price Plan Service:</strong>
                                 <p t-field="doc.product_id"/>
                             </div>
-                              <div  class="mr32">
-                                        <strong>Start At :</strong>
-                                        <p t-field="doc.start_date"/>
-                                    </div>
-                                    <div  class="mr32">
-                                        <strong>End  At :</strong>
-                                        <p t-field="doc.end_date"/>
-                                    </div>
-                            <div  class="mr32">
-                                <strong>Status :</strong>
-                                <p t-field="doc.status"/>
-                            </div>
 
                         </div>
                     </div>

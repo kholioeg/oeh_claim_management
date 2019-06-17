@@ -34,8 +34,8 @@ class Patient(models.Model):
     paid_cost = fields.Float()
     remain_cost = fields.Float(compute='_compute_remain_cost')
 
-    status = fields.Char(compute='_plan_status', string="patient status", readonly=True)
-    patient_status = fields.Char(attrs="{'invisible':1}")
+    status = fields.Char(compute='_plan_status', string="_compute_plan_status", readonly=True)
+    patient_status = fields.Char(string="_compute_patient status", attrs="{'invisible':1}")
 
     start_date = fields.Date(string="subscription start at")
     end_date = fields.Date(string="subscription end at")
@@ -57,14 +57,14 @@ class Patient(models.Model):
     def _compute_remain_cost(self):
         self.remain_cost = self.plan_cost - self.paid_cost
 
-    # @api.multi
-    # @api.onchange('status')
-    # def _compute_patient_status(self):
-    #     self.patient_status = self.status
+    @api.multi
+    @api.onchange('status')
+    def _compute_patient_status(self):
+        self.patient_status = self.status
 
     @api.multi
     @api.onchange('end_date')
-    def _plan_status(self):
+    def _compute__plan_status(self):
         for record in self:
             if record.end_date :
                 if fields.Date.today() < record.start_date or fields.Date.today() > record.end_date:
