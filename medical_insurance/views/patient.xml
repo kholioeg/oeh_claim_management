@@ -67,7 +67,7 @@
                                         <field name="blood_group"/>
                                         <field name="height"/>
                                         <field name="weight"/>
-                                        <field name="patient_status"/>
+
                                     </group>
                                 </page>
                                 <page string="Disease">
@@ -113,14 +113,8 @@
                                 <field name="remain_cost" />
                                 <field name="start_date"/>
                                 <field name="end_date"/>
+                                <field name="status"/>
 
-                            </group>
-                            <group  col="2">
-                                <group>
-
-                                    <field name="status"/>
-
-                                </group>
                             </group>
                         </page>
                     </notebook>

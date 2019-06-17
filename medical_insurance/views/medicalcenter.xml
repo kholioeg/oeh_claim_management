@@ -94,18 +94,10 @@
 
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="MedicalCenter_action_window">
-<<<<<<< HEAD
-        <field name="name">MedicalCenter window</field>
-        <field name="res_model">medical.insurance.medical.center</field>
-        <field name="view_mode">tree,form</field>
-        <field name="context">{'default_supplier': True}</field>
-
-=======
       <field name="name">MedicalCenter window</field>
       <field name="res_model">medical.insurance.medical.center</field>
       <field name="view_mode">tree,form</field>
       <field name="context">{'default_supplier': True}</field>
->>>>>>> 577488e3b85b08066e0780e2f167548ea05e2654
     </record>
 
     <!-- actions  -->
