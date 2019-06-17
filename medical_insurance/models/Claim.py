@@ -1,6 +1,5 @@
 from odoo import models, fields, api
 
-
 class Visit(models.Model):
     _name = 'medical.insurance.claim'
     _inherit = ['mail.thread', 'mail.activity.mixin']
@@ -106,7 +105,7 @@ class Visit(models.Model):
     def write(self, vals):
         result = super(Visit, self).write(vals)
         if self.visit_state == 'confirmed':
-            if not self.invoice_id:
+            if self.claim_status == 'Valid' and not self.invoice_id:
                 res_id = self.env['account.invoice'].create({
                     'partner_id': self.medical_center_id.partner_id.id,
                 })
@@ -117,7 +116,7 @@ class Visit(models.Model):
                 print(self.service_line_id.name.id)
                 print(self.service_line_id.name.name)
 
-                res2 = self.env['account.invoice.line'].create({
+                self.env['account.invoice.line'].create({
                     'invoice_id': res_id.id,
                     'product_id': self.service_line_id.name.id,
                     'account_id': self.service_line_id.name.id,
@@ -125,8 +124,11 @@ class Visit(models.Model):
                     'name': self.service_line_id.name.name,
                     'price_unit': self.contribution_charge,
                 })
-                print(res_id.id)
+                print(res_id.name)
+                print(res_id.number)
                 res_id.action_invoice_open()
+                print(res_id.name)
+                print(res_id.number)
                 self.write({'invoice_id': res_id.id})
         return result
 
@@ -134,6 +136,7 @@ class Visit(models.Model):
     @api.depends('patient_id', 'patient_id.price_plan.medical_center_id', 'patient_id.price_plan.service_line',
                  'price_plan_status')
     def compute_claim_status(self):
+        print(self.id)
         if self.price_plan_status == 'Active' and self.patient_id.price_plan.medical_center_id and self.patient_id.price_plan.service_line:
             for med in self.patient_id.price_plan.medical_center_id:
                 if med.name == self.medical_center_id.name:
@@ -148,3 +151,8 @@ class Visit(models.Model):
                     self.claim_status = 'Not Valid'
         else:
             self.claim_status = 'Not Valid'
+
+    @api.one
+    @api.depends('visit_state')
+    def post_a_message(self):
+        self.message_post(body='nada')

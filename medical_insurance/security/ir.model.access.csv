@@ -1,6 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_medical_insurance_patient,patient,model_medical_insurance_patient,,1,0,0,0
-access_medical_insurance_claim,claim,model_medical_insurance_claim,,1,1,1,0
+access_medical_insurance_claim,claim,model_medical_insurance_claim,,1,0.0,0
 access_medical_insurance_medical_center,medical_center,model_medical_insurance_medical_center,,1,0,0,0
 access_medical_insurance_service_line,service_line,model_medical_insurance_service_line,,1,0,0,0
 access_medical_insurance_price_plan,price_plan,model_medical_insurance_price_plan,,1,0,0,0
