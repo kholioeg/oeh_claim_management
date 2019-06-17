@@ -161,7 +161,7 @@
         </record>
 
 
-        <!-- ====================================================================================================== -->
+        <!-- the second form -->
 
         <record model="ir.ui.view" id="medical_insurance_form_visit_two">
             <field name="name">claim form</field>
@@ -169,7 +169,7 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <field name="visit_state" widget="statusbar" clickable="1" attrs="{'readonly':[('id','=',False)]}"/>
+                        <field name="visit_state" widget="statusbar"/>
                     </header>
 
                     <sheet>
