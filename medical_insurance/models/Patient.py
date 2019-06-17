@@ -1,5 +1,5 @@
 from dateutil.relativedelta import relativedelta
-from datetime import date, datetime
+from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
 
@@ -29,9 +29,17 @@ class Patient(models.Model):
     blood_group = fields.Char(string='blood group')
     weight = fields.Float()
     height = fields.Float()
-    status = fields.Boolean()
+
     price_plan = fields.Many2one('medical.insurance.price.plan', ondelete="set null", string="price plan")
-    patient_status = fields.Char(string='Patient Status', related='price_plan.status', readonly=True, store='True')
+    plan_cost = fields.Float(string='price plan cost', related='price_plan.plan_cost')
+    paid_cost = fields.Float()
+    remain_cost = fields.Float(compute='_compute_remain_cost')
+
+    status = fields.Char(compute='_compute_plan_status', readonly=True, string="price plan status")
+    patient_status = fields.Char(compute='_compute_patient_status')
+
+    start_date = fields.Date(string="Start At")
+    end_date = fields.Date(string="End At")
     # EHR = fields.One2many('medical.insurance.ehr', inverse_name="patient_id", string="EHR")
     disease = fields.One2many('medical.insurance.disease', inverse_name="patient_id", string="Disease")
     vital_signs_history = fields.One2many('medical.insurance.vitalsignshistory', inverse_name="patient_id", string="Vital Signs")
@@ -45,6 +53,31 @@ class Patient(models.Model):
         vals['name'] = seq
 
         return super(Patient, self).create(vals)
+
+    @api.one
+    def _compute_remain_cost(self):
+        self.remain_cost = self.plan_cost - self.paid_cost
+
+    @api.one
+    def _compute_patient_status(self):
+        self.patient_status = self.status
+
+    @api.one
+    def _compute_plan_status(self):
+        for rec in self:
+            today = datetime.today().date()
+            start = self.start_date
+            end = self.end_date
+            if today <= start or today >= end:
+             pw3933812
+             self.status = 'Inactive'
+            else:
+                self.status = 'Active'
+
+
+    @api.onchange('product_id.list_price')
+    def onchange_field(self):
+        self.plan_cost = self.product_id.list_price
 
 
     @api.multi
@@ -72,6 +105,7 @@ class Patient(models.Model):
                 result.append((record.id, name))
 
         return result
+
 
 
 
