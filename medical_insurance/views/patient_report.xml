@@ -142,7 +142,7 @@
 
                         <hr/>
                         <br/>
-                        <h6 class="text-center"  style="color:blue">Patient Line Info </h6>
+                        <h6 class="text-center"  style="color:blue">Plan Info </h6>
                         <br/>
 
 
@@ -152,9 +152,30 @@
                                 <strong>Price Plan:</strong>
                                 <p t-field="doc.price_plan"/>
                             </div>
+                            <div  class="mr32">
+                                <strong>Plan Cost:</strong>
+                                <p t-field="doc.plan_cost"/>
+                            </div>
+                            <div  class="mr32">
+                                <strong>Paid Cost:</strong>
+                                <p t-field="doc.paid_cost"/>
+                            </div>
+                            <div  class="mr32">
+                                <strong>Remain Cost:</strong>
+                                <p t-field="doc.remain_cost"/>
+                            </div>
+                             <div  class="mr32">
+                                <strong>Subscription Start At :</strong>
+                                <p t-field="doc.start_date"/>
+                            </div>
+                            <div  class="mr32">
+                                <strong>Subscription End At :</strong>
+                                <p t-field="doc.end_date"/>
+                            </div>
+
                             <div  class="mr40">
                                 <strong>Patient Status:</strong>
-                                <p t-field="doc.patient_status"/>
+                                <p t-field="doc.status"/>
                             </div>
                         </div>
 
