@@ -46,7 +46,7 @@
                     <field name="remain_cost" />
                 </group>
                  <group>
-                     <field name="patient"/>
+                     <field name="patient" context="{'form_view_ref' : 'medical_insurance.patient_form_two'}"/>
                  </group>
               </page>
               <page string="Service Line  Info">
