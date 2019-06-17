@@ -439,27 +439,18 @@
 
         <!-- actions opening views on models -->
 
-        <record model="ir.actions.act_window" id="medical_insurance_action_visit">
+        <record model="ir.actions.act_window" id="medical_insurance_action_visit_one">
             <field name="name">claim window</field>
             <field name="res_model">medical.insurance.claim</field>
             <field name="view_mode">tree,form,pivot,graph,search,activity,kanban,calendar</field>
             <field name="context">{}</field>
         </record>
 
-        <record id="medical_insurance_action_visit_form" model="ir.actions.act_window.view">
-           <field name="view_mode">form</field>
-           <field name="view_id" ref="medical_insurance_form_visit_two" />
-           <field name="act_window_id" ref="medical_insurance_action_visit" />
-        </record>
 
-
-
-
-
-        <!-- actions -->
+        <!-- menu item -->
 
         <menuitem name="Claim" id="medical_insurance_visit" parent="medical_insurance_menu_registration"
-                  action="medical_insurance_action_visit"/>
+                  action="medical_insurance_action_visit_one"/>
 
 
 </odoo>
