@@ -109,13 +109,6 @@ class Visit(models.Model):
                 res_id = self.env['account.invoice'].create({
                     'partner_id': self.medical_center_id.partner_id.id,
                 })
-                print(res_id)
-                print(res_id.state)
-                print(self.medical_center_id.partner_id.name)
-                print(self.service_line_id.id)
-                print(self.service_line_id.name.id)
-                print(self.service_line_id.name.name)
-
                 self.env['account.invoice.line'].create({
                     'invoice_id': res_id.id,
                     'product_id': self.service_line_id.name.id,
@@ -124,11 +117,7 @@ class Visit(models.Model):
                     'name': self.service_line_id.name.name,
                     'price_unit': self.contribution_charge,
                 })
-                print(res_id.name)
-                print(res_id.number)
                 res_id.action_invoice_open()
-                print(res_id.name)
-                print(res_id.number)
                 self.write({'invoice_id': res_id.id})
         return result
 
