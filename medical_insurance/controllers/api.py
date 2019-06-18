@@ -12,11 +12,19 @@ class Api(http.Controller):
     @http.route('/api/medical_insurance/patients/', type='http', auth='public', method='GET')
     def medical_patient(self, **kw):
         patients = http.request.env['medical.insurance.patient']
-        d = []
+        all_patients = []
         patient = patients.sudo().search([])
-        for x in patient:
-            d.append({'id': x.id, 'name': x.name})
-        return json.dumps({'data': d})
+        for p in patient:
+            all_patients.append({'id': p.id,
+                                 'first name' : p.first_name,
+                                 'last name' : p.first_name,
+                                 'MRN': p.name,
+                                 'NID' : p.NID,
+                                 'age' : p.age,
+                                 'gender' : p.gender,
+                                 'marital status': p.marital_status
+                                 })
+        return json.dumps({'data': all_patients})
 
 
     @http.route('/api/medical_insurance/patient/',type='http', auth='public', method='GET')

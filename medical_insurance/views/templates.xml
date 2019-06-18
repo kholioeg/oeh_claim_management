@@ -22,6 +22,51 @@
         <!-- </template> -->
 
 
+        <template id="all_patients">
+            <title>patients</title>
+            <style>
+                    table {
+                      font-family: arial, sans-serif;
+                      border-collapse: collapse;
+                      width: 100%;
+                    }
+                                    td, th {
+                      border: 1px solid #dddddd;
+                      text-align: left;
+                      padding: 8px;
+                    }
+
+                    tr:nth-child(even) {
+                      background-color: #dddddd;
+                    }
+            </style>
+            <table>
+                <tr>
+                        <th>Patient id</th>
+                        <th>MRN</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>NID</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Marital Status</th>
+                      </tr>
+            <t t-foreach="patients" t-as="one">
+                      <tr>
+                        <td><t t-esc="one.id"/></td>
+                        <td><t t-esc="one.name"/></td>
+                        <td><t t-esc="one.first_name"/></td>
+                        <td><t t-esc="one.last_name"/></td>
+                        <td><t t-esc="one.NID"/></td>
+                        <td><t t-esc="one.age"/></td>
+                        <td><t t-esc="one.gender"/></td>
+                        <td><t t-esc="one.marital_status"/></td>
+                      </tr>
+
+            </t>
+            </table>
+        </template>
+
 
         <!--- create claim template-->
 

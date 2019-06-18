@@ -8,6 +8,26 @@ _logger = logging.getLogger(__name__)
 
 class Web(http.Controller):
 
+#patient routes
+    @http.route('/web/medical_insurance/patients/', type='http', auth='public', method='GET')
+    def medical_patient(self, **kw):
+        patients = http.request.env['medical.insurance.patient']
+        # all_patients = []
+        patient = patients.sudo().search([])
+        # for p in patient:
+        #     all=all_patients.append({'id': p.id,
+        #                          'first name' : p.first_name,
+        #                          'last name' : p.first_name,
+        #                          'MRN': p.name,
+        #                          'NID' : p.NID,
+        #                          'age' : p.age,
+        #                          'gender' : p.gender,
+        #                          'marital status': p.marital_status
+        #                          })
+        return http.request.render('medical_insurance.all_patients', {
+            'patients': patient
+        })
+
 #create claim / web
 
     @http.route('/web/medical_insurance/claim/new/', type='http', auth="public", methods=['GET'], website=True)
