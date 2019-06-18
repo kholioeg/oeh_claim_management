@@ -28,7 +28,7 @@ class Patient(models.Model):
     weight = fields.Float()
     height = fields.Float()
 
-    price_plan = fields.Many2one('medical.insurance.price.plan', ondelete="set null", string="price plan")
+    price_plan = fields.Many2one('medical.insurance.price.plan', ondelete="set null", string="price plan", required=True)
     plan_cost = fields.Float(string='price plan cost', related='price_plan.plan_cost')
     paid_cost = fields.Float()
     remain_cost = fields.Float(compute='_compute_remain_cost')
