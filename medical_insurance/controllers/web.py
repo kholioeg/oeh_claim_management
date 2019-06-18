@@ -9,24 +9,29 @@ _logger = logging.getLogger(__name__)
 class Web(http.Controller):
 
 #patient routes
+#all patients
     @http.route('/web/medical_insurance/patients/', type='http', auth='public', method='GET')
     def medical_patient(self, **kw):
         patients = http.request.env['medical.insurance.patient']
-        # all_patients = []
         patient = patients.sudo().search([])
-        # for p in patient:
-        #     all=all_patients.append({'id': p.id,
-        #                          'first name' : p.first_name,
-        #                          'last name' : p.first_name,
-        #                          'MRN': p.name,
-        #                          'NID' : p.NID,
-        #                          'age' : p.age,
-        #                          'gender' : p.gender,
-        #                          'marital status': p.marital_status
-        #                          })
         return http.request.render('medical_insurance.all_patients', {
             'patients': patient
         })
+
+#one patient
+    @http.route('/web/medical_insurance/patient/', type='http', auth='public', method='GET')
+    def patient_info_by_id(self, **kwargs):
+        Patients = http.request.env['medical.insurance.patient']
+        patient = Patients.sudo().search([('name', '=', kwargs['mrn'])])
+        if patient:
+            if patient.patient_status == 'Active':
+                return http.request.render('medical_insurance.one_patient', {
+                    'patient': patient
+                })
+            else:
+                return http.request.render('medical_insurance.patient_Inactive', {})
+        else:
+            return http.request.render('medical_insurance.patient_notExist', {})
 
 #create claim / web
 

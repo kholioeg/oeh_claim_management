@@ -25,10 +25,12 @@ Room *..o OperationReservation : name
 
 MedicalCenter --> Partner
 Patient --> Partner
+Doctors --> Partner
 
 
 
 class Room{
+name : Char
 }
 class Doctors{
 }
@@ -82,6 +84,21 @@ class AntenatalCareLine{
     patient_id : Many2one(Patient)
 }
 
+Class Medicine{
+    patient_id : Many2one(Patient)
+    medicine : Many2one(MedicineInfo)
+    indication : Char
+    Start : Date
+    End : Date
+    prescription_reference : Char
+    dose : Char
+    dose_unit : Char
+    Frequency : Char
+    X = Char
+    treatment_duration : Char
+    treatment_period : Char
+    Comment : Text
+
 Class Partner
 
 Class MedicalCenter{
@@ -98,6 +115,7 @@ Class ServiceLine
     service_type : Char
     name : Many2one(product.template)
     price_plan : Many2one(PricePlan)
+    onchange_field()
 }
 
 
@@ -138,7 +156,13 @@ Class Patient{
     medicine : One2many(Medicine)
     operation_reservation : One2many(OperationReservation)
     antenatal_care : One2many(antenatal_care)
-
+    _compute_remain_cost()
+    _compute_patient_status()
+    _compute_plan_status()
+    onchange_field()
+    _compute_age()
+    name_get()
+    _create()
 }
 
 
