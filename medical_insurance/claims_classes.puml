@@ -115,6 +115,7 @@ Class ServiceLine
     service_type : Char
     name : Many2one(product.template)
     price_plan : Many2one(PricePlan)
+    onchange_field()
 }
 
 
@@ -155,7 +156,13 @@ Class Patient{
     medicine : One2many(Medicine)
     operation_reservation : One2many(OperationReservation)
     antenatal_care : One2many(antenatal_care)
-
+    _compute_remain_cost()
+    _compute_patient_status()
+    _compute_plan_status()
+    onchange_field()
+    _compute_age()
+    name_get()
+    _create()
 }
 
 
