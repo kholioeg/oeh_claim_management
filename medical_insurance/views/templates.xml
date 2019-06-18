@@ -269,17 +269,170 @@
 
 
         <!--- update claim template-->
-        <template id='update'>
-           <form action="/web/medical_insurance/update_claim/" method="POST">
-               <t t-foreach="claims" t-as="claim">
-               patient_id : <input type="text" name="patient_id" t-att-value="claim.patient_id.name"/>
-               medical_center_id : <input type="text" name="medical_center_id" t-att-value="claim.medical_center_id.name"/>
-               service_line_id : <input type="text" name="service_line_id" t-att-value="claim.service_line_id.name.name"/>
-               visit_type : <input type="text" name="visit_type" t-att-value="claim.visit_type"/>
-               claim id : <input type="text" name="id" t-att-value="claim.id"/>
-               <button name="submit" type="submit"> Submit </button>
-               </t>
-           </form>
+
+         <template id='update'>
+            <style>
+                    * {
+                      box-sizing: border-box;
+                    }
+
+
+                    input[type=text], select{
+                      width: 100%;
+                      padding: 12px;
+                      border: 1px solid #ccc;
+                      border-radius: 4px;
+                      resize: vertical;
+                    }
+
+                    label {
+                      padding: 12px 12px 12px 0;
+                      display: inline-block;
+                    }
+
+                    input[type=submit] {
+                      background-color: #000099;
+                      color: white;
+                      padding: 12px 20px;
+                      border: none;
+                      border-radius: 4px;
+                      cursor: pointer;
+                      float: right;
+                    }
+
+                    input[type=submit]:hover {
+                      background-color: #1a1aff;
+                    }
+
+
+                    .container {
+                      border-radius: 10px;
+                      background-color: #f2f2f2;
+                      height: 100%;
+                      padding: 20px;
+
+                    }
+
+
+                    .col-25 {
+                      float: left;
+                      width: 25%;
+                      margin-top: 6px;
+                    }
+
+                    .col-75 {
+                      float: left;
+                      width: 75%;
+                      margin-top: 6px;
+                    }
+
+                    /* Clear floats after the columns */
+                    .row:after {
+                      content: "";
+                      display: table;
+                      clear: both;
+                    }
+                    .row{
+                margin:30px;
+                        }
+                    /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+                    @media screen and (max-width: 600px) {
+                      .col-25, .col-75, input[type=submit] {
+                        width: 100%;
+                        margin-top: 0;
+                      }
+                    }
+
+                form{
+                    margin-top: 6%;
+                }
+                label
+                {
+                    font-style: italic;
+                    font-weight: bold;
+                    color: #003366;
+                    font-size: large;
+                }
+
+            </style>
+                <div class="container" >
+                    <div class="col-4">
+                        <div class="logo">
+                            <img src='/medical_insurance/static/src/img/logo.png' style="max-height: 100px;"/>
+                        </div>
+                    </div>
+                  <form action="/web/medical_insurance/update_claim/" method="POST">
+                  <t t-foreach="claims" t-as="claim">
+                  <div class="row">
+                    <div class="col-25">
+                      <label for="patient_id">Patient MRN</label>
+                    </div>
+                    <div class="col-75">
+                      <input type="text" name="patient_id" t-att-value="claim.patient_id.name" t-att-readonly="claim.patient_id.name"/>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-25">
+                      <label for="medical_center_id">Medical Center</label>
+                    </div>
+                    <div class="col-75">
+                      <input type="text" name="medical_center_id" t-att-value="claim.medical_center_id.name" t-att-readonly="claim.medical_center_id.name" />
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-25">
+                      <label for="service_line_id">Service Line </label>
+                    </div>
+                    <div class="col-75">
+                      <input type="text" name="service_line_id" t-att-value="claim.service_line_id.name.name" t-att-readonly="claim.service_line_id.name"/>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-25">
+                      <label for="claim name">Claim No</label>
+                    </div>
+                    <div class="col-75">
+                      <input type="text" name="id" t-att-value="claim.id" t-att-readonly="claim.id"/>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-25">
+                      <label for="Visit type">Visit type</label>
+                    </div>
+                    <div class="col-75">
+                      <select id="v_type" name="visit_type">
+                        <option value="outpatient" >outpatient</option>
+                        <option value="ambulatory">ambulatory</option>
+                        <option value="opd/er">opd/er</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <input type="submit" value="Submit"/>
+                  </div>
+                  </t>
+                  </form>
+
+                </div>
         </template>
+
+
+<!--        <template id='update'>-->
+<!--           <form action="/web/medical_insurance/update_claim/" method="POST">-->
+<!--               <t t-foreach="claims" t-as="claim">-->
+<!--               patient_id : <input type="text" name="patient_id" t-att-value="claim.patient_id.name"/>-->
+<!--               medical_center_id : <input type="text" name="medical_center_id" t-att-value="claim.medical_center_id.name"/>-->
+<!--               service_line_id : <input type="text" name="service_line_id" t-att-value="claim.service_line_id.name.name"/>-->
+<!--               visit_type : <input type="text" name="visit_type" t-att-value="claim.visit_type"/>-->
+<!--               claim id : <input type="text" name="id" t-att-value="claim.id"/>-->
+<!--               <button name="submit" type="submit"> Submit </button>-->
+<!--               </t>-->
+<!--           </form>-->
+<!--        </template>-->
     </data>
 </odoo>
