@@ -449,7 +449,7 @@
 
         <!-- menu item -->
 
-        <menuitem name="Claim" id="medical_insurance_visit" parent="medical_insurance_menu_registration"
+        <menuitem name="Claim" id="medical_insurance_visit" parent="medical_insurance_menu_registration" sequence="1"
                   action="medical_insurance_action_visit_one"/>
 
 
