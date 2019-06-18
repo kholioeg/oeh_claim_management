@@ -27,12 +27,6 @@ class Patient(models.Model):
     blood_group = fields.Char(string='blood group')
     weight = fields.Float()
     height = fields.Float()
-<<<<<<< HEAD
-    status = fields.Boolean()
-    price_plan = fields.Many2one('medical.insurance.price.plan', string="price plan", required=True)
-    EHR = fields.One2many('medical.insurance.ehr', inverse_name="patient_id", string="EHR", required=True)
-=======
->>>>>>> c76c9661a9051b1fae83186eb074662e80473fa3
 
     price_plan = fields.Many2one('medical.insurance.price.plan', ondelete="set null", string="price plan")
     plan_cost = fields.Float(string='price plan cost', related='price_plan.plan_cost')

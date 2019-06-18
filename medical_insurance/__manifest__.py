@@ -20,11 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-<<<<<<< HEAD
-    'depends': ['base', 'portal','product'],
-=======
     'depends': ['base', 'mail', 'product', 'sale'],
->>>>>>> c76c9661a9051b1fae83186eb074662e80473fa3
 
     # always loaded
     'data': [
@@ -37,9 +33,6 @@
         'views/serviceline.xml',
         'views/priceplan.xml',
         'views/medicalcenter.xml',
-<<<<<<< HEAD
-        'views/ehr.xml'
-=======
         'views/price_plan_report.xml',
         'views/patient_report.xml',
         'views/medical_center_report.xml',
@@ -54,7 +47,6 @@
         'views/medicine_info.xml',
         'views/demo.xml',
 
->>>>>>> c76c9661a9051b1fae83186eb074662e80473fa3
     ],
     # only loaded in demonstration mode
     'demo': [

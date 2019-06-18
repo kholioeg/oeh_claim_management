@@ -1,6 +1,7 @@
 from odoo import models, fields, api
 
 class Visit(models.Model):
+
     _name = 'medical.insurance.claim'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
@@ -101,24 +102,6 @@ class Visit(models.Model):
         vals['name'] = seq
         return super(Visit, self).create(vals)
 
-<<<<<<< HEAD
-    # @api.one
-    # def compute_claim_status(self):
-    #     if self.price_plan_status == 'Active' and self.patient_id.price_plan.medical_center_id and self.patient_id.price_plan.service_line:
-    #         for med in self.patient_id.price_plan.medical_center_id:
-    #             if med.name == self.medical_center_id.name:
-    #                 for s in self.patient_id.price_plan.service_line:
-    #                     if s.name == self.service_line_id.name:
-    #                         self.claim_status = 'Valid'
-    #                         break
-    #                     else:
-    #                         self.claim_status = 'Not Valid'
-    #                 break
-    #             else:
-    #                 self.claim_status = 'Not Valid'
-    #     else:
-    #         self.claim_status = 'Not Valid'
-=======
     @api.multi
     def write(self, vals):
         result = super(Visit, self).write(vals)
@@ -163,4 +146,3 @@ class Visit(models.Model):
     @api.depends('visit_state')
     def post_a_message(self):
         self.message_post(body='nada')
->>>>>>> c76c9661a9051b1fae83186eb074662e80473fa3
