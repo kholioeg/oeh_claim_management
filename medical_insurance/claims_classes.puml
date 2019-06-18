@@ -25,10 +25,12 @@ Room *..o OperationReservation : name
 
 MedicalCenter --> Partner
 Patient --> Partner
+Doctors --> Partner
 
 
 
 class Room{
+name : Char
 }
 class Doctors{
 }
@@ -81,6 +83,21 @@ class AntenatalCareLine{
     BP : Char
     patient_id : Many2one(Patient)
 }
+
+Class Medicine{
+    patient_id : Many2one(Patient)
+    medicine : Many2one(MedicineInfo)
+    indication : Char
+    Start : Date
+    End : Date
+    prescription_reference : Char
+    dose : Char
+    dose_unit : Char
+    Frequency : Char
+    X = Char
+    treatment_duration : Char
+    treatment_period : Char
+    Comment : Text
 
 Class Partner
 
