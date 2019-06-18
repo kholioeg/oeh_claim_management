@@ -1,8 +1,8 @@
 @startuml
 
-Visit o..* Patient : patient_id
-Visit o..* MedicalCenter : medical_center_id
-Visit *..o ServiceLine : service_line_id
+Claim *..o Patient : patient_id
+Claim *..o MedicalCenter : medical_center_id
+Claim *..o ServiceLine : service_line_id
 
 ServiceLine *..o PricePlan : price_plan
 ServiceLine o..* Product : product_id
@@ -12,88 +12,157 @@ PricePlan o..* MedicalCenter : medical_center_id
 
 Patient o..* PricePlan : price_plan
 
+AntenatalCareLine *..o Patient : patient_id
+Disease *..o Patient : patient_id
+Medicine *..o Patient : patient_id
+OperationReservation *..o Patient : patient_id
+VitalSignsHistory *..o Patient : patient_id
+
+DiseaseInfo *..o Disease : name
+MedicineInfo *..o Medicine : name
+Doctors *..o OperationReservation : name
+Room *..o OperationReservation : name
+
 MedicalCenter --> Partner
 Patient --> Partner
+
+
+
+class Room{
+}
+class Doctors{
+}
+class MedicineInfo{
+}
+class DiseaseInfo{
+}
+class OperationReservation{
+    Operation No : Char
+    From : Datetime
+    To : Datetime
+    Notes : Text
+    patient_id : Many2one(Patient)
+    doctor_name : Many2one(Doctors)
+    room_number : Many2one(Room)
+}
+
+
+class VitalSignsHistory{
+    VB : Char
+    F1_O2 : Char
+    RR_SPO2 : Char
+    remarks : Text
+    sao2 : Char
+    T : Char
+    BP : Char
+    HR = fields.Char(string="HR")
+    date_time : Datetime
+    D : Char
+    P : Char
+    FHS : Char
+    patient_id : Many2one(Patient)
+}
+class Disease{
+    severity : Selection
+    state : Selection
+    infectious : Boolean
+    diagnosed_on : Date
+    remarks : Text
+    disease : Many2one(DiseaseInfo)
+    patient_id : Many2one(Patient)
+}
+
+class AntenatalCareLine{
+    rx_and_remarks : Char
+    Wt : Char
+    Date : Date
+    c_o : Char
+    examination_ultrasound : Char
+    BP : Char
+    patient_id : Many2one(Patient)
+}
 
 Class Partner
 
 Class MedicalCenter{
-    price_plan :O2M
-    visit : O2M
+    price_plan :Many2many(PricePlan)
+    visit : One2many(claim)
+    onchange_field()
 }
 
 Class ServiceLine
 {
-    name : M2O
     sale_price : Float
     vendor_price : Float
     patient_price : Float
-    price_plan : M2O
+    service_type : Char
+    name : Many2one(product.template)
+    price_plan : Many2one(PricePlan)
 }
 
 
-Class Visit{
 
-    name : Char
-    price_plan : Char
-    patient_status : Boolean
-    contribution_charge : Float
-    patient_charge : Float
-    date_of_visit :  Datetime
-    visit_type :  Char
-    plan_status : Char
-    visit_state : Selection
-    patient_id : M2O
-    medical_center_id : M2O
-    service_line_id : M2O
-}
 
 Class PricePlan{
     name : Char
-    state : Selection
-    start_date : Date
-    end_date :  Date
-    medical_center_id : M2O
-    service_line : O2M
+    plan_cost : Float
+    medical_center_id : Many2one(MedicalCenter)
+    service_line : One2many(ServiceLine)
+    product_id : Many2one(product.template)
+    patient : One2many(Patient)
 }
 
 Class Patient{
+    first_name : Char
+    last_name : Char
+    image : Binary
     NID : Char
-    date_of_birth : Date
+    birthday : Date
+    age : Integer
     gender : Selection
     marital_status : Selection
     blood_group : Char
     weight : Float
     height : Float
-    status : Boolean
-    visit : O2M
-
-}
-
-Class PatientLine{
-    price_plan : M2O
-    patient : M2O
+    status : Char
+    plan_cost : Float
     paid_cost : Float
     remain_cost : Float
-    status : Boolean
-    compute_remain_cost()
+    patient_status : Char
+    start_date : Date
+    end_date : Date
+
+    price_plan : Many2one(PricePlan)
+    disease : One2many(disease)
+    vital_signs_history : One2many(VitalSignHistory)
+    medicine : One2many(Medicine)
+    operation_reservation : One2many(OperationReservation)
+    antenatal_care : One2many(antenatal_care)
+
 }
 
 
-Class Visit{
 
+
+Class Claim{
     name : Char
     price_plan : Char
-    patient_status : Boolean
+    price_plan_status -> patient status : Char
     contribution_charge : Float
     patient_charge : Float
     date_of_visit :  Datetime
+    claim_status : Char
     visit_type :  Char
-    plan_status : Char
     visit_state : Selection
+    service_line_type : Char
     patient_id : Many2one(Patient)
     medical_center_id : Many2one(MedicalCenter)
     service_line_id : Many2one(ServiceLine)
+    invoice_id : Many2one(account.invoice)
+    _create()
+    write()
+    compute_claim_status()
+    post_a_message()
 }
 
 @enduml

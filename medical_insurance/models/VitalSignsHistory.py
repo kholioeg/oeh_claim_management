@@ -11,7 +11,7 @@ class VitalSignsHistory(models.Model):
     remarks = fields.Text(string="Remarks")
     sao2 = fields.Char(string="Sa O2")
     # patient_num = fields.One2many('medical.insurance.patient',string="patient id")
-    T= fields.Char(strinf="T.")
+    T= fields.Char(string="T.")
     BP = fields.Char(string="BP")
     HR = fields.Char(string="HR")
     date_time = fields.Datetime()
