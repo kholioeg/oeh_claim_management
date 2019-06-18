@@ -72,13 +72,17 @@
                         <div class="oe_structure"/>
                         <div class="row col mt32 mb32" id="informations">
 
-                            <div   class="mr32">
+                            <div class="mr32">
                                 <strong>Vendor Contribution:</strong>
                                 <p t-field="doc.vendor_price"/>
                             </div>
                             <div class="mr32">
                                 <strong>Patient Price:</strong>
                                 <p t-field="doc.patient_price"/>
+                            </div>
+                            <div class="mr32">
+                                <strong>Price Plane:</strong>
+                                <p t-field="doc.price_plan"/>
                             </div>
                         </div>
 

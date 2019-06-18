@@ -57,9 +57,9 @@
                             <tr>
                                 <t t-set="colspan" t-value="5"/>
                                 <th class="text-left">Price Plan Service</th>
-                                <!-- <th class="text-right">Status</th>
-                                <th class="text-right">Start At</th>
-                                <th class="text-right">End At</th> -->
+<!--                                <th class="text-right">Status</th>-->
+<!--                                <th class="text-right">Start At</th>-->
+<!--                                <th class="text-right">End At</th>-->
 <!--                                <th class="text-right">Patient</th>-->
 <!--                                <th class="text-right">ServiceLine</th>-->
 
@@ -71,15 +71,15 @@
                                 <td class="text-left">
                                     <span t-field="t.product_id"/>
                                 </td>
-                                <!-- <td class="text-right">
-                                    <span t-field="t.status"/>
-                                </td>
-                                <td class="text-right">
-                                    <span t-field="t.start_date"/>
-                                </td>
-                                <td class="text-right">
-                                    <span t-field="t.end_date"/>
-                                </td> -->
+<!--                                <td class="text-right">-->
+<!--                                    <span t-field="t.status"/>-->
+<!--                                </td>-->
+<!--                                <td class="text-right">-->
+<!--                                    <span t-field="t.start_date"/>-->
+<!--                                </td>-->
+<!--                                <td class="text-right">-->
+<!--                                    <span t-field="t.end_date"/>-->
+<!--                                </td>-->
 <!--                                <td class="text-right">-->
 <!--                                    <span t-field="t.patient"/>-->
 <!--                                </td>-->
