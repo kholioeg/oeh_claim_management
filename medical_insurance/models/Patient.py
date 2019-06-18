@@ -1,10 +1,8 @@
 from dateutil.relativedelta import relativedelta
-from datetime import date, datetime
+
 from dateutil.relativedelta import relativedelta
-
-
 from odoo import models, fields, api,tools
-
+import datetime
 
 class Patient(models.Model):
     _name = 'medical.insurance.patient'
@@ -29,9 +27,17 @@ class Patient(models.Model):
     blood_group = fields.Char(string='blood group')
     weight = fields.Float()
     height = fields.Float()
-    status = fields.Boolean()
+
     price_plan = fields.Many2one('medical.insurance.price.plan', ondelete="set null", string="price plan")
-    patient_status = fields.Char(string='Patient Status', related='price_plan.status', readonly=True, store='True')
+    plan_cost = fields.Float(string='price plan cost', related='price_plan.plan_cost')
+    paid_cost = fields.Float()
+    remain_cost = fields.Float(compute='_compute_remain_cost')
+
+    status = fields.Char(compute='_compute_plan_status', string="patient status", readonly=True)
+    patient_status = fields.Char(compute='_compute_patient_status', attrs="{'invisible':1}")
+
+    start_date = fields.Date(string="subscription start at")
+    end_date = fields.Date(string="subscription end at")
     # EHR = fields.One2many('medical.insurance.ehr', inverse_name="patient_id", string="EHR")
     disease = fields.One2many('medical.insurance.disease', inverse_name="patient_id", string="Disease")
     vital_signs_history = fields.One2many('medical.insurance.vitalsignshistory', inverse_name="patient_id", string="Vital Signs")
@@ -43,8 +49,32 @@ class Patient(models.Model):
     def create(self, vals):
         seq = self.env['ir.sequence'].next_by_code('medical.insurance.patient') or '/'
         vals['name'] = seq
-
         return super(Patient, self).create(vals)
+
+    @api.multi
+    @api.onchange('paid_cost')
+    def _compute_remain_cost(self):
+        self.remain_cost = self.plan_cost - self.paid_cost
+
+    @api.multi
+    @api.onchange('status')
+    def _compute_patient_status(self):
+        self.patient_status = self.status
+
+    @api.multi
+    @api.onchange('end_date')
+    def _compute_plan_status(self):
+        for record in self:
+            if record.end_date :
+                if fields.Date.today() < record.start_date or fields.Date.today() > record.end_date:
+                    self.status = 'Inactive'
+                else:
+                    self.status = 'Active'
+
+    @api.multi
+    @api.onchange('product_id.list_price')
+    def onchange_field(self):
+        self.plan_cost = self.product_id.list_price
 
 
     @api.multi
@@ -72,6 +102,3 @@ class Patient(models.Model):
                 result.append((record.id, name))
 
         return result
-
-
-

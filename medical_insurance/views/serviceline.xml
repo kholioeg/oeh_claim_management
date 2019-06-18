@@ -31,6 +31,7 @@
                         <field name="vendor_price"/>
                         <field name="patient_price"/>
                         <field name="service_type"/>
+                        <field name="price_plan"/>
                     </group>
                 </sheet>
             </form>
