@@ -16,13 +16,13 @@ class Api(http.Controller):
         patient = patients.sudo().search([])
         for p in patient:
             all_patients.append({'id': p.id,
-                                 'first name' : p.first_name,
-                                 'last name' : p.first_name,
+                                 'first name': p.first_name,
+                                 'last name': p.last_name,
                                  'MRN': p.name,
-                                 'NID' : p.NID,
-                                 'age' : p.age,
+                                 'NID': p.NID,
+                                 'age': p.age,
                                  'gender' : p.gender,
-                                 'marital status': p.marital_status
+                                 'marital_status': p.marital_status
                                  })
         return json.dumps({'data': all_patients})
 
@@ -84,6 +84,5 @@ class Api(http.Controller):
                 'visit state': claim.visit_state,
 
                 }
-
 
 

@@ -6,7 +6,7 @@ class OperationReservation(models.Model):
     _name = 'medical.insurance.operationreservation'
     _inherit = 'res.partner'
 
-    name = fields.Char(string="Operation No", readonly=True,store='True')
+    # name = fields.Char(string="Operation No", readonly=True,store='True')
     patient_id = fields.Many2one('medical.insurance.patient', string='patient', required=True)
     From = fields.Datetime()
     To = fields.Datetime()
