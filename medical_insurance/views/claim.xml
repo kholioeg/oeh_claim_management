@@ -429,8 +429,8 @@
                                     <p t-field="doc.date_of_visit"/>
                                 </div>
                                  <div  class="mr32">
-                                    <strong>Claim Status:</strong>
-                                    <p t-field="doc.claim_status"/>
+                                    <strong>Invoice:</strong>
+                                    <p t-field="doc.invoice_id"/>
                                 </div>
                             </div>
 
