@@ -122,8 +122,24 @@
             <h1>this patient is inactive</h1>
         </template>
 
+
         <template id='patient_notExist'>
-            <h1>this patient is not exist</h1>
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/medical_insurance/static/src/css/notfound.css"/>
+            </xpath>
+            <div id="clouds">
+                <div class="cloud x1"></div>
+                <div class="cloud x1_5"></div>
+                <div class="cloud x2"></div>
+                <div class="cloud x3"></div>
+                <div class="cloud x4"></div>
+                <div class="cloud x5"></div>
+            </div>
+            <div class='c'>
+                <div class='_404'>404</div>
+                <div class='_1'>The Patient</div>
+                <div class='_2'>WAS NOT FOUND</div>
+            </div>
         </template>
 
         <!--- create claim template-->
