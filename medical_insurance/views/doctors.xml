@@ -1,0 +1,37 @@
+<odoo>
+    <record model="ir.ui.view" id="doctor_list">
+        <field name="name">Doctors list</field>
+        <field name="model">medical.insurance.doctors</field>
+        <field name="priority" eval="16"/>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+<!-- explicit form view definition-->
+    <record model="ir.ui.view" id="doctors_form">
+        <field name="name">doctors_list</field>
+        <field name="model">medical.insurance.doctors</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group col="4">
+                            <field name="name"/>
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+<!-- explicit list view definition -->
+
+<!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="doctors_action_window">
+      <field name="name">Doctors window</field>
+      <field name="res_model">medical.insurance.doctors</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

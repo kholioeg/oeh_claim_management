@@ -1,83 +1,114 @@
 <odoo>
     <data>
-    <record model="ir.ui.view" id="PricePlanList">
-        <field name="name">PricePlan List</field>
-        <field name="model">medical.insurance.price.plan</field>
-        <field name="priority" eval="16"/>
-        <field name="arch" type="xml">
-            <tree>
-                <field name="name"/>
-                <field name="state"/>
-                <field name="start_date"/>
-                <field name="end_date"/>
-                <!--field name="medical_center"/-->
-                <field name="service_line"/>
-                <field name="price"/>
-            </tree>
-        </field>
-    </record>
-    <!-- explicit form view definition -->
+        <record model="ir.ui.view" id="PricePlanList">
+            <field name="name">PricePlan List</field>
+            <field name="model">medical.insurance.price.plan</field>
+            <field name="priority" eval="16"/>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="product_id"/>
+                    <!--                <field name="status"/>-->
+                    <!--                <field name="start_date"/>-->
+                    <!--                <field name="end_date"/>-->
+                    <field name="patient"/>
+                    <field name="medical_center_id"/>
+                    <field name="service_line"/>
+                </tree>
+            </field>
+        </record>
+        <!-- explicit form view definition -->
         <record model="ir.ui.view" id="price_plan_form">
-        <field name="name">price_plan_form</field>
-        <field name="model">medical.insurance.price.plan</field>
-        <field name="arch" type="xml">
-          <form>
-            <sheet>
-            <notebook position="inside">
-              <page string="Price Plan Info">
-                <group col="4">
-                  <field name="name"/>
-                  <field name="state"/>
-                  <field name="start_date"/>
-                  <field name="end_date"/>
-                  <field name="price"/>
-                </group>
-              </page>
-                <page string="Medical Center  Info">
-                <group  col="2">
-                    <group>
-                   <field name="medical_center_id"/>
-                    </group>
-                </group>
-              </page>
-                 <page string="Patient  Info">
-                <group  col="2">
-                    <group>
-                   <field name="patient"/>
-                    </group>
-                </group>
-              </page>
-              <page string="Service Line  Info">
-                <group>
-                   <field name="service_line"/>
-                </group>
-              </page>
-            </notebook>
-            </sheet>
-          </form>
-      </field>
-    </record>
+            <field name="name">price_plan_form</field>
+            <field name="model">medical.insurance.price.plan</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <notebook position="inside">
+                            <page string="Price Plan Info">
+                                <group col="4">
+                                    <field name="product_id"/>
+                                    <field name="patient" attrs="{'invisible':1}"/>
+                                    <!--                    <field name="status"/>-->
+                                    <!--                    <field name="start_date"/>-->
+                                    <!--                    <field name="end_date"/>-->
+                                </group>
+                            </page>
+                            <page string="Medical Center  Info">
 
-    <!-- actions opening views on models -->
-    <record model="ir.actions.act_window" id="PricePlan_action_window">
-      <field name="name">PricePlan window</field>
-      <field name="res_model">medical.insurance.price.plan</field>
-      <field name="view_mode">tree,form</field>
-    </record>
+                                <group>
+                                    <field name="medical_center_id"/>
+                                </group>
+                            </page>
+                            <page string="Patient Info">
+                                <group>
+                                    <field name="patient"/>
+                                </group>
+                            </page>
+                            <page string="Service Line  Info">
+                                <group>
+                                    <field name="service_line"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
-     <!-- Top menu item -->
-    <!--menuitem name="medical_insurance" id="medical_insurance_menu_root"/-->
-    <!-- menu categories -->
-    <!--menuitem name="Registration" id="medical_insurance_menu1" parent="medical_insurance_menu_root"/-->
-    <!--menuitem name="Reporting" id="medical_insurance_menu2" parent="medical_insurance_menu_root"/-->
-    <!--menuitem name="Configuration" id="medical_insurance_menu3" parent="medical_insurance_menu_root"/-->
-    <!-- actions -->
 
-    <menuitem name="PricePlan" id="medical_insurance_menu_2_list" parent="medical_insurance_menu_conf"
-              action="PricePlan_action_window"/>
+        <!--report view -->
+
+        <!-- <report
+             id="price_plan_report"
+            model="medical.insurance.price.plan"
+            string="Price Plan Report"
+            report_type="qweb-pdf"
+            name="medical_insurance.price_plan_report_view"
+            file="medical_insurance.price_plan_report_view"
+            /> -->
 
 
 
 
-</data>
+        <!-- <template id="price_plan_report_view">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <h3>price plan:</h3>
+                            <h5 t-field="doc.product_id"/>
+                            <h3>status: </h3>
+                            <h5 t-field="doc.status"/>
+                            <h3>start_date:</h3>
+                            <h5 t-field="doc.start_date"/>
+                            <h3>end_date: </h3>
+                            <h5 t-field="doc.end_date"/>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template> -->
+
+        <!-- actions opening views on models -->
+        <record model="ir.actions.act_window" id="PricePlan_action_window">
+            <field name="name">PricePlan window</field>
+            <field name="res_model">medical.insurance.price.plan</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Top menu item -->
+        <!--menuitem name="medical_insurance" id="medical_insurance_menu_root"/-->
+        <!-- menu categories -->
+        <!--menuitem name="Registration" id="medical_insurance_menu1" parent="medical_insurance_menu_root"/-->
+        <!--menuitem name="Reporting" id="medical_insurance_menu2" parent="medical_insurance_menu_root"/-->
+        <!--menuitem name="Configuration" id="medical_insurance_menu3" parent="medical_insurance_menu_root"/-->
+        <!-- actions -->
+
+        <menuitem name="PricePlan" id="medical_insurance_menu_2_list" parent="medical_insurance_menu_conf"
+                  action="PricePlan_action_window"/>
+
+
+
+
+    </data>
 </odoo>
