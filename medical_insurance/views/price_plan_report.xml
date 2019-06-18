@@ -145,9 +145,6 @@
                                 <!--                                <td class="text-right">-->
                                 <!--                                    <span t-field="t.weight"/>-->
                                 <!--                                </td>-->
-                                <td class="text-right">
-                                    <span t-field="t.patient_status"/>
-                                </td>
 
                             </tr>
                         </tbody>
