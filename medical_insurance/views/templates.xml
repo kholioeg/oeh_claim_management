@@ -1,5 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+
         <!-- <template id="listing"> -->
         <!--   <ul> -->
         <!--     <li t-foreach="objects" t-as="object"> -->
@@ -18,5 +20,221 @@
         <!--     </t> -->
         <!--   </dl> -->
         <!-- </template> -->
+
+
+
+        <!--- create claim template-->
+
+        <template id='create'>
+            <style>
+                    * {
+                      box-sizing: border-box;
+                    }
+
+
+                    input[type=text], select{
+                      width: 100%;
+                      padding: 12px;
+                      border: 1px solid #ccc;
+                      border-radius: 4px;
+                      resize: vertical;
+                    }
+
+                    label {
+                      padding: 12px 12px 12px 0;
+                      display: inline-block;
+                    }
+
+                    input[type=submit] {
+                      background-color: #000099;
+                      color: white;
+                      padding: 12px 20px;
+                      border: none;
+                      border-radius: 4px;
+                      cursor: pointer;
+                      float: right;
+                    }
+
+                    input[type=submit]:hover {
+                      background-color: #1a1aff;
+                    }
+
+
+                    .container {
+                      border-radius: 10px;
+                      background-color: #f2f2f2;
+                      height: 100%;
+                      padding: 20px;
+
+                    }
+
+
+                    .col-25 {
+                      float: left;
+                      width: 25%;
+                      margin-top: 6px;
+                    }
+
+                    .col-75 {
+                      float: left;
+                      width: 75%;
+                      margin-top: 6px;
+                    }
+
+                    /* Clear floats after the columns */
+                    .row:after {
+                      content: "";
+                      display: table;
+                      clear: both;
+                    }
+                    .row{
+                margin:30px;
+                        }
+                    /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+                    @media screen and (max-width: 600px) {
+                      .col-25, .col-75, input[type=submit] {
+                        width: 100%;
+                        margin-top: 0;
+                      }
+                    }
+
+                form{
+                    margin-top: 6%;
+                }
+                label
+                {
+                    font-style: italic;
+                    font-weight: bold;
+                    color: #003366;
+                    font-size: large;
+                }
+
+            </style>
+                <div class="container" >
+                    <div class="col-4">
+                        <div class="logo">
+                            <img src='/medical_insurance/static/src/img/logo.png' style="max-height: 100px;"/>
+                        </div>
+                    </div>
+                  <form action="/web/medical_insurance/create_claim" method="POST">
+                  <div class="row">
+                    <div class="col-25">
+                      <label for="patient_id">Patient id</label>
+                    </div>
+                    <div class="col-75">
+                      <input type="text" name="patient_id" id="p_id" placeholder="Patient id"/>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-25">
+                      <label for="medical_center_id">Medical center id</label>
+                    </div>
+                    <div class="col-75">
+                      <input type="text" name="medical_center_id" id="center_id" placeholder="Medical center id"/>
+                    </div>
+                  </div>
+
+
+
+                  <div class="row">
+                    <div class="col-25">
+                      <label for="service_line_id">Service line id</label>
+                    </div>
+                    <div class="col-75">
+                      <input type="text" name="service_line_id" id="s_line_id" placeholder="Service line id"/>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-25">
+                      <label for="Visit type">Visit type</label>
+                    </div>
+                    <div class="col-75">
+                      <select id="v_type" name="visit_type">
+                        <option value="outpatient">outpatient</option>
+                        <option value="ambulatory">ambulatory</option>
+                        <option value="opd/er">opd/er</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <input type="submit" value="Submit"/>
+                  </div>
+                  </form>
+
+                </div>
+        </template>
+
+
+
+
+
+        <template id='notValid'>
+            <h1>this claim is not valid</h1>
+        </template>
+
+
+        <template id="claim_info">
+            <title>claim info</title>
+            <style>
+                    table {
+                      font-family: arial, sans-serif;
+                      border-collapse: collapse;
+                      width: 100%;
+                    }
+                                    td, th {
+                      border: 1px solid #dddddd;
+                      text-align: left;
+                      padding: 8px;
+                    }
+
+                    tr:nth-child(even) {
+                      background-color: #dddddd;
+                    }
+            </style>
+            <table>
+                <tr>
+                        <th>Claim name</th>
+                        <th>Price plan</th>
+                        <th>Date of visit</th>
+                        <th>Patient status</th>
+                        <th>contribution charge</th>
+                        <th>patient charge</th>
+                        <th>claim status</th>
+                        <th>visit type</th>
+                        <th>visit state</th>
+                      </tr>
+            <t t-foreach="claims" t-as="claim">
+                      <tr>
+                        <td><t t-esc="claim.name"/></td>
+                        <td><t t-esc="claim.price_plan"/></td>
+                        <td><t t-esc="claim.date_of_visit"/></td>
+                        <td><t t-esc="claim.price_plan_status"/></td>
+                        <td><t t-esc="claim.contribution_charge"/></td>
+                        <td><t t-esc="claim.patient_charge"/></td>
+                        <td><t t-esc="claim.claim_status"/></td>
+                        <td><t t-esc="claim.visit_type"/></td>
+                        <td><t t-esc="claim.visit_state"/></td>
+                      </tr>
+            </t>
+            </table>
+        </template>
+
+
+        <!--- update claim template-->
+        <template id='update'>
+           <form action="/web/medical_insurance/update_claim/" method="POST">
+               <t t-foreach="claims" t-as="claim">
+               patient_id : <input type="text" name="patient_id" t-att-value="claim.patient_id.name"/>
+               medical_center_id : <input type="text" name="medical_center_id" t-att-value="claim.medical_center_id.name"/>
+               service_line_id : <input type="text" name="service_line_id" t-att-value="claim.service_line_id.name.name"/>
+               visit_type : <input type="text" name="visit_type" t-att-value="claim.visit_type"/>
+               claim id : <input type="text" name="id" t-att-value="claim.id"/>
+               <button name="submit" type="submit"> Submit </button>
+               </t>
+           </form>
+        </template>
     </data>
 </odoo>

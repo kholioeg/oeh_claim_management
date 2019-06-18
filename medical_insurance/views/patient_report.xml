@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<odoo>
+    <report
+
+            id="patient_report"
+            model="medical.insurance.patient"
+            string="Patient Report"
+
+            report_type="qweb-pdf"
+            name="medical_insurance.patient_report_view"
+            file="medical_insurance.patient_report_view"
+    />
+
+
+
+
+    <template id="patient_report_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', doc.name , 200, 50)"/>
+                    <h3 class="text-center" style="color:blue">Patient Report </h3>
+                    <div class="page">
+                        <div class="row col mt32 mb32" id="informations">
+
+                            <div  class="mr32">
+                                <strong>MRN:</strong>
+                                <p t-field="doc.name"/>
+                            </div>
+                            <div  class="mr32">
+                                <strong>NID:</strong>
+                                <p t-field="doc.NID"/>
+                            </div>
+
+                            <div  class="mr32">
+                                <strong>First Name:</strong>
+                                <p t-field="doc.first_name"/>
+                            </div>
+                            <div  class="mr32">
+                                <strong>Last Name:</strong>
+                                <p t-field="doc.last_name"/>
+                            </div>
+                            <div  class="mr32">
+                                <strong>Gender:</strong>
+                                <p t-field="doc.gender"/>
+                            </div>
+                            <div  class="mr32">
+                                <strong>Age:</strong>
+                                <p t-field="doc.age"/>
+                            </div>
+                            <div  class="mr32">
+                                <strong>DOB:</strong>
+                                <p t-field="doc.birthday"/>
+                            </div>
+                            <div  class="mr32">
+                                <strong>Marital Status:</strong>
+                                <p t-field="doc.marital_status"/>
+                            </div>
+                        </div>
+                        <hr/>
+                        <br/>
+                        <h6 class="text-center"  style="color:blue">Medical  Info </h6>
+                        <br/>
+
+                        <div class="row col mt32 mb32" id="informations">
+                            <div  class="mr32">
+                                <strong>Blood Group:</strong>
+                                <p t-field="doc.blood_group"/>
+                            </div>
+                            <div  class="mr32">
+                                <strong>Blood Group:</strong>
+                                <p t-field="doc.blood_group"/>
+                            </div>
+
+                            <div  class="mr32">
+                                <strong>Weight:</strong>
+                                <p t-field="doc.weight"/>
+                            </div>
+                            <div  class="mr32">
+                                <strong>Hieght:</strong>
+                                <p t-field="doc.height"/>
+                            </div>
+
+                        </div>
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <t t-set="colspan" t-value="5"/>
+                                    <th class="text-left">Disease Name</th>
+                                    <th class="text-left">Severity</th>
+                                    <th class="text-left">State</th>
+                                    <th class="text-left">Infectious</th>
+                                    <th class="text-left">Diagnosed On</th>
+                                    <th class="text-left">Remarks</th>
+                                </tr>
+                            </thead>
+                            <tbody class="sale_tbody">
+
+                                <tr t-foreach="docs.disease" t-as="t">
+                                    <td class="text-left">
+                                        <span t-field="t.disease"/>
+                                    </td>
+                                    <td class="text-left">
+                                        <span t-field="t.severity"/>
+                                    </td>
+                                    <td class="text-left">
+                                        <span t-field="t.state"/>
+                                    </td>
+                                    <td class="text-left">
+                                        <span t-field="t.infectious"/>
+                                    </td>
+                                    <td class="text-left">
+                                        <span t-field="t.diagnosed_on"/>
+                                    </td>
+                                    <td class="text-left">
+                                        <span t-field="t.remarks"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <hr/>
+                        <br/>
+                        <h6 class="text-center"  style="color:blue">Contact Info </h6>
+                        <br/>
+
+
+                        <div class="row col mt32 mb32" id="informations">
+                            <div  class="mr32">
+                                <strong>Mobile:</strong>
+                                <p t-field="doc.mobile"/>
+                            </div>
+                            <div  class="mr32">
+                                <strong>E-mail:</strong>
+                                <p t-field="doc.email"/>
+                            </div>
+                            <div  class="mr32">
+                                <strong>Phone:</strong>
+                                <p t-field="doc.phone"/>
+                            </div>
+                        </div>
+
+                        <hr/>
+                        <br/>
+                        <h6 class="text-center"  style="color:blue">Patient Line Info </h6>
+                        <br/>
+
+
+
+                        <div class="row col mt32 mb32" id="informations">
+                            <div  class="mr32">
+                                <strong>Price Plan:</strong>
+                                <p t-field="doc.price_plan"/>
+                            </div>
+                            <div  class="mr40">
+                                <strong>Patient Status:</strong>
+                                <p t-field="doc.patient_status"/>
+                            </div>
+                        </div>
+
+                        <div class="oe_structure"/>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+"use strict";
+function submitForm(oFormElement)
+{
+  var xhr = new XMLHttpRequest();
+  xhr.onload = function(){ alert (xhr.responseText); } // success case
+  xhr.onerror = function(){ alert (xhr.responseText); } // failure case
+  xhr.open (oFormElement.method, oFormElement.action, true);
+  xhr.send (new FormData (oFormElement));
+  return false;
+}
+</script>
+</head>
+
+<body>
+<form method="post" action="http://localhost:8069/medical_insurance/createclaim" onsubmit="return submitForm(this);">
+  <input  value="person"   name="user" />
+  <input  value="password" name="pwd" />
+  <input  value="place"    name="organization" />
+  <input  value="key"      name="requiredkey" />
+  <input type="submit" value="post request"/>
+</form>
+</body>
+</html>
