@@ -36,7 +36,6 @@ class Visit(models.Model):
     service_line_type = fields.Char(string="Service Type", related='service_line_id.service_type', readonly=True)
     invoice_id = fields.Many2one('account.invoice', string="Invoice")
 
-    # Blood_Group = fields.Char()
     history = fields.Text(string="History And Clinical Examination:")
     care_plan = fields.Text(string="Plan Of Care:")
     diagnosis = fields.Text(string="DIAGNOSIS:")
@@ -59,13 +58,11 @@ class Visit(models.Model):
     routine = fields.Boolean('routine')
     Urgent = fields.Boolean('Urgent')
     pre_operative = fields.Boolean('pre_operative')
-    # routine = fields.Boolean('routine')
 
     referring_physician = fields.Char()
     resident = fields.Boolean('Resident')
     specialist = fields.Boolean('Specialist')
     consultant = fields.Boolean('Consultant')
-    # degree_of_urgency = fields.Char()
     routine = fields.Boolean('Routine')
     semi_urgent = fields.Boolean('Semi urgent')
     urgent = fields.Boolean('Urgent')
@@ -141,8 +138,3 @@ class Visit(models.Model):
                     self.claim_status = 'Not Valid'
         else:
             self.claim_status = 'Not Valid'
-
-    @api.one
-    @api.depends('visit_state')
-    def post_a_message(self):
-        self.message_post(body='nada')
