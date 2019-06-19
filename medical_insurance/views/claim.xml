@@ -43,7 +43,6 @@
                             <field name="patient_id"  options='{"always_reload": True}'/>
                             <field name="medical_center_id"/>
                             <field name="service_line_id"/>
-                            <field name="service_line_type"/>
                             <field name="visit_type"/>
                             <field name="price_plan_status"/>
                             <field name="price_plan"/>
@@ -52,8 +51,8 @@
                             <field name="patient_charge"/>
                             <field name="date_of_visit"/>
                             <field name="invoice_id" attrs="{'invisible': [('invoice_id','=',False)]}"/>
-                            <field name="id"/>
-
+                            <field name="service_line_type" attrs="{'invisible': [('service_line_type','!=', 'Re-Assessment'),('service_line_type','!=', 'Iv Request'),('service_line_type','!=', 'Laboratory Multipurpose')]}"/>
+                            <field name="id" invisible="1"/>
                         </group>
 
                         <group string="Service based info" attrs="{'invisible': [('service_line_type','!=', 'Re-Assessment')]}">
@@ -177,7 +176,6 @@
                             <field name="patient_id"  options='{"always_reload": True}'/>
                             <field name="medical_center_id"/>
                             <field name="service_line_id"/>
-                            <field name="service_line_type"/>
                             <field name="visit_type"/>
                             <field name="price_plan_status"/>
                             <field name="price_plan"/>
@@ -186,6 +184,7 @@
                             <field name="patient_charge"/>
                             <field name="date_of_visit"/>
                             <field name="invoice_id" attrs="{'invisible': [('invoice_id','=',False)]}"/>
+                            <field name="service_line_type" attrs="{'invisible': [('service_line_type','!=', 'Re-Assessment'),('service_line_type','!=', 'Iv Request'),('service_line_type','!=', 'Laboratory Multipurpose')]}"/>
                         </group>
 
                         <group string="Service based info" attrs="{'invisible': [('service_line_type','!=', 'Re-Assessment')]}">
