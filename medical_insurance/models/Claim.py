@@ -18,7 +18,7 @@ class Visit(models.Model):
                                        readonly=True, store='True')
     patient_charge = fields.Float(string='Patient Charge', related='service_line_id.patient_price', readonly=True,
                                   store='True')
-    date_of_visit = fields.Datetime(default=lambda self: fields.datetime.now(), store='True')
+    date_of_visit = fields.Date(required='True', store='True')
     claim_status = fields.Char(compute='compute_claim_status', readonly=True, store='True')
     visit_type = fields.Selection([
         ('outpatient', 'Outpatient'),
@@ -104,7 +104,7 @@ class Visit(models.Model):
     @api.multi
     def write(self, vals):
         result = super(Visit, self).write(vals)
-        if self.visit_state == 'confirmed':
+        if self.visit_state in ['confirmed', 'progress', 'done']:
             if self.claim_status == 'Valid' and not self.invoice_id:
                 res_id = self.env['account.invoice'].create({
                     'partner_id': self.medical_center_id.partner_id.id,
