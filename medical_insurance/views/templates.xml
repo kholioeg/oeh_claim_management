@@ -42,6 +42,10 @@
                     }
             </style>
             <table>
+
+                <div class="logo">
+                    <img src='/medical_insurance/static/src/img/logo.png' style="max-height: 100px;"/>
+                </div>
                 <tr>
                         <th>Patient id</th>
                         <th>MRN</th>
@@ -89,6 +93,9 @@
                       background-color: #dddddd;
                     }
             </style>
+            <div class="logo">
+                    <img src='/medical_insurance/static/src/img/logo.png' style="max-height: 100px;"/>
+                </div>
             <table>
                 <tr>
                         <th>Patient id</th>
@@ -132,8 +139,8 @@
             </div>
             <div class='c'>
                 <div class='_404'>400</div>
-                <div class='_1'>The Patient</div>
-                <div class='_2'>IN-ACTICE</div>
+                <div class='_2'>The Patient</div>
+                <div class='_1'>IN-ACTICE</div>
             </div>
         </template>
 
@@ -152,8 +159,8 @@
             </div>
             <div class='c'>
                 <div class='_404'>404</div>
-                <div class='_1'>The Patient</div>
-                <div class='_2'>WAS NOT FOUND</div>
+                <div class='_2'>The Patient</div>
+                <div class='_1'>WAS NOT FOUND</div>
             </div>
         </template>
 
@@ -351,8 +358,8 @@
             </div>
             <div class='c'>
                 <div class='_404'>403</div>
-                <div class='_1'>The Claim</div>
-                <div class='_2'>NOT VALID</div>
+                <div class='_2'>The Claim</div>
+                <div class='_1'>NOT VALID</div>
             </div>
         </template>
 
@@ -564,19 +571,5 @@
 
                 </div>
         </template>
-
-
-<!--        <template id='update'>-->
-<!--           <form action="/web/medical_insurance/update_claim/" method="POST">-->
-<!--               <t t-foreach="claims" t-as="claim">-->
-<!--               patient_id : <input type="text" name="patient_id" t-att-value="claim.patient_id.name"/>-->
-<!--               medical_center_id : <input type="text" name="medical_center_id" t-att-value="claim.medical_center_id.name"/>-->
-<!--               service_line_id : <input type="text" name="service_line_id" t-att-value="claim.service_line_id.name.name"/>-->
-<!--               visit_type : <input type="text" name="visit_type" t-att-value="claim.visit_type"/>-->
-<!--               claim id : <input type="text" name="id" t-att-value="claim.id"/>-->
-<!--               <button name="submit" type="submit"> Submit </button>-->
-<!--               </t>-->
-<!--           </form>-->
-<!--        </template>-->
     </data>
 </odoo>

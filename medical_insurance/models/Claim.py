@@ -1,6 +1,7 @@
 from odoo import models, fields, api
 
 class Visit(models.Model):
+
     _name = 'medical.insurance.claim'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 

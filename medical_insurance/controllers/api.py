@@ -50,10 +50,10 @@ class Api(http.Controller):
                         return json.dumps({'data': patient_info})
                 else:
                     Response.status = '400'
-                    return '{"response": "this patient is Inactive"}'
+                    return '{"response": "400"}'
         else:
             Response.status = '404'
-            return '{"response": "not exist"}'
+            return '{"response": "404"}'
 
 
 

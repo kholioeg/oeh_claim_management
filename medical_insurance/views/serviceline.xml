@@ -81,7 +81,7 @@
                                 <p t-field="doc.patient_price"/>
                             </div>
                             <div class="mr32">
-                                <strong>Price Plane:</strong>
+                                <strong>Price Plan:</strong>
                                 <p t-field="doc.price_plan"/>
                             </div>
                         </div>
