@@ -1,0 +1,12 @@
+<odoo>
+
+    <record id="group_front_office" model="res.groups">
+        <field name="name">Medical Insurance / Front Office</field>
+    </record>
+
+    <record id="group_claim_admin" model="res.groups">
+        <field name="name">Medical Insurance / Claim Admin</field>
+    </record>
+
+</odoo>
+

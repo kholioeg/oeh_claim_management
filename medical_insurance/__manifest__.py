@@ -20,13 +20,33 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'mail', 'product', 'sale'],
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
+        'security/medical_insurance_security.xml',
+        'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
+        'views/patient.xml',
+        'views/claim.xml',
+        'views/serviceline.xml',
+        'views/priceplan.xml',
+        'views/medicalcenter.xml',
+        'views/price_plan_report.xml',
+        'views/patient_report.xml',
+        'views/medical_center_report.xml',
+        'views/disease.xml',
+        'views/vital_signs_history.xml',
+        'views/operation_reservation.xml',
+        'views/doctors.xml',
+        'views/room.xml',
+        'views/medicine.xml',
+        'views/antenatal_care_line.xml',
+        'views/disease_info.xml',
+        'views/medicine_info.xml',
+        'views/demo.xml',
+
     ],
     # only loaded in demonstration mode
     'demo': [

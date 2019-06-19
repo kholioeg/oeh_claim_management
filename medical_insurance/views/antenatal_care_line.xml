@@ -1,0 +1,46 @@
+<odoo>
+    <record model="ir.ui.view" id="antenatal_list">
+        <field name="name">antenatalcareline_list</field>
+        <field name="model">medical.insurance.antenatalcareline</field>
+        <field name="priority" eval="16"/>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="rx_and_remarks"/>
+                <field name="Wt"/>
+                <field name="Date"/>
+                <field name="c_o"/>
+                <field name="examination_ultrasound"/>
+                <field name="BP"/>
+            </tree>
+        </field>
+    </record>
+
+<!-- explicit form view definition-->
+    <record model="ir.ui.view" id="medicine_form">
+        <field name="name">antenatalcareline_list</field>
+        <field name="model">medical.insurance.antenatalcareline</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group col="4">
+                        <field name="rx_and_remarks"/>
+                        <field name="Wt"/>
+                        <field name="Date"/>
+                        <field name="c_o"/>
+                        <field name="examination_ultrasound"/>
+                        <field name="BP"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+<!-- explicit list view definition -->
+
+<!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="antenatalcareline_window">
+      <field name="name">Medicine window</field>
+      <field name="res_model">medical.insurance.antenatalcareline</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>
