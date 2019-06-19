@@ -138,3 +138,4 @@ class Visit(models.Model):
                     self.claim_status = 'Not Valid'
         else:
             self.claim_status = 'Not Valid'
+
