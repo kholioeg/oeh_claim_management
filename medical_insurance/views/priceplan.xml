@@ -10,7 +10,7 @@
                     <!--                <field name="status"/>-->
                     <!--                <field name="start_date"/>-->
                     <!--                <field name="end_date"/>-->
-                    <field name="patient" context="{'form_view_ref' : 'medical_insurance.patient_form_two'}"/>
+                    <field name="patient" invisible="1"/>
                     <field name="medical_center_id"/>
                     <field name="service_line"/>
                 </tree>
@@ -41,7 +41,7 @@
                             </page>
                             <page string="Patient Info">
                                 <group>
-                                    <field name="patient"/>
+                                    <field name="patient" context="{'form_view_ref' : 'medical_insurance.patient_form_two'}"/>
                                 </group>
                             </page>
                             <page string="Service Line  Info">

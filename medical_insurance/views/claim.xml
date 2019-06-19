@@ -427,6 +427,10 @@
                                     <strong>Date Of Visit:</strong>
                                     <p t-field="doc.date_of_visit"/>
                                 </div>
+                                 <div  class="mr32">
+                                    <strong>Invoice:</strong>
+                                    <p t-field="doc.invoice_id"/>
+                                </div>
                             </div>
 
                         </div>
