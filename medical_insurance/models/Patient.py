@@ -36,8 +36,8 @@ class Patient(models.Model):
     status = fields.Char(compute='_compute_plan_status', string="patient status", readonly=True)
     patient_status = fields.Char(compute='_compute_patient_status', attrs="{'invisible':1}")
 
-    start_date = fields.Date(string="subscription start at")
-    end_date = fields.Date(string="subscription end at")
+    start_date = fields.Date(string="subscription start at", required=True)
+    end_date = fields.Date(string="subscription end at", required=True)
     # EHR = fields.One2many('medical.insurance.ehr', inverse_name="patient_id", string="EHR")
     disease = fields.One2many('medical.insurance.disease', inverse_name="patient_id", string="Disease")
     vital_signs_history = fields.One2many('medical.insurance.vitalsignshistory', inverse_name="patient_id", string="Vital Signs")

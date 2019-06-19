@@ -1,4 +1,5 @@
 <odoo>
+
     <!-- explicit list view definition -->
     <record model="ir.ui.view" id="medical_insurance_patient_list">
         <field name="name">Patient list</field>
@@ -114,7 +115,6 @@
                                 <field name="start_date"/>
                                 <field name="end_date"/>
                                 <field name="status"/>
-
                             </group>
                         </page>
                     </notebook>
@@ -142,7 +142,6 @@
                         <label class="oe_edit_only" for="name" string="MRN"/>
                         <h1><field name="name" placeholder="MRN" readonly="1"/></h1>
                     </div>
-
                     <notebook position="inside">
                         <page string="Personal Info">
                             <group>
@@ -159,8 +158,6 @@
                             </group>
                         </page>
                         <page string="Medical Info">
-
-
                             <notebook position="inside">
                                 <page string="Basic Info">
                                     <group col="4">
@@ -197,7 +194,6 @@
                                 </page>
                             </notebook>
                         </page>
-
                         <page string="Contact Info">
                             <group col="4">
                                 <field name="mobile"/>
@@ -219,9 +215,7 @@
     </record>
 
 
-
-
-    <record model="ir.actions.act_window" id="medical_insurance_action_patient">
+    <record model="ir.actions.act_window" id="medical_insurance_action_patient_one">
         <field name="name">patient window</field>
         <field name="res_model">medical.insurance.patient</field>
         <field name="context">{'custom_search': True}</field>
@@ -230,6 +224,6 @@
     </record>
 
     <!-- actions -->
-    <menuitem name="Patient" id="medical_insurance_patient" parent="medical_insurance_menu_registration" action="medical_insurance_action_patient"/>
+    <menuitem name="Patient" id="medical_insurance_patient" parent="medical_insurance_menu_registration" action="medical_insurance_action_patient_one"/>
 
 </odoo>
